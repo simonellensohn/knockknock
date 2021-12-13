@@ -32,7 +32,12 @@ return [
 
     'hue' => [
         'endpoint' => env('HUE_ENDPOINT'),
+        'client_id' => env('HUE_CLIENT_ID'),
+        'client_secret' => env('HUE_CLIENT_SECRET'),
+        'device_id' => env('HUE_DEVICE_ID'),
+        'app_id' => env('HUE_APP_ID'),
         'key' => env('HUE_APPLICATION_KEY'),
+        'username' => env('HUE_USERNAME'),
     ],
 
 ];

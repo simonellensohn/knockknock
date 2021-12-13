@@ -2,25 +2,82 @@
 
 namespace App\Services\Hue;
 
-use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class HueApi
 {
-    protected PendingRequest $request;
+    protected string $baseUrl = 'https://api.meethue.com';
 
     public function __construct(public array $options = [])
+    {}
+
+    public function fetchAccessToken(string $code): string
     {
-        $this->request = Http::withOptions(['verify' => false])
-            ->withHeaders(['hue-application-key' => $options['applicationKey']])
-            ->baseUrl($options['baseUrl']);
+        $response = Http::asForm()
+            ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
+            ->post($this->baseUrl . '/v2/oauth2/token', [
+                'code' => $code,
+                'grant_type' => 'authorization_code'
+            ]);
+
+        $tokens = $this->writeTokensToFile($response->json());
+
+        return $tokens->access_token_expires_at;
     }
 
-    public function fetchRooms(): Collection
+    public function createUser(): string
     {
-        $rooms = $this->request->get('/resource/room');
+        $this->send('/route/api/0/config', 'put', ['linkbutton' => true]);
 
-        return collect($rooms->json('data'));
+        $response = $this->send('/route/api', 'post', [
+            'devicetype' => config('services.hue.app_id')
+        ]);
+
+        return $response->json('0.success.username');
+    }
+
+    public function getAccessToken(): string
+    {
+        $tokens = json_decode(Storage::disk('local')->get('hue.json') ?: '{}');
+
+        if (Carbon::parse($tokens->access_token_expires_at)->gt(Carbon::now())) {
+            return $tokens->access_token;
+        }
+
+        $response = Http::asForm()
+            ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
+            ->post($this->baseUrl . '/v2/oauth2/refresh?grant_type=refresh_token', ['refresh_token' => $tokens->refresh_token]);
+
+        $tokens = $this->writeTokensToFile($response->json());
+
+        return $tokens->access_token_expires_at;
+    }
+
+    public function fetchLights(): Collection
+    {
+        $response = $this->send('/route/api/' . config('services.hue.username') . '/lights');
+
+        return collect($response->json());
+    }
+
+    private function send(string $url, string $method = 'get', array $data = []): Response
+    {
+        return Http::asJson()
+            ->withToken($this->getAccessToken())
+            ->baseUrl($this->baseUrl)
+            ->{$method}($url, $data);
+    }
+
+    private function writeTokensToFile(array $tokens): object
+    {
+        $tokens['access_token_expires_at'] = Carbon::now()->addSeconds($tokens['expires_in'])->toDateTimeString();
+
+        Storage::put('hue.json', json_encode($tokens));
+
+        return (object) $tokens;
     }
 }

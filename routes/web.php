@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HueCallbackController;
 use App\Services\Hue\HueApi;
 use Illuminate\Support\Facades\Route;
 
@@ -26,5 +27,7 @@ Route::get('/', [DashboardController::class, 'index'])
 
 
 Route::get('hue', function (HueApi $api) {
-    dd($api->fetchRooms());
+    return $api->fetchLights();
 });
+
+Route::get('hue/callback', HueCallbackController::class);
