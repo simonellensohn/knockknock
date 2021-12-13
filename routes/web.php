@@ -28,6 +28,6 @@ Route::get('/', [DashboardController::class, 'index'])
 
 Route::get('hue', function (HueApi $api) {
     return response()->json($api->fetchLights());
-});
+})->middleware('auth');
 
 Route::get('hue/callback', HueCallbackController::class);
