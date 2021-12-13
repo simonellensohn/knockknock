@@ -27,7 +27,7 @@ Route::get('/', [DashboardController::class, 'index'])
 
 
 Route::get('hue', function (HueApi $api) {
-    return $api->fetchLights();
+    return response()->json($api->fetchLights());
 });
 
 Route::get('hue/callback', HueCallbackController::class);

@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
 use App\Services\Hue\HueApi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HueCallbackController extends Controller
 {
     public function __invoke(Request $request, HueApi $hueApi)
     {
+        if (Storage::exists('hue.json')) {
+            abort(400, 'Config file already exists, aborting.');
+        }
+
         if ($code = $request->input('code')) {
             $hueApi->fetchAccessToken($code);
 
@@ -20,6 +24,6 @@ class HueCallbackController extends Controller
             ]);
         }
 
-        abort(400);
+        abort(400, 'Invalid request, code missing.');
     }
 }
