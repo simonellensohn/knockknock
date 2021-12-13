@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'hue' => [
+        'endpoint' => env('HUE_ENDPOINT'),
+        'key' => env('HUE_APPLICATION_KEY'),
+    ],
+
 ];

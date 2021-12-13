@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Services\Hue\HueServiceProvider::class,
 
         /*
          * Application Service Providers...

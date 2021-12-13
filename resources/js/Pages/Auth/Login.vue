@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     login() {
-      this.form.post('/login')
+      this.form.post(this.$route('login'))
     },
   },
 }

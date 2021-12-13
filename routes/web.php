@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
+use App\Services\Hue\HueApi;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // Auth
 
@@ -23,3 +23,8 @@ Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard')
     ->middleware('auth');
+
+
+Route::get('hue', function (HueApi $api) {
+    dd($api->fetchRooms());
+});
