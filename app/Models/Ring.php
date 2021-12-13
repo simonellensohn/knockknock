@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\Hue\HueApi;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,8 +13,8 @@ class Ring extends Model
 
     protected static function booted(): void
     {
-        static::created(function ($user) {
-            //
+        static::created(function (self $ring) {
+            app(HueApi::class)->blinkAllLights();
         });
     }
 

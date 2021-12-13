@@ -64,6 +64,15 @@ class HueApi
         return collect($response->json());
     }
 
+    public function blinkAllLights(): bool
+    {
+        $response = $this->send('/route/api/' . config('services.hue.username') . '/groups/3/action', 'put', [
+            'alert' => 'lselect',
+        ]);
+
+        return $response->successful();
+    }
+
     private function send(string $url, string $method = 'get', array $data = []): Response
     {
         return Http::asJson()
