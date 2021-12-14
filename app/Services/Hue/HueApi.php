@@ -66,7 +66,7 @@ class HueApi
 
     public function blinkAllLights(): bool
     {
-        $response = $this->send('/route/api/' . config('services.hue.username') . '/groups/3/action', 'put', [
+        $response = $this->send('/route/api/' . config('services.hue.username') . '/groups/8/action', 'put', [
             'alert' => 'lselect',
         ]);
 
