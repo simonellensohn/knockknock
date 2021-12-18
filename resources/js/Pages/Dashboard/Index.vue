@@ -25,22 +25,21 @@ export default {
     rings: { type: Array },
     auth: Object,
   },
-  mounted () {
+  mounted() {
     this.registerServiceWorker()
   },
   methods: {
     /**
      * Register the service worker.
      */
-    registerServiceWorker () {
+    registerServiceWorker() {
       if (!('serviceWorker' in navigator)) {
         console.log('Service workers aren\'t supported in this browser.')
         return
       }
-      navigator.serviceWorker.register('/sw.js')
-        .then(() => this.initialiseServiceWorker())
+      navigator.serviceWorker.register('/sw.js').then(() => this.initialiseServiceWorker())
     },
-    initialiseServiceWorker () {
+    initialiseServiceWorker() {
       if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
         console.log('Notifications aren\'t supported.')
         return
@@ -53,9 +52,10 @@ export default {
         console.log('Push messaging isn\'t supported.')
         return
       }
-      navigator.serviceWorker.ready.then(registration => {
-        registration.pushManager.getSubscription()
-          .then(subscription => {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.pushManager
+          .getSubscription()
+          .then((subscription) => {
             this.pushButtonDisabled = false
             if (!subscription) {
               return
@@ -63,7 +63,7 @@ export default {
             this.updateSubscription(subscription)
             this.isPushEnabled = true
           })
-          .catch(e => {
+          .catch((e) => {
             console.log('Error during getSubscription()', e)
           })
       })
@@ -71,20 +71,21 @@ export default {
     /**
      * Subscribe for push notifications.
      */
-    subscribe () {
-      navigator.serviceWorker.ready.then(registration => {
+    subscribe() {
+      navigator.serviceWorker.ready.then((registration) => {
         const options = { userVisibleOnly: true }
-        const vapidPublicKey = this.auth.vapidPublicKey;
+        const vapidPublicKey = this.auth.vapidPublicKey
         if (vapidPublicKey) {
           options.applicationServerKey = this.urlBase64ToUint8Array(vapidPublicKey)
         }
-        registration.pushManager.subscribe(options)
-          .then(subscription => {
+        registration.pushManager
+          .subscribe(options)
+          .then((subscription) => {
             this.isPushEnabled = true
             this.pushButtonDisabled = false
             this.updateSubscription(subscription)
           })
-          .catch(e => {
+          .catch((e) => {
             if (Notification.permission === 'denied') {
               console.log('Permission for Notifications was denied')
               this.pushButtonDisabled = true
@@ -98,31 +99,37 @@ export default {
     /**
      * Unsubscribe from push notifications.
      */
-    unsubscribe () {
-      navigator.serviceWorker.ready.then(registration => {
-        registration.pushManager.getSubscription().then(subscription => {
-          if (!subscription) {
-            this.isPushEnabled = false
-            this.pushButtonDisabled = false
-            return
-          }
-          subscription.unsubscribe().then(() => {
-            this.deleteSubscription(subscription)
-            this.isPushEnabled = false
-            this.pushButtonDisabled = false
-          }).catch(e => {
-            console.log('Unsubscription error: ', e)
-            this.pushButtonDisabled = false
+    unsubscribe() {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.pushManager
+          .getSubscription()
+          .then((subscription) => {
+            if (!subscription) {
+              this.isPushEnabled = false
+              this.pushButtonDisabled = false
+              return
+            }
+            subscription
+              .unsubscribe()
+              .then(() => {
+                this.deleteSubscription(subscription)
+                this.isPushEnabled = false
+                this.pushButtonDisabled = false
+              })
+              .catch((e) => {
+                console.log('Unsubscription error: ', e)
+                this.pushButtonDisabled = false
+              })
           })
-        }).catch(e => {
-          console.log('Error thrown while unsubscribing.', e)
-        })
+          .catch((e) => {
+            console.log('Error thrown while unsubscribing.', e)
+          })
       })
     },
     /**
      * Toggle push notifications subscription.
      */
-    togglePush () {
+    togglePush() {
       if (this.isPushEnabled) {
         this.unsubscribe()
       } else {
@@ -134,7 +141,7 @@ export default {
      *
      * @param {PushSubscription} subscription
      */
-    updateSubscription (subscription) {
+    updateSubscription(subscription) {
       const key = subscription.getKey('p256dh')
       const token = subscription.getKey('auth')
       const contentEncoding = (PushManager.supportedContentEncodings || ['aesgcm'])[0]
@@ -142,30 +149,35 @@ export default {
         endpoint: subscription.endpoint,
         publicKey: key ? btoa(String.fromCharCode.apply(null, new Uint8Array(key))) : null,
         authToken: token ? btoa(String.fromCharCode.apply(null, new Uint8Array(token))) : null,
-        contentEncoding
+        contentEncoding,
       }
       this.loading = true
-      this.$inertia.post('/push/subscriptions', data)
-        .then(() => { this.loading = false })
+      this.$inertia.post('/push/subscriptions', data).then(() => {
+        this.loading = false
+      })
     },
     /**
      * Send a requst to the server to delete user's subscription.
      *
      * @param {PushSubscription} subscription
      */
-    deleteSubscription (subscription) {
+    deleteSubscription(subscription) {
       this.loading = true
-      this.$inertia.post('/push/subscriptions/delete', { endpoint: subscription.endpoint })
-        .then(() => { this.loading = false })
+      this.$inertia.post('/push/subscriptions/delete', { endpoint: subscription.endpoint }).then(() => {
+        this.loading = false
+      })
     },
     /**
      * Send a request to the server for a push notification.
      */
-    sendNotification () {
+    sendNotification() {
       this.loading = true
-      this.$inertia.post('/api/notifications')
-        .catch(error => console.log(error))
-        .then(() => { this.loading = false })
+      this.$inertia
+        .post('/api/notifications')
+        .catch((error) => console.log(error))
+        .then(() => {
+          this.loading = false
+        })
     },
     /**
      * https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/app/Resources/public/js/app.js#L177
@@ -173,18 +185,16 @@ export default {
      * @param  {String} base64String
      * @return {Uint8Array}
      */
-    urlBase64ToUint8Array (base64String) {
-      const padding = '='.repeat((4 - base64String.length % 4) % 4)
-      const base64 = (base64String + padding)
-        .replace(/-/g, '+')
-        .replace(/_/g, '/')
+    urlBase64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
+      const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
       const rawData = window.atob(base64)
       const outputArray = new Uint8Array(rawData.length)
       for (let i = 0; i < rawData.length; ++i) {
         outputArray[i] = rawData.charCodeAt(i)
       }
       return outputArray
-    }
-  }
+    },
+  },
 }
 </script>
