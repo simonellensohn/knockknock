@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Bell;
 use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
 
 class RingBellController extends Controller
 {

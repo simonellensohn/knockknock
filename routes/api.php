@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\RingBellController;
+use App\Http\Controllers\Api\RingBellController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Bell;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RingFactory extends Factory
@@ -14,7 +15,7 @@ class RingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'bell_id' => Bell::factory(),
         ];
     }
 }

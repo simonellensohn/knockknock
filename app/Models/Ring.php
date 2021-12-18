@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Services\Hue\HueApi;
+use App\Events\RingCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,12 +11,9 @@ class Ring extends Model
 {
     use HasFactory;
 
-    protected static function booted(): void
-    {
-        static::created(function (self $ring) {
-            app(HueApi::class)->blinkAllLights();
-        });
-    }
+    protected $dispatchesEvents = [
+        'created' => RingCreated::class,
+    ];
 
     public function bell(): BelongsTo
     {
