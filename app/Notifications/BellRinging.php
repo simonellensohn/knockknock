@@ -25,9 +25,8 @@ class BellRinging extends Notification
     public function toArray($notifiable): array
     {
         return [
-            'title' => 'Hello from Laravel!',
-            'body' => 'Thank you for using our application.',
-            'action_url' => 'https://laravel.com',
+            'title' => '🔔 Digga, es klingelt!',
+            'body' => '🏃 Run forest, run!',
             'created' => now()->toIso8601String(),
         ];
     }
@@ -35,9 +34,9 @@ class BellRinging extends Notification
     public function toWebPush($notifiable, $notification): WebPushMessage
     {
         return (new WebPushMessage)
-            ->title('Hello from Laravel!')
+            ->title('🔔 Digga, es klingelt!')
             ->icon('/notification-icon.png')
-            ->body('Thank you for using our application.')
+            ->body('🏃 Run forest, run!')
             ->action('View app', 'view_app')
             ->data(['id' => $notification->id]);
     }

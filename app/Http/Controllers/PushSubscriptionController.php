@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class PushSubscriptionController extends Controller
 {
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         $this->validate($request, ['endpoint' => 'required']);
 
@@ -21,7 +22,7 @@ class PushSubscriptionController extends Controller
         return Redirect::back();
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request): RedirectResponse
     {
         $this->validate($request, ['endpoint' => 'required']);
 

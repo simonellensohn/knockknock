@@ -85,7 +85,7 @@ class HueApi
     {
         $tokens['access_token_expires_at'] = Carbon::now()->addSeconds($tokens['expires_in'])->toDateTimeString();
 
-        Storage::put('hue.json', json_encode($tokens));
+        Storage::put('hue.json', json_encode($tokens, JSON_THROW_ON_ERROR));
 
         return (object) $tokens;
     }

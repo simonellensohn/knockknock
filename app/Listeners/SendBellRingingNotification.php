@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Notification;
 
 class SendBellRingingNotification
 {
-    public function handle(RingCreated $event)
+    public function handle(RingCreated $event): void
     {
         $users = User::all();
 

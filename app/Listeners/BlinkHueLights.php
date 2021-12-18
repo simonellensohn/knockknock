@@ -11,7 +11,7 @@ class BlinkHueLights
         public HueApi $hue
     ) {}
 
-    public function handle(RingCreated $event)
+    public function handle(RingCreated $event): void
     {
         // $this->hue->blinkAllLights();
     }
