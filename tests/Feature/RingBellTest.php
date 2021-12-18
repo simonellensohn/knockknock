@@ -3,7 +3,6 @@
 use App\Models\Bell;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use SebastianBergmann\CodeCoverage\TestIdMissingException;
 
 uses(RefreshDatabase::class);
 

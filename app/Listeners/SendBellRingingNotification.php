@@ -5,7 +5,6 @@ namespace App\Listeners;
 use App\Events\RingCreated;
 use App\Models\User;
 use App\Notifications\BellRinging;
-use App\Services\Hue\HueApi;
 use Illuminate\Support\Facades\Notification;
 
 class SendBellRingingNotification

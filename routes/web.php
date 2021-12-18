@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PushSubscriptionController;
 use App\Http\Controllers\HueCallbackController;
+use App\Http\Controllers\PushSubscriptionController;
 use App\Services\Hue\HueApi;
 use Illuminate\Support\Facades\Route;
 

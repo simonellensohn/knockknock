@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Events\BellRinging;
 use App\Events\RingCreated;
 use App\Listeners\SendBellRingingNotification;
 use Illuminate\Auth\Events\Registered;
@@ -23,7 +22,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         RingCreated::class => [
             SendBellRingingNotification::class,
-        ]
+        ],
     ];
 
     /**

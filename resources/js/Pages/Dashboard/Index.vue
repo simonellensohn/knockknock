@@ -4,7 +4,7 @@
 
     <h1 class="mb-8 text-3xl font-bold">Dashboard</h1>
 
-    <button class="p-4 border" @click="subscribe">Subscribe</button>
+    <button class="p-4 mb-8 border" @click="subscribe">Subscribe</button>
 
     <ul>
       <li v-for="ring in rings" :key="ring.id">{{ ring.created_at }}</li>
@@ -20,46 +20,58 @@ export default {
   components: {
     Head,
   },
+
   layout: Layout,
+
   props: {
-    rings: { type: Array },
+    rings: Array,
     auth: Object,
   },
+
   mounted() {
     this.registerServiceWorker()
   },
+
   methods: {
-    /**
-     * Register the service worker.
-     */
     registerServiceWorker() {
       if (!('serviceWorker' in navigator)) {
         console.log('Service workers aren\'t supported in this browser.')
+
         return
       }
+
       navigator.serviceWorker.register('/sw.js').then(() => this.initialiseServiceWorker())
     },
+
     initialiseServiceWorker() {
       if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
         console.log('Notifications aren\'t supported.')
+
         return
       }
+
       if (Notification.permission === 'denied') {
         console.log('The user has blocked notifications.')
+
         return
       }
+
       if (!('PushManager' in window)) {
         console.log('Push messaging isn\'t supported.')
+
         return
       }
+
       navigator.serviceWorker.ready.then((registration) => {
         registration.pushManager
           .getSubscription()
           .then((subscription) => {
             this.pushButtonDisabled = false
+
             if (!subscription) {
               return
             }
+
             this.updateSubscription(subscription)
             this.isPushEnabled = true
           })
@@ -68,16 +80,16 @@ export default {
           })
       })
     },
-    /**
-     * Subscribe for push notifications.
-     */
+
     subscribe() {
       navigator.serviceWorker.ready.then((registration) => {
         const options = { userVisibleOnly: true }
         const vapidPublicKey = this.auth.vapidPublicKey
+
         if (vapidPublicKey) {
           options.applicationServerKey = this.urlBase64ToUint8Array(vapidPublicKey)
         }
+
         registration.pushManager
           .subscribe(options)
           .then((subscription) => {
@@ -96,9 +108,7 @@ export default {
           })
       })
     },
-    /**
-     * Unsubscribe from push notifications.
-     */
+
     unsubscribe() {
       navigator.serviceWorker.ready.then((registration) => {
         registration.pushManager
@@ -107,8 +117,10 @@ export default {
             if (!subscription) {
               this.isPushEnabled = false
               this.pushButtonDisabled = false
+
               return
             }
+
             subscription
               .unsubscribe()
               .then(() => {
@@ -126,9 +138,7 @@ export default {
           })
       })
     },
-    /**
-     * Toggle push notifications subscription.
-     */
+
     togglePush() {
       if (this.isPushEnabled) {
         this.unsubscribe()
@@ -136,11 +146,7 @@ export default {
         this.subscribe()
       }
     },
-    /**
-     * Send a request to the server to update user's subscription.
-     *
-     * @param {PushSubscription} subscription
-     */
+
     updateSubscription(subscription) {
       const key = subscription.getKey('p256dh')
       const token = subscription.getKey('auth')
@@ -151,33 +157,25 @@ export default {
         authToken: token ? btoa(String.fromCharCode.apply(null, new Uint8Array(token))) : null,
         contentEncoding,
       }
+
       this.loading = true
-      this.$inertia.post('/push/subscriptions', data).then(() => {
-        this.loading = false
-      })
+
+      this.$inertia.post('/push/subscriptions', data).then(() => (this.loading = false))
     },
-    /**
-     * Send a requst to the server to delete user's subscription.
-     *
-     * @param {PushSubscription} subscription
-     */
+
     deleteSubscription(subscription) {
       this.loading = true
-      this.$inertia.post('/push/subscriptions/delete', { endpoint: subscription.endpoint }).then(() => {
-        this.loading = false
-      })
+
+      this.$inertia.post('/push/subscriptions/delete', { endpoint: subscription.endpoint }).then(() => (this.loading = false))
     },
-    /**
-     * Send a request to the server for a push notification.
-     */
+
     sendNotification() {
       this.loading = true
+
       this.$inertia
         .post('/api/notifications')
         .catch((error) => console.log(error))
-        .then(() => {
-          this.loading = false
-        })
+        .then(() => (this.loading = false))
     },
     /**
      * https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/app/Resources/public/js/app.js#L177

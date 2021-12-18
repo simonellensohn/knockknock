@@ -2,9 +2,9 @@
 
 namespace App\Services\Hue;
 
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,9 +19,9 @@ class HueApi
     {
         $response = Http::asForm()
             ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
-            ->post($this->baseUrl . '/v2/oauth2/token', [
+            ->post($this->baseUrl.'/v2/oauth2/token', [
                 'code' => $code,
-                'grant_type' => 'authorization_code'
+                'grant_type' => 'authorization_code',
             ]);
 
         $tokens = $this->writeTokensToFile($response->json());
@@ -34,7 +34,7 @@ class HueApi
         $this->send('/route/api/0/config', 'put', ['linkbutton' => true]);
 
         $response = $this->send('/route/api', 'post', [
-            'devicetype' => config('services.hue.app_id')
+            'devicetype' => config('services.hue.app_id'),
         ]);
 
         return $response->json('0.success.username');
@@ -50,7 +50,7 @@ class HueApi
 
         $response = Http::asForm()
             ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
-            ->post($this->baseUrl . '/v2/oauth2/refresh?grant_type=refresh_token', ['refresh_token' => $tokens->refresh_token]);
+            ->post($this->baseUrl.'/v2/oauth2/refresh?grant_type=refresh_token', ['refresh_token' => $tokens->refresh_token]);
 
         $tokens = $this->writeTokensToFile($response->json());
 
@@ -59,14 +59,14 @@ class HueApi
 
     public function fetchLights(): Collection
     {
-        $response = $this->send('/route/api/' . config('services.hue.username') . '/lights');
+        $response = $this->send('/route/api/'.config('services.hue.username').'/lights');
 
         return collect($response->json());
     }
 
     public function blinkAllLights(): bool
     {
-        $response = $this->send('/route/api/' . config('services.hue.username') . '/groups/8/action', 'put', [
+        $response = $this->send('/route/api/'.config('services.hue.username').'/groups/8/action', 'put', [
             'alert' => 'lselect',
         ]);
 

@@ -2,12 +2,11 @@
 
 namespace App\Notifications;
 
-use App\Models\Bell;
 use App\Models\Ring;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use NotificationChannels\WebPush\WebPushMessage;
 use NotificationChannels\WebPush\WebPushChannel;
+use NotificationChannels\WebPush\WebPushMessage;
 
 class BellRinging extends Notification
 {
