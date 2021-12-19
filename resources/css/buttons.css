@@ -1,5 +1,5 @@
 .btn-indigo {
-    @apply px-6 py-3 rounded bg-indigo-600 text-white text-sm leading-4 font-bold whitespace-nowrap hover:bg-orange-400 focus:bg-orange-400;
+    @apply px-6 py-3 text-sm font-bold leading-4 text-white transition-all duration-500 bg-indigo-600 rounded hover:scale-110 hover:from-indigo-600 to-indigo-600 hover:to-cyan-400 bg-gradient-to-br whitespace-nowrap;
   }
 
   .btn-spinner,

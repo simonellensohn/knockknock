@@ -2,7 +2,7 @@
   <Head title="Login" />
   <div class="flex items-center justify-center min-h-screen p-6 bg-indigo-800">
     <div class="w-full max-w-md">
-      <logo class="block w-full max-w-xs mx-auto fill-white" height="50" />
+      <h1 class="italic font-extrabold text-center text-transparent text-7xl bg-clip-text bg-gradient-to-br from-sky-500 to-cyan-400">Fat Flat</h1>
       <form class="mt-8 overflow-hidden bg-white rounded-lg shadow-xl" @submit.prevent="login">
         <div class="px-10 py-12">
           <h1 class="text-3xl font-bold text-center">Welcome Back!</h1>

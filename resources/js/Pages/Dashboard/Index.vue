@@ -4,7 +4,42 @@
 
     <h1 class="mb-8 text-3xl font-bold">Dashboard</h1>
 
-    <button class="p-4 mb-8 border" @click="subscribe">Subscribe</button>
+    <div class="grid grid-cols-3 gap-3 mb-8">
+      <div class="p-4 border rounded shadow-sm">
+        <div class="flex items-center">
+          <div class="w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner" />
+
+          <div class="flex flex-col">
+            <span class="text-xs font-semibold text-gray-500">Total Rings</span>
+            2
+          </div>
+        </div>
+      </div>
+      <div class="p-4 border rounded shadow-sm">
+        <div class="flex items-center">
+          <div class="w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner" />
+
+          <div class="flex flex-col">
+            <span class="text-xs font-semibold text-gray-500">Total Rings</span>
+            2
+          </div>
+        </div>
+      </div>
+      <div class="p-4 border rounded shadow-sm">
+        <div class="flex items-center">
+          <div class="w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner" />
+
+          <div class="flex flex-col">
+            <span class="text-xs font-semibold text-gray-500">Total Rings</span>
+            2
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <loading-button :loading="loading" class="p-4 mb-8 border" @click="togglePush">
+      {{ isPushEnabled ? 'Ubsubscribe' : 'Subscribe' }}
+    </loading-button>
 
     <ul>
       <li v-for="ring in rings" :key="ring.id">{{ ring.created_at }}</li>
@@ -15,10 +50,12 @@
 <script>
 import { Head } from '@inertiajs/inertia-vue3'
 import Layout from '@/Shared/Layout'
+import LoadingButton from '@/Shared/LoadingButton'
 
 export default {
   components: {
     Head,
+    LoadingButton,
   },
 
   layout: Layout,
@@ -26,6 +63,14 @@ export default {
   props: {
     rings: Array,
     auth: Object,
+  },
+
+  data() {
+    return {
+      loading: false,
+      isPushEnabled: false,
+      pushButtonDisabled: false,
+    }
   },
 
   mounted() {
@@ -160,22 +205,27 @@ export default {
 
       this.loading = true
 
-      this.$inertia.post('/push/subscriptions', data).then(() => (this.loading = false))
+      this.$inertia.post('/push/subscriptions', data, {
+        onFinish: () => this.loading = false,
+      })
     },
 
     deleteSubscription(subscription) {
       this.loading = true
 
-      this.$inertia.post('/push/subscriptions/delete', { endpoint: subscription.endpoint }).then(() => (this.loading = false))
+      this.$inertia.post('/push/subscriptions/delete', { endpoint: subscription.endpoint }, {
+        onFinish: () => this.loading = false,
+      })
     },
 
     sendNotification() {
       this.loading = true
 
       this.$inertia
-        .post('/api/notifications')
-        .catch((error) => console.log(error))
-        .then(() => (this.loading = false))
+        .post('/api/notifications', {
+          onFinish: () => this.loading = false,
+          onError: (error) => console.log(error),
+        })
     },
     /**
      * https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/app/Resources/public/js/app.js#L177

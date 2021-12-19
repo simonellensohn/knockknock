@@ -6,7 +6,7 @@
         <div class="md:flex md:flex-shrink-0">
           <div class="flex items-center justify-between px-6 py-4 bg-indigo-900 md:flex-shrink-0 md:justify-center md:w-56">
             <Link class="mt-1" :href="$route('dashboard')">
-              <logo class="fill-white" width="120" height="28" />
+              <span class="text-4xl italic font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-br from-sky-500 to-cyan-400">Fat Flat</span>
             </Link>
             <dropdown class="md:hidden" placement="bottom-end">
               <template #default>

@@ -13,6 +13,6 @@ class BlinkHueLights
 
     public function handle(RingCreated $event): void
     {
-        // $this->hue->blinkAllLights();
+        $this->hue->blinkAllLights();
     }
 }
