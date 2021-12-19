@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\RingCreated;
+use App\Listeners\BlinkHueLights;
 use App\Listeners\SendBellRingingNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +23,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         RingCreated::class => [
             SendBellRingingNotification::class,
+            BlinkHueLights::class,
         ],
     ];
 
