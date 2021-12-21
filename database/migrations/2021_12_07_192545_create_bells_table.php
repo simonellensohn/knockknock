@@ -7,26 +7,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBellsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('bells', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('name');
+            $table->unsignedDecimal('threshold')->unique();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('bells');

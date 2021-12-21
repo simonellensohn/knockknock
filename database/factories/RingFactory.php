@@ -7,15 +7,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RingFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+    public function definition(): array
     {
         return [
             'bell_id' => Bell::factory(),
+            'volume' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

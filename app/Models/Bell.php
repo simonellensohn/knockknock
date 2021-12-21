@@ -11,6 +11,10 @@ class Bell extends Model
 {
     use HasFactory;
 
+    public $casts = [
+        'thresholds' => 'float',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -21,8 +25,8 @@ class Bell extends Model
         return $this->hasMany(Ring::class);
     }
 
-    public function ring(): Ring
+    public function ring(float $volume): Ring
     {
-        return $this->rings()->create();
+        return $this->rings()->create(['volume' => $volume]);
     }
 }

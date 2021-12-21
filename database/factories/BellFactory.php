@@ -7,15 +7,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BellFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+    public function definition(): array
     {
         return [
             'name' => $this->faker->word(),
+            'threshold' => $this->faker->numberBetween(1, 10),
             'user_id' => User::factory(),
         ];
     }

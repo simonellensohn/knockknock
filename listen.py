@@ -3,13 +3,26 @@ import numpy as np
 import sounddevice as sd
 import requests
 
-volumeThreshold = 7
+bells = []
+volumeThresholds = {}
 duration = 2
 setsToCheckFor = 2
 events = []
 averages = []
-url = 'https://knockknock.simonellensohn.com/api/bells/1/ring'
-accessToken = 'jCdYlEjfgpKJUG07DEy0WEkE3CFUbuuEc4r67prv'
+baseUrl = 'https://knockknock.test/api'
+accessToken = '1|2g0Hlkf6zjEQCJr5TkEb3VSnQ3HGzJKig9LB7We4'
+requestHeaders = {'Authorization': 'Bearer ' + accessToken}
+
+
+def fetch_bells():
+    global bells
+    response = requests.get(baseUrl + '/bells', headers=requestHeaders, verify=False)
+    bells = response.json().get('data')
+
+
+def set_threshold_map():
+    for bell in bells:
+        volumeThresholds[float(bell.get('threshold'))] = bell.get('id')
 
 
 def audio_callback(indata, frames, time, status):
@@ -25,10 +38,16 @@ def listen_for_doorbell():
 def average_of_last_events():
     return sum(events) / len(events)
 
-def post_ring():
-    requests.post(url, headers={'Authorization': 'Bearer ' + accessToken})
+def post_ring(bellId, volume):
+    requests.post(
+        baseUrl + '/bells/' + str(bellId) + '/ring',
+        data={ 'volume': volume },
+        headers=requestHeaders,
+        verify=False
+    )
 
-# post_ring()y
+fetch_bells()
+set_threshold_map()
 
 while True:
     listen_for_doorbell()
@@ -39,16 +58,19 @@ while True:
     average = average_of_last_events()
 
     # False positive, start from scratch
-    if (average > volumeThreshold):
+    if (average > max(volumeThresholds.keys())):
         averages = []
         events = []
         continue
 
     averages.append(average)
     events = []
+    average = np.sum(averages)
 
-    if (np.sum(averages) >= volumeThreshold):
-        post_ring()
+    if (any(average >= volume for volume in volumeThresholds)):
+        matchingBells = filter(lambda bell: bell.treshhold >= average, bells)
+        bellId = volumeThresholds[min(volumeThresholds.keys())]
+
+        post_ring(bellId, average)
+
         averages = []
-
-

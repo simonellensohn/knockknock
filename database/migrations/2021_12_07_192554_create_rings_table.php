@@ -17,6 +17,7 @@ class CreateRingsTable extends Migration
         Schema::create('rings', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Bell::class);
+            $table->unsignedDecimal('volume');
             $table->timestamps();
         });
     }
