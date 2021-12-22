@@ -1,8 +1,10 @@
 <?php
 
+use App\Events\RingCreated;
 use App\Models\Bell;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 
 uses(RefreshDatabase::class);
 
@@ -21,22 +23,26 @@ test('bell has to exist', function () {
 });
 
 test('user can only ring their own bells', function () {
+    Event::fake();
     $user = User::factory()->create();
     $bell = Bell::factory()->create();
     expect($bell->user_id)->not->toBe($user->id);
 
-    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring");
+    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", ['volume' => 10]);
 
     $response->assertStatus(403);
+    Event::assertNotDispatched(RingCreated::class);
 });
 
 test('users can ring their bell', function () {
+    Event::fake();
     $user = User::factory()->create();
     $bell = Bell::factory()->for($user)->create();
     expect($bell->rings)->toBeEmpty();
 
-    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring");
+    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", ['volume' => 10]);
 
     $response->assertStatus(204);
     expect($bell->fresh()->rings)->not->toBeEmpty();
+    Event::assertDispatched(RingCreated::class);
 });
