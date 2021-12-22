@@ -1,29 +1,23 @@
 <template>
-  <div>
-    <div class="mb-4">
+  <div class="space-y-4">
+    <div>
       <Link class="flex items-center py-3 group" :href="$route('dashboard')">
         <icon name="dashboard" class="w-4 h-4 mr-2" :class="isUrl('') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
         <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Dashboard</div>
       </Link>
     </div>
-    <!-- <div class="mb-4">
-      <Link class="flex items-center py-3 group" href="/organizations">
-        <icon name="office" class="w-4 h-4 mr-2" :class="isUrl('organizations') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Organizations</div>
+    <div>
+      <Link class="flex items-center py-3 group" href="/users">
+        <icon name="users" class="w-4 h-4 mr-2" :class="isUrl('users') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('users') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Users</div>
       </Link>
     </div>
-    <div class="mb-4">
-      <Link class="flex items-center py-3 group" href="/contacts">
-        <icon name="users" class="w-4 h-4 mr-2" :class="isUrl('contacts') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Contacts</div>
+    <div>
+      <Link class="flex items-center py-3 group" href="/bells">
+        <icon name="printer" class="w-4 h-4 mr-2" :class="isUrl('bells') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('bells') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Bells</div>
       </Link>
     </div>
-    <div class="mb-4">
-      <Link class="flex items-center py-3 group" href="/reports">
-        <icon name="printer" class="w-4 h-4 mr-2" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Reports</div>
-      </Link>
-    </div> -->
   </div>
 </template>
 
