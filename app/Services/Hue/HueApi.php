@@ -50,7 +50,8 @@ class HueApi
 
         $response = Http::asForm()
             ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
-            ->post($this->baseUrl.'/v2/oauth2/refresh?grant_type=refresh_token', ['refresh_token' => $tokens->refresh_token]);
+            ->post($this->baseUrl.'/v2/oauth2/refresh?grant_type=refresh_token', ['refresh_token' => $tokens->refresh_token])
+            ->throw();
 
         $tokens = $this->writeTokensToFile($response->json());
 
