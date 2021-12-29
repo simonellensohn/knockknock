@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+import time
+import requests
 import numpy as np
 import sounddevice as sd
-import requests
+
 
 bells = []
 volumeThresholds = {}
@@ -15,14 +17,13 @@ requestHeaders = {'Authorization': 'Bearer ' + accessToken}
 
 
 def fetch_bells():
-    global bells
-    response = requests.get(baseUrl + '/bells', headers=requestHeaders, verify=False)
-    bells = response.json().get('data')
+    response = requests.get(baseUrl + '/bells', headers=requestHeaders)
+    return response.json().get('data')
 
 
 def set_threshold_map():
     for bell in bells:
-        volumeThresholds[float(bell.get('threshold'))] = bell.get('id')
+        volumeThresholds[float(bell.get('threshold')) / 10] = bell.get('id')
 
 
 def audio_callback(indata, frames, time, status):
@@ -43,10 +44,9 @@ def post_ring(bellId, volume):
         baseUrl + '/bells/' + str(bellId) + '/ring',
         data={ 'volume': volume },
         headers=requestHeaders,
-        verify=False
     )
 
-fetch_bells()
+bells = fetch_bells()
 set_threshold_map()
 
 while True:
@@ -72,5 +72,7 @@ while True:
         bellId = volumeThresholds[min(volumeThresholds.keys())]
 
         post_ring(bellId, average)
+
+        time.sleep(5)
 
         averages = []
