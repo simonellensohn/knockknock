@@ -29,21 +29,18 @@ class BellsController extends Controller
     public function store()
     {
         Request::validate([
-            'name' => ['required', 'max:50'],
+            'name' => ['required', 'max:50', 'unique:bells'],
             'threshold' => [
                 'required',
                 'numeric',
                 'between:1,100',
-                Rule::unique('bells'),
+                'unique:bells',
             ],
         ]);
 
-        Auth::user()->bells()->create([
-            'first_name' => Request::get('name'),
-            'last_name' => Request::get('threshold'),
-        ]);
+        Auth::user()->bells()->create(Request::only('name', 'threshold'));
 
-        return Redirect::route('bells')->with('success', 'Bell created.');
+        return Redirect::route('bells.index')->with('success', 'Bell created.');
     }
 
     public function edit(Bell $bell)
@@ -56,7 +53,11 @@ class BellsController extends Controller
     public function update(Bell $bell)
     {
         Request::validate([
-            'name' => ['required', 'max:50'],
+            'name' => [
+                'required',
+                'max:50',
+                Rule::unique('bells')->ignoreModel($bell),
+            ],
             'threshold' => [
                 'required',
                 'numeric',
@@ -74,6 +75,6 @@ class BellsController extends Controller
     {
         $bell->delete();
 
-        return Redirect::back()->with('success', 'Bell deleted.');
+        return Redirect::route('bells.index')->with('success', 'Bell deleted.');
     }
 }

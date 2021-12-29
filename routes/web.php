@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('users/{user}/access-tokens/{token}', [UserAccessTokensController::class, 'destroy'])->name('users.access-tokens.delete');
 
     Route::get('bells', [BellsController::class, 'index'])->name('bells.index');
+    Route::post('bells', [BellsController::class, 'store'])->name('bells.store');
+    Route::get('bells/create', [BellsController::class, 'create'])->name('bells.create');
     Route::get('bells/{bell}/edit', [BellsController::class, 'edit'])->name('bells.edit');
     Route::put('bells/{bell}', [BellsController::class, 'update'])->name('bells.update');
     Route::delete('bells/{bell}', [BellsController::class, 'destroy'])->name('bells.delete');
