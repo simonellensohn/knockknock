@@ -11,6 +11,8 @@ class UserAccessTokensController extends Controller
 {
     public function store(Request $request, User $user)
     {
+        abort_if($request->user()->is($user), 404);
+
         $user->createToken($request->input('name', 'default'));
 
         return Redirect::back()->with('success', 'Token created.');
