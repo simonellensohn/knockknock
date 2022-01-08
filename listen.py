@@ -51,10 +51,10 @@ def average_of_last_events():
     return sum(events) / len(events)
 
 
-def post_ring(bellId, volume):
+def post_ring(bellId, volume, events):
     requests.post(
         baseUrl + '/bells/' + str(bellId) + '/ring',
-        data={ 'volume': volume },
+        data={ 'volume': volume, 'events': events },
         headers=requestHeaders,
     )
 
@@ -89,7 +89,7 @@ while True:
     if (average >= minRange and not set_is_fluctuating(averages)):
         bell = [bell for bell in bells if float(bell.get('threshold')) <= average][0]
 
-        post_ring(bell.get('id'), average)
+        post_ring(bell.get('id'), average, averages)
 
         averages = []
 
