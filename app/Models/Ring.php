@@ -11,6 +11,10 @@ class Ring extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'events' => 'array',
+    ];
+
     protected $dispatchesEvents = [
         'created' => RingCreated::class,
     ];

@@ -12,7 +12,10 @@ events = []
 averages = []
 baseUrl = 'https://knockknock.test/api'
 accessToken = '1|F1UAuiR5XDfsqKq0nV96n7EDh2I3vsUUVusMkWAW'
-requestHeaders = {'Authorization': 'Bearer ' + accessToken}
+requestHeaders = {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ' + accessToken,
+}
 minRange = None
 maxRange = None
 
@@ -54,7 +57,7 @@ def average_of_last_events():
 def post_ring(bellId, volume, events):
     requests.post(
         baseUrl + '/bells/' + str(bellId) + '/ring',
-        data={ 'volume': volume, 'events': events },
+        json={ 'volume': volume, 'events': events },
         headers=requestHeaders,
     )
 
