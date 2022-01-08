@@ -6,7 +6,6 @@ import sounddevice as sd
 
 
 bells = []
-volumeThresholds = {}
 duration = 1
 setsToCheckFor = 3
 events = []

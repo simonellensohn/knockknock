@@ -13,7 +13,7 @@ class RingBellController extends Controller
     {
         $this->authorize('update', $bell);
 
-        $bell->ring($request->input('volume'));
+        $bell->ring($request->input('volume'), $request->input('events'));
 
         return response()->noContent();
     }

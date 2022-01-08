@@ -12,6 +12,7 @@ class RingFactory extends Factory
         return [
             'bell_id' => Bell::factory(),
             'volume' => $this->faker->numberBetween(1, 10),
+            'events' => [],
         ];
     }
 }
