@@ -63,14 +63,17 @@ def post_ring(bellId, volume, events):
 
 
 def set_is_fluctuating(volumes):
-    isFluctuating = False
     previousValue = None
 
     for volume in volumes:
-        isFluctuating = previousValue and abs(previousValue - volume) > 3
+        isFluctuating = previousValue is not None and abs(previousValue - volume) > 3
+
+        if isFluctuating:
+            return True
+
         previousValue = volume
 
-    return isFluctuating
+    return False
 
 
 bells = fetch_bells()
