@@ -2,48 +2,54 @@
   <div>
     <Head title="Dashboard" />
 
-    <h1 class="mb-8 text-3xl font-bold">Dashboard</h1>
+    <h1 class="mb-8 text-3xl font-bold">Stats</h1>
 
-    <div class="grid grid-cols-3 gap-3 mb-8">
+    <div class="grid grid-cols-1 gap-3 mb-16 sm:grid-cols-3">
       <div class="p-4 border rounded shadow-sm">
         <div class="flex items-center">
-          <div class="w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner" />
+          <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
+            <Icon name="calculator" class="w-5 h-5 text-white" />
+          </div>
 
           <div class="flex flex-col">
             <span class="text-xs font-semibold text-gray-500">Total Rings</span>
-            2
+            {{ totalRings }}
           </div>
         </div>
       </div>
+
       <div class="p-4 border rounded shadow-sm">
         <div class="flex items-center">
-          <div class="w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner" />
+          <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
+            <Icon name="volume-up" class="w-5 h-5 text-white" />
+          </div>
 
           <div class="flex flex-col">
-            <span class="text-xs font-semibold text-gray-500">Total Rings</span>
-            2
+            <span class="text-xs font-semibold text-gray-500">Average Volume</span>
+            {{ averageVolume }}
           </div>
         </div>
       </div>
+
       <div class="p-4 border rounded shadow-sm">
         <div class="flex items-center">
-          <div class="w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner" />
+          <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
+            <Icon name="clock" class="w-5 h-5 text-white" />
+          </div>
 
           <div class="flex flex-col">
-            <span class="text-xs font-semibold text-gray-500">Total Rings</span>
-            2
+            <span class="text-xs font-semibold text-gray-500">Last Ring</span>
+            <span :title="lastRing.date">{{ lastRing.readable }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <loading-button :loading="loading" class="p-4 mb-8 border" @click="togglePush">
-      {{ isPushEnabled ? 'Ubsubscribe' : 'Subscribe' }}
-    </loading-button>
+    <h2 class="mb-8 text-2xl font-bold">Push Notifications</h2>
 
-    <ul>
-      <li v-for="ring in rings" :key="ring.id">{{ ring.created_at }}</li>
-    </ul>
+    <loading-button :loading="loading" class="p-4 mb-8 border" @click="togglePush">
+      {{ isPushEnabled ? 'Disable' : 'Enable' }}
+    </loading-button>
   </div>
 </template>
 
@@ -51,18 +57,22 @@
 import { Head } from '@inertiajs/inertia-vue3'
 import Layout from '@/Shared/Layout'
 import LoadingButton from '@/Shared/LoadingButton'
+import Icon from '@/Shared/Icon'
 
 export default {
   components: {
     Head,
+    Icon,
     LoadingButton,
   },
 
   layout: Layout,
 
   props: {
-    rings: Array,
     auth: Object,
+    lastRing: Object,
+    totalRings: Number,
+    averageVolume: Number,
   },
 
   data() {
