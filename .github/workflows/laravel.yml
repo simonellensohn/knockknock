@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  laravel-tests:
+  pest:
 
     runs-on: ubuntu-latest
 
