@@ -40,7 +40,10 @@ test('users can ring their bell', function () {
     $bell = Bell::factory()->for($user)->create();
     expect($bell->rings)->toBeEmpty();
 
-    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", ['volume' => 10]);
+    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", [
+        'volume' => 10,
+        'events' => [11, 9, 10],
+    ]);
 
     $response->assertStatus(204);
     expect($bell->fresh()->rings)->not->toBeEmpty();
