@@ -9,7 +9,7 @@ class AddEventsColumnToRingsTable extends Migration
     public function up()
     {
         Schema::table('rings', function (Blueprint $table) {
-            $table->json('events')->after('volume');
+            $table->json('events')->nullable()->after('volume');
         });
     }
 
