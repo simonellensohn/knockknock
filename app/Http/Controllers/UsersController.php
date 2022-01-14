@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
@@ -24,27 +23,23 @@ class UsersController extends Controller
         return Inertia::render('Users/Create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        Request::validate([
+        $request->validate([
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')],
             'password' => ['nullable'],
-            'owner' => ['required', 'boolean'],
-            'photo' => ['nullable', 'image'],
         ]);
 
-        Auth::user()->account->users()->create([
-            'first_name' => Request::get('first_name'),
-            'last_name' => Request::get('last_name'),
-            'email' => Request::get('email'),
-            'password' => Request::get('password'),
-            'owner' => Request::get('owner'),
-            'photo_path' => Request::file('photo') ? Request::file('photo')->store('users') : null,
+        User::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
         ]);
 
-        return Redirect::route('users')->with('success', 'User created.');
+        return Redirect::route('users.index')->with('success', 'User created.');
     }
 
     public function edit(Request $request, User $user)
@@ -55,19 +50,19 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(User $user)
+    public function update(Request $request, User $user)
     {
-        Request::validate([
+        $request->validate([
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => ['nullable'],
         ]);
 
-        $user->update(Request::only('first_name', 'last_name', 'email', 'owner'));
+        $user->update($request->only('first_name', 'last_name', 'email'));
 
-        if (Request::get('password')) {
-            $user->update(['password' => Request::get('password')]);
+        if ($password = $request->input('password')) {
+            $user->update(['password' => $password]);
         }
 
         return Redirect::back()->with('success', 'User updated.');
