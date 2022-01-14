@@ -44,18 +44,16 @@ class HueApi
     {
         $tokens = json_decode(Storage::disk('local')->get('hue.json') ?: '{}');
 
-        if (Carbon::parse($tokens->access_token_expires_at)->gt(Carbon::now())) {
-            return $tokens->access_token;
+        if (!$tokens->access_token_expires_at || Carbon::parse($tokens->access_token_expires_at)->lt(Carbon::now())) {
+            $response = Http::asForm()
+                ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
+                ->post($this->baseUrl.'/v2/oauth2/token', ['grant_type' => 'refresh_token', 'refresh_token' => $tokens->refresh_token])
+                ->throw();
+
+            $tokens = $this->writeTokensToFile($response->json());
         }
 
-        $response = Http::asForm()
-            ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
-            ->post($this->baseUrl.'/v2/oauth2/token', ['grant_type' => 'refresh_token', 'refresh_token' => $tokens->refresh_token])
-            ->throw();
-
-        $tokens = $this->writeTokensToFile($response->json());
-
-        return $tokens->access_token_expires_at;
+        return $tokens->access_token;
     }
 
     public function fetchLights(): Collection
