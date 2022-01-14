@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RingBellRequest;
 use App\Models\Bell;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class RingBellController extends Controller

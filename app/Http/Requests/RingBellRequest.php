@@ -8,7 +8,7 @@ class RingBellRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()->can('update', $this->bell);;
+        return $this->user()->can('update', $this->bell);
     }
 
     public function rules(): array

@@ -17,7 +17,7 @@ class DashboardController extends Controller
             'totalRings' => Ring::count(),
             'lastRing' => [
                 'readable' => $latestRing->created_at->diffForHumans(),
-                'date' => $latestRing->created_at->format('d.m.Y H:i:s')
+                'date' => $latestRing->created_at->format('d.m.Y H:i:s'),
             ],
             'averageVolume' => round(Ring::avg('volume'), 2),
         ]);

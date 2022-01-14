@@ -44,7 +44,7 @@ class HueApi
     {
         $tokens = json_decode(Storage::disk('local')->get('hue.json') ?: '{}');
 
-        if (!$tokens->access_token_expires_at || Carbon::parse($tokens->access_token_expires_at)->lt(Carbon::now())) {
+        if (! $tokens->access_token_expires_at || Carbon::parse($tokens->access_token_expires_at)->lt(Carbon::now())) {
             $response = Http::asForm()
                 ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
                 ->post($this->baseUrl.'/v2/oauth2/token', ['grant_type' => 'refresh_token', 'refresh_token' => $tokens->refresh_token])
