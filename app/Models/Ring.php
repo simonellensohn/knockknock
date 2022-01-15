@@ -12,6 +12,7 @@ class Ring extends Model
     use HasFactory;
 
     protected $casts = [
+        'volume' => 'float',
         'events' => 'array',
     ];
 

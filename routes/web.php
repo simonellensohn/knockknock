@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RingsController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BellsController;
 use App\Http\Controllers\DashboardController;
@@ -43,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('bells/{bell}/edit', [BellsController::class, 'edit'])->name('bells.edit');
     Route::put('bells/{bell}', [BellsController::class, 'update'])->name('bells.update');
     Route::delete('bells/{bell}', [BellsController::class, 'destroy'])->name('bells.delete');
+
+    Route::get('rings', [RingsController::class, 'index'])->name('rings.index');
 
     Route::post('push/subscriptions', [PushSubscriptionController::class, 'update']);
     Route::post('push/subscriptions/delete', [PushSubscriptionController::class, 'destroy']);

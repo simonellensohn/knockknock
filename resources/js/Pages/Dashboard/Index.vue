@@ -6,20 +6,20 @@
 
     <div class="grid grid-cols-1 gap-3 mb-16 sm:grid-cols-3">
       <div class="p-4 border rounded shadow-sm">
-        <div class="flex items-center">
+        <Link href="/rings" class="flex items-center">
           <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
-            <Icon name="calculator" class="w-5 h-5 text-white" />
+            <Icon name="bell" class="w-5 h-5 text-white" />
           </div>
 
           <div class="flex flex-col">
             <span class="text-xs font-semibold text-gray-500">Total Rings</span>
             {{ totalRings }}
           </div>
-        </div>
+        </Link>
       </div>
 
       <div class="p-4 border rounded shadow-sm">
-        <div class="flex items-center">
+        <Link href="/rings" class="flex items-center">
           <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
             <Icon name="volume-up" class="w-5 h-5 text-white" />
           </div>
@@ -28,11 +28,11 @@
             <span class="text-xs font-semibold text-gray-500">Average Volume</span>
             {{ averageVolume }}
           </div>
-        </div>
+        </Link>
       </div>
 
       <div class="p-4 border rounded shadow-sm">
-        <div class="flex items-center">
+        <Link href="/rings" class="flex items-center">
           <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
             <Icon name="clock" class="w-5 h-5 text-white" />
           </div>
@@ -41,7 +41,7 @@
             <span class="text-xs font-semibold text-gray-500">Last Ring</span>
             <time :datetime="lastRing.date" :title="lastRing.date">{{ lastRing.readable }}</time>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { Head } from '@inertiajs/inertia-vue3'
+import { Head, Link } from '@inertiajs/inertia-vue3'
 import Layout from '@/Shared/Layout'
 import LoadingButton from '@/Shared/LoadingButton'
 import Icon from '@/Shared/Icon'
@@ -63,6 +63,7 @@ export default {
   components: {
     Head,
     Icon,
+    Link,
     LoadingButton,
   },
 
