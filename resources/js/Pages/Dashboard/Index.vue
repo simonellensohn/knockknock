@@ -39,7 +39,7 @@
 
           <div class="flex flex-col">
             <span class="text-xs font-semibold text-gray-500">Last Ring</span>
-            <span :title="lastRing.date">{{ lastRing.readable }}</span>
+            <time :datetime="lastRing.date" :title="lastRing.date">{{ lastRing.readable }}</time>
           </div>
         </div>
       </div>
