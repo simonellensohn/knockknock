@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ring;
-use App\Http\Resources\BellResource;
-use App\Models\Bell;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\RingResource;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Validation\Rule;
+use App\Models\Ring;
 use Inertia\Inertia;
 
 class RingsController extends Controller

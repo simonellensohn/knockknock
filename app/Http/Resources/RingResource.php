@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Bell;
 use App\Models\Ring;
 use Illuminate\Http\Resources\Json\JsonResource;
 
