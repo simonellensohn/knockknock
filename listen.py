@@ -89,6 +89,10 @@ while True:
 
     volume = average_of_last_events()
     averages.append(volume)
+
+    if (len(averages) < setsToCheckFor):
+        continue
+
     average = np.average(averages)
     events = []
 
