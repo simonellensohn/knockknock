@@ -49,3 +49,19 @@ test('users can ring their bell', function () {
     expect($bell->fresh()->rings)->not->toBeEmpty();
     Event::assertDispatched(BellRinging::class);
 });
+
+test('ringing a bell does not dispatch an event if the bell is inactive', function () {
+    Event::fake();
+    $user = User::factory()->create();
+    $bell = Bell::factory()->for($user)->create(['active' => false]);
+    expect($bell->rings)->toBeEmpty();
+
+    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", [
+        'volume' => 10,
+        'events' => [11, 9, 10],
+    ]);
+
+    $response->assertStatus(204);
+    expect($bell->fresh()->rings)->not->toBeEmpty();
+    Event::assertNotDispatched(BellRinging::class);
+});
