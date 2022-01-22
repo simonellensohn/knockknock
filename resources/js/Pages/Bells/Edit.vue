@@ -13,6 +13,10 @@
         <div class="flex flex-wrap p-8 -mb-8 -mr-6">
           <text-input v-model="form.name" :error="form.errors.name" class="w-full pb-8 pr-6 lg:w-1/2" label="Name" />
           <text-input v-model="form.threshold" :error="form.errors.threshold" class="w-full pb-8 pr-6 lg:w-1/2" label="Threshold" />
+          <select-input v-model="form.active" :error="form.errors.active" class="w-full pb-8 pr-6 lg:w-1/2" label="Active">
+            <option :value="true">Active</option>
+            <option :value="false">Inactive</option>
+          </select-input>
         </div>
         <div class="flex items-center px-8 py-4 border-t border-gray-100 bg-gray-50">
           <button class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete Bell</button>
@@ -28,6 +32,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3'
 import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
 import LoadingButton from '@/Shared/LoadingButton'
+import SelectInput from '@/Shared/SelectInput'
 
 export default {
   components: {
@@ -35,6 +40,7 @@ export default {
     Link,
     LoadingButton,
     TextInput,
+    SelectInput,
   },
   layout: Layout,
   props: {
@@ -47,6 +53,7 @@ export default {
         _method: 'put',
         name: this.bell.data.name,
         threshold: this.bell.data.threshold,
+        active: this.bell.data.active,
       }),
     }
   },

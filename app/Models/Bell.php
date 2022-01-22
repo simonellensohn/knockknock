@@ -12,6 +12,7 @@ class Bell extends Model
     use HasFactory;
 
     public $casts = [
+        'active' => 'boolean',
         'threshold' => 'float',
     ];
 

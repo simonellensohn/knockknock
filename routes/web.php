@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HueCallbackController;
 use App\Http\Controllers\PushSubscriptionController;
 use App\Http\Controllers\RingsController;
+use App\Http\Controllers\ToggleBellsController;
 use App\Http\Controllers\UserAccessTokensController;
 use App\Http\Controllers\UsersController;
 use App\Services\Hue\HueApi;
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('bells', [BellsController::class, 'index'])->name('bells.index');
     Route::post('bells', [BellsController::class, 'store'])->name('bells.store');
+    Route::post('bells/toggle', ToggleBellsController::class)->name('bells.toggle');
     Route::get('bells/create', [BellsController::class, 'create'])->name('bells.create');
     Route::get('bells/{bell}/edit', [BellsController::class, 'edit'])->name('bells.edit');
     Route::put('bells/{bell}', [BellsController::class, 'update'])->name('bells.update');

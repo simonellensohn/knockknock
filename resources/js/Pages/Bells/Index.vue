@@ -2,7 +2,11 @@
   <div>
     <Head title="Bells" />
     <h1 class="mb-8 text-3xl font-bold">Bells</h1>
-    <div class="flex items-center justify-end mb-6">
+    <div class="flex items-center justify-end mb-6 space-x-4">
+      <LoadingButton class="btn-indigo" @click="toggleBells">
+        <span>Toggle bells</span>
+      </LoadingButton>
+
       <Link class="btn-indigo" href="/bells/create">
         <span>Create</span>
         <span class="hidden md:inline">&nbsp;Bell</span>
@@ -14,6 +18,7 @@
           <th class="px-6 pt-6 pb-4">Name</th>
           <th class="px-6 pt-6 pb-4">Threshold</th>
           <th class="px-6 pt-6 pb-4">Rings count</th>
+          <th class="px-6 pt-6 pb-4">Active</th>
         </tr>
         <tr v-for="bell in bells.data" :key="bell.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
@@ -29,6 +34,11 @@
           <td class="border-t">
             <Link class="flex items-center px-6 py-4" :href="`/bells/${bell.id}/edit`" tabindex="-1">
               {{ bell.rings_count }}
+            </Link>
+          </td>
+          <td class="border-t">
+            <Link class="flex items-center px-6 py-4" :href="`/bells/${bell.id}/edit`" tabindex="-1">
+              {{ bell.active ? 'Active' : 'Inactive' }}
             </Link>
           </td>
           <td class="w-px border-t">
@@ -49,16 +59,25 @@
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import Icon from '@/Shared/Icon'
 import Layout from '@/Shared/Layout'
+import LoadingButton from '../../Shared/LoadingButton.vue'
 
 export default {
   components: {
     Head,
     Icon,
     Link,
+    LoadingButton,
   },
   layout: Layout,
   props: {
     bells: Object,
+  },
+  methods: {
+    toggleBells() {
+      this.$inertia.post('/bells/toggle', {
+        active: this.bells.data.some(bell => !bell.active),
+      })
+    },
   },
 }
 </script>

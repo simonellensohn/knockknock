@@ -14,6 +14,7 @@ class BellResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'threshold' => $this->threshold,
+            'active' => $this->active,
             'rings_count' => $this->when($this->rings_count !== null, $this->rings_count),
         ];
     }
