@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\RingCreated;
+use App\Events\BellRinging;
 use App\Services\Hue\HueApi;
 
 class BlinkHueLights
@@ -11,7 +11,7 @@ class BlinkHueLights
         public HueApi $hue
     ) {}
 
-    public function handle(RingCreated $event): void
+    public function handle(BellRinging $event): void
     {
         $this->hue->blinkAllLights();
     }

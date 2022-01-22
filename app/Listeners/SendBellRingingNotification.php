@@ -2,17 +2,17 @@
 
 namespace App\Listeners;
 
-use App\Events\RingCreated;
+use App\Events\BellRinging;
 use App\Models\User;
-use App\Notifications\BellRinging;
+use App\Notifications\BellRingingNotification;
 use Illuminate\Support\Facades\Notification;
 
 class SendBellRingingNotification
 {
-    public function handle(RingCreated $event): void
+    public function handle(BellRinging $event): void
     {
         $users = User::all();
 
-        Notification::send($users, new BellRinging($event->ring));
+        Notification::send($users, new BellRingingNotification($event->ring));
     }
 }

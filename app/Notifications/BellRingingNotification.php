@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
 
-class BellRinging extends Notification
+class BellRingingNotification extends Notification
 {
     use Queueable;
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\BellRinging;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,6 +29,14 @@ class Bell extends Model
 
     public function ring(float $volume, array $events): Ring
     {
-        return $this->rings()->create(['volume' => $volume, 'events' => $events]);
+        $ring = $this->rings()->create([
+            'volume' => $volume,
+            'events' => $events,
+            'triggered' => $this->active,
+        ]);
+
+        BellRinging::dispatchIf($this->active, $this, $ring);
+
+        return $ring;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Events\RingCreated;
+use App\Events\BellRinging;
 use App\Models\Bell;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -31,10 +31,12 @@ test('user can only ring their own bells', function () {
     $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", ['volume' => 10]);
 
     $response->assertStatus(403);
-    Event::assertNotDispatched(RingCreated::class);
+    Event::assertNotDispatched(BellRinging::class);
 });
 
 test('users can ring their bell', function () {
+    $this->withoutExceptionHandling();
+
     Event::fake();
     $user = User::factory()->create();
     $bell = Bell::factory()->for($user)->create();
@@ -47,5 +49,5 @@ test('users can ring their bell', function () {
 
     $response->assertStatus(204);
     expect($bell->fresh()->rings)->not->toBeEmpty();
-    Event::assertDispatched(RingCreated::class);
+    Event::assertDispatched(BellRinging::class);
 });
