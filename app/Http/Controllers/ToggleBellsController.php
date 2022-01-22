@@ -13,6 +13,6 @@ class ToggleBellsController extends Controller
             'active' => $active = $request->boolean('active'),
         ]);
 
-        return Redirect::back()->with('success', 'Bells ' . ($active ? 'activated' : 'deactivated') . '.');
+        return Redirect::back()->with('success', 'Bells '.($active ? 'activated' : 'deactivated').'.');
     }
 }
