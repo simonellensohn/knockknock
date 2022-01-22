@@ -64,9 +64,13 @@ class BellsController extends Controller
                 'between:1,100',
                 Rule::unique('bells')->ignoreModel($bell),
             ],
+            'active' => [
+                'required',
+                'boolean',
+            ],
         ]);
 
-        $bell->update(Request::only('name', 'threshold'));
+        $bell->update(Request::only('name', 'threshold', 'active'));
 
         return Redirect::back()->with('success', 'Bell updated.');
     }

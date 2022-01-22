@@ -35,8 +35,6 @@ test('user can only ring their own bells', function () {
 });
 
 test('users can ring their bell', function () {
-    $this->withoutExceptionHandling();
-
     Event::fake();
     $user = User::factory()->create();
     $bell = Bell::factory()->for($user)->create();
