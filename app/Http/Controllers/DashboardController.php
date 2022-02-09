@@ -19,7 +19,7 @@ class DashboardController extends Controller
                 'readable' => $latestRing->created_at?->diffForHumans(),
                 'date' => $latestRing->created_at?->format('d.m.Y H:i:s'),
             ],
-            'averageVolume' => round(Ring::avg('volume'), 2),
+            'averageVolume' => round((float) Ring::avg('volume'), 2),
         ]);
     }
 }

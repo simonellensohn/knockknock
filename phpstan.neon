@@ -13,3 +13,7 @@ parameters:
         - ./*/*/FileToBeExcluded.php
 
     checkMissingIterableValueType: false
+
+    checkModelProperties: true
+
+    checkOctaneCompatibility: true

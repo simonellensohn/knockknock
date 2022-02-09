@@ -8,6 +8,32 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * App\Models\Bell.
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property float $threshold
+ * @property bool $active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Ring[] $rings
+ * @property-read int|null $rings_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\BellFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereThreshold($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Bell extends Model
 {
     use HasFactory;
@@ -17,11 +43,17 @@ class Bell extends Model
         'threshold' => 'float',
     ];
 
+    /**
+     * @return BelongsTo<User, self>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return HasMany<Ring>
+     */
     public function rings(): HasMany
     {
         return $this->hasMany(Ring::class);

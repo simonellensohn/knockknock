@@ -56,6 +56,9 @@ class HueApi
         return $tokens->access_token;
     }
 
+    /**
+     * @return Collection<string, mixed>
+     */
     public function fetchLights(): Collection
     {
         $response = $this->send('/route/api/'.config('services.hue.username').'/lights');

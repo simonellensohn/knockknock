@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Bell;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<Bell> */
 class BellFactory extends Factory
 {
     public function definition(): array
