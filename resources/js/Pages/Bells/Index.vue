@@ -2,7 +2,7 @@
   <div>
     <Head title="Bells" />
     <h1 class="mb-8 text-3xl font-bold">Bells</h1>
-    <div class="flex items-center justify-end mb-6 space-x-4">
+    <div class="mb-6 flex items-center justify-end space-x-4">
       <LoadingButton class="btn-indigo" @click="toggleBells">
         <span>Toggle bells</span>
       </LoadingButton>
@@ -12,15 +12,15 @@
         <span class="hidden md:inline">&nbsp;Bell</span>
       </Link>
     </div>
-    <div class="overflow-x-auto bg-white rounded-md shadow">
+    <div class="overflow-x-auto rounded-md bg-white shadow">
       <table class="w-full whitespace-nowrap">
-        <tr class="font-bold text-left">
+        <tr class="text-left font-bold">
           <th class="px-6 pt-6 pb-4">Name</th>
           <th class="px-6 pt-6 pb-4">Threshold</th>
           <th class="px-6 pt-6 pb-4">Rings count</th>
           <th class="px-6 pt-6 pb-4">Active</th>
         </tr>
-        <tr v-for="bell in bells.data" :key="bell.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+        <tr v-for="bell in bells.data" :key="bell.id" class="focus-within:bg-gray-100 hover:bg-gray-100">
           <td class="border-t">
             <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/bells/${bell.id}/edit`">
               {{ bell.name }}
@@ -43,12 +43,12 @@
           </td>
           <td class="w-px border-t">
             <Link class="flex items-center px-4" :href="`/bells/${bell.id}/edit`" tabindex="-1">
-              <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
+              <icon name="cheveron-right" class="block h-6 w-6 fill-gray-400" />
             </Link>
           </td>
         </tr>
         <tr v-if="bells.data.length === 0">
-          <td class="px-6 py-4 border-t" colspan="4">No bells found.</td>
+          <td class="border-t px-6 py-4" colspan="4">No bells found.</td>
         </tr>
       </table>
     </div>
@@ -75,7 +75,7 @@ export default {
   methods: {
     toggleBells() {
       this.$inertia.post('/bells/toggle', {
-        active: this.bells.data.some(bell => !bell.active),
+        active: this.bells.data.some((bell) => !bell.active),
       })
     },
   },

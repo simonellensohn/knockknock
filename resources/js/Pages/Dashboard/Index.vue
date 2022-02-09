@@ -4,11 +4,11 @@
 
     <h1 class="mb-8 text-3xl font-bold">Stats</h1>
 
-    <div class="grid grid-cols-1 gap-3 mb-16 sm:grid-cols-3">
-      <div class="p-4 border rounded shadow-sm">
+    <div class="mb-16 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <div class="rounded border p-4 shadow-sm">
         <Link href="/rings" class="flex items-center">
-          <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
-            <Icon name="bell" class="w-5 h-5 text-white" />
+          <div class="mr-3 flex h-8 w-8 items-center justify-center rounded bg-indigo-500 shadow-inner">
+            <Icon name="bell" class="h-5 w-5 text-white" />
           </div>
 
           <div class="flex flex-col">
@@ -18,10 +18,10 @@
         </Link>
       </div>
 
-      <div class="p-4 border rounded shadow-sm">
+      <div class="rounded border p-4 shadow-sm">
         <Link href="/rings" class="flex items-center">
-          <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
-            <Icon name="volume-up" class="w-5 h-5 text-white" />
+          <div class="mr-3 flex h-8 w-8 items-center justify-center rounded bg-indigo-500 shadow-inner">
+            <Icon name="volume-up" class="h-5 w-5 text-white" />
           </div>
 
           <div class="flex flex-col">
@@ -31,10 +31,10 @@
         </Link>
       </div>
 
-      <div class="p-4 border rounded shadow-sm">
+      <div class="rounded border p-4 shadow-sm">
         <Link href="/rings" class="flex items-center">
-          <div class="flex items-center justify-center w-8 h-8 mr-3 bg-indigo-500 rounded shadow-inner">
-            <Icon name="clock" class="w-5 h-5 text-white" />
+          <div class="mr-3 flex h-8 w-8 items-center justify-center rounded bg-indigo-500 shadow-inner">
+            <Icon name="clock" class="h-5 w-5 text-white" />
           </div>
 
           <div class="flex flex-col">
@@ -47,7 +47,7 @@
 
     <h2 class="mb-8 text-2xl font-bold">Push Notifications</h2>
 
-    <loading-button :loading="loading" class="p-4 mb-8 border" @click="togglePush">
+    <loading-button :loading="loading" class="mb-8 border p-4" @click="togglePush">
       {{ isPushEnabled ? 'Disable' : 'Enable' }}
     </loading-button>
   </div>
@@ -217,26 +217,29 @@ export default {
       this.loading = true
 
       this.$inertia.post('/push/subscriptions', data, {
-        onFinish: () => this.loading = false,
+        onFinish: () => (this.loading = false),
       })
     },
 
     deleteSubscription(subscription) {
       this.loading = true
 
-      this.$inertia.post('/push/subscriptions/delete', { endpoint: subscription.endpoint }, {
-        onFinish: () => this.loading = false,
-      })
+      this.$inertia.post(
+        '/push/subscriptions/delete',
+        { endpoint: subscription.endpoint },
+        {
+          onFinish: () => (this.loading = false),
+        },
+      )
     },
 
     sendNotification() {
       this.loading = true
 
-      this.$inertia
-        .post('/api/notifications', {
-          onFinish: () => this.loading = false,
-          onError: (error) => console.log(error),
-        })
+      this.$inertia.post('/api/notifications', {
+        onFinish: () => (this.loading = false),
+        onError: (error) => console.log(error),
+      })
     },
     /**
      * https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/app/Resources/public/js/app.js#L177
