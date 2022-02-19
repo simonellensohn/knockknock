@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\CreateBell;
-use App\Actions\UpdateBell;
+use App\Contracts\Actions\CreatesBell;
+use App\Contracts\Actions\UpdatesBell;
 use App\Http\Resources\BellResource;
 use App\Models\Bell;
 use Illuminate\Http\RedirectResponse;
@@ -28,7 +28,7 @@ class BellsController extends Controller
         return Inertia::render('Bells/Create');
     }
 
-    public function store(Request $request, CreateBell $createBell): RedirectResponse
+    public function store(Request $request, CreatesBell $createBell): RedirectResponse
     {
         $bell = $createBell($request->user(), $request->all());
 
@@ -43,7 +43,7 @@ class BellsController extends Controller
         ]);
     }
 
-    public function update(Request $request, Bell $bell, UpdateBell $updateBell): RedirectResponse
+    public function update(Request $request, Bell $bell, UpdatesBell $updateBell): RedirectResponse
     {
         $bell = $updateBell($bell, $request->all());
 

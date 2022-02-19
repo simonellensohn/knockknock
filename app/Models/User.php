@@ -98,4 +98,11 @@ class User extends Authenticatable
                 : $password,
         );
     }
+
+    public function name(): Attribute
+    {
+        return new Attribute(
+            get: fn () => $this->first_name.' '.$this->last_name,
+        );
+    }
 }

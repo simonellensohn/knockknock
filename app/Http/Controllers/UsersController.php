@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Actions\CreatesUser;
+use App\Contracts\Actions\UpdatesUser;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -25,23 +26,11 @@ class UsersController extends Controller
         return Inertia::render('Users/Create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, CreatesUser $createUser): RedirectResponse
     {
-        $request->validate([
-            'first_name' => ['required', 'max:50'],
-            'last_name' => ['required', 'max:50'],
-            'email' => ['required', 'max:50', 'email', Rule::unique('users')],
-            'password' => ['nullable'],
-        ]);
+        $user = $createUser($request->all());
 
-        User::create([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ]);
-
-        return Redirect::route('users.index')->with('success', 'User created.');
+        return Redirect::route('users.index')->with('success', "User {$user->name} created.");
     }
 
     public function edit(Request $request, User $user): Response
@@ -52,22 +41,11 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user): RedirectResponse
+    public function update(Request $request, User $user, UpdatesUser $updateUser): RedirectResponse
     {
-        $request->validate([
-            'first_name' => ['required', 'max:50'],
-            'last_name' => ['required', 'max:50'],
-            'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($user->id)],
-            'password' => ['nullable'],
-        ]);
+        $user = $updateUser($user, $request->all());
 
-        $user->update($request->only('first_name', 'last_name', 'email'));
-
-        if ($password = $request->input('password')) {
-            $user->update(['password' => $password]);
-        }
-
-        return Redirect::back()->with('success', 'User updated.');
+        return Redirect::back()->with('success', "User {$user->name} updated.");
     }
 
     public function destroy(User $user): RedirectResponse
