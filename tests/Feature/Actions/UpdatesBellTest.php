@@ -1,11 +1,8 @@
 <?php
 
-use App\Models\Bell;
-use App\Actions\CreateBell;
-use App\Models\User;
 use App\Actions\UpdateBell;
-use App\Contracts\Actions\CreatesBell;
 use App\Contracts\Actions\UpdatesBell;
+use App\Models\Bell;
 
 it('can update a bel', function () {
     $bell = Bell::factory()->create(['threshold' => 10, 'active' => false]);

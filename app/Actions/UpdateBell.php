@@ -2,12 +2,10 @@
 
 namespace App\Actions;
 
-use App\Models\Bell;
-use App\Models\User;
-use Illuminate\Validation\Rule;
-use App\Contracts\Actions\CreatesBell;
 use App\Contracts\Actions\UpdatesBell;
+use App\Models\Bell;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UpdateBell implements UpdatesBell
 {

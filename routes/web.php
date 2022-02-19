@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BellsController;
 use App\Http\Controllers\DashboardController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\RingsController;
 use App\Http\Controllers\ToggleBellsController;
 use App\Http\Controllers\UserAccessTokensController;
 use App\Http\Controllers\UsersController;
+use App\Http\Middleware\HandleInertiaRequests;
 use App\Services\Hue\HueApi;
 use Illuminate\Support\Facades\Route;
 

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Response;
 use App\Actions\CreateBell;
 use App\Actions\UpdateBell;
-use Illuminate\Http\Request;
 use App\Http\Resources\BellResource;
 use App\Models\Bell;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class BellsController extends Controller
 {

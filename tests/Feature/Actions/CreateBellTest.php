@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Bell;
 use App\Actions\CreateBell;
-use App\Models\User;
 use App\Contracts\Actions\CreatesBell;
+use App\Models\Bell;
+use App\Models\User;
 
 it('can create a bell belonging to a user', function () {
     $user = User::factory()->create();

@@ -2,9 +2,9 @@
 
 namespace App\Actions;
 
+use App\Contracts\Actions\CreatesBell;
 use App\Models\Bell;
 use App\Models\User;
-use App\Contracts\Actions\CreatesBell;
 use Illuminate\Support\Facades\Validator;
 
 class CreateBell implements CreatesBell

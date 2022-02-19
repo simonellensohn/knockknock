@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\BellResource;
-use App\Models\Bell;
 use App\Http\Resources\BellCollection;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Models\Bell;
 
 class BellController extends Controller
 {

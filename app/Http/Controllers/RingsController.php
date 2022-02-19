@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Response;
 use App\Http\Resources\RingResource;
 use App\Models\Ring;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class RingsController extends Controller
 {

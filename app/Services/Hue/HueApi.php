@@ -2,12 +2,10 @@
 
 namespace App\Services\Hue;
 
+use App\Services\Hue\DataObjects\OAuthToken;
 use Illuminate\Http\Client\Response;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use App\Services\Hue\DataObjects\OAuthToken;
 
 class HueApi
 {

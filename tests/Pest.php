@@ -30,7 +30,6 @@ expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
 
-
 expect()->extend('toBeInvalid', function ($errors) {
     try {
         $this->value->__invoke();
