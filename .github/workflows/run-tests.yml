@@ -27,4 +27,4 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: ':memory:'
-      run: vendor/bin/pest --coverage-clover clover.xml
+      run: php artisan test --parallel --coverage
