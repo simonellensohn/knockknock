@@ -15,8 +15,8 @@ class RingResource extends JsonResource
             'volume' => $this->volume,
             'events' => $this->events,
             'created_at' => [
-                'diff' => $this->created_at->diffForHumans(),
-                'date' => $this->created_at->toDateTimeString(),
+                'diff' => $this->created_at?->diffForHumans(),
+                'date' => $this->created_at?->toDateTimeString(),
             ],
             'bell' => BellResource::make($this->whenLoaded('bell')),
         ];

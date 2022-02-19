@@ -7,26 +7,29 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use App\Services\Hue\DataObjects\OAuthToken;
 
 class HueApi
 {
-    protected string $baseUrl = 'https://api.meethue.com';
+    public function __construct(
+        public readonly string $baseUrl,
+        public readonly string $appId,
+        public readonly string $clientId,
+        public readonly string $clientSecret,
+        public readonly string $username,
+    ) {}
 
-    public function __construct(public array $options = [])
-    {}
-
-    public function fetchAccessToken(string $code): string
+    public function fetchAccessToken(string $code): OAuthToken
     {
         $response = Http::asForm()
-            ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
+            ->withBasicAuth($this->clientId, $this->clientSecret)
             ->post($this->baseUrl.'/v2/oauth2/token', [
                 'code' => $code,
                 'grant_type' => 'authorization_code',
-            ]);
+            ])
+            ->throw();
 
-        $tokens = $this->writeTokensToFile($response->json());
-
-        return $tokens->access_token_expires_at;
+        return $this->writeTokensToFile($response->json());
     }
 
     public function createUser(): string
@@ -34,7 +37,7 @@ class HueApi
         $this->send('/route/api/0/config', 'put', ['linkbutton' => true]);
 
         $response = $this->send('/route/api', 'post', [
-            'devicetype' => config('services.hue.app_id'),
+            'devicetype' => $this->appId,
         ]);
 
         return $response->json('0.success.username');
@@ -42,33 +45,33 @@ class HueApi
 
     public function getAccessToken(): string
     {
-        $tokens = json_decode(Storage::disk('local')->get('hue.json') ?: '{}');
+        $token = new OAuthToken(json_decode(Storage::get('hue.json') ?: '{}', true));
 
-        if (! $tokens->access_token_expires_at || Carbon::parse($tokens->access_token_expires_at)->lt(Carbon::now())) {
+        if ($token->isInvalid()) {
             $response = Http::asForm()
-                ->withBasicAuth(config('services.hue.client_id'), config('services.hue.client_secret'))
-                ->post($this->baseUrl.'/v2/oauth2/token', ['grant_type' => 'refresh_token', 'refresh_token' => $tokens->refresh_token])
+                ->withBasicAuth($this->clientId, $this->clientSecret)
+                ->post($this->baseUrl.'/v2/oauth2/token', [
+                    'grant_type' => 'refresh_token',
+                    'refresh_token' => $token->refresh_token,
+                ])
                 ->throw();
 
-            $tokens = $this->writeTokensToFile($response->json());
+            $token = $this->writeTokensToFile($response->json());
         }
 
-        return $tokens->access_token;
+        return $token->access_token;
     }
 
-    /**
-     * @return Collection<string, mixed>
-     */
-    public function fetchLights(): Collection
+    public function fetchLights(): array
     {
-        $response = $this->send('/route/api/'.config('services.hue.username').'/lights');
-
-        return collect($response->json());
+        return $this
+            ->send('/route/api/'.$this->username.'/lights')
+            ->json();
     }
 
     public function blinkAllLights(): bool
     {
-        $response = $this->send('/route/api/'.config('services.hue.username').'/groups/8/action', 'put', [
+        $response = $this->send('/route/api/'.$this->username.'/groups/8/action', 'put', [
             'alert' => 'lselect',
         ]);
 
@@ -83,12 +86,13 @@ class HueApi
             ->{$method}($url, $data);
     }
 
-    private function writeTokensToFile(array $tokens): object
+    private function writeTokensToFile(array $response): OAuthToken
     {
-        $tokens['access_token_expires_at'] = Carbon::now()->addSeconds($tokens['expires_in'])->toDateTimeString();
+        $token = new OAuthToken($response);
+        $token->setExpirationDate();
 
-        Storage::put('hue.json', json_encode($tokens, JSON_THROW_ON_ERROR));
+        Storage::put('hue.json', json_encode($token->toArray(), JSON_THROW_ON_ERROR));
 
-        return (object) $tokens;
+        return $token;
     }
 }

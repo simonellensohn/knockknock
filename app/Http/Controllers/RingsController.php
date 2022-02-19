@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Response;
 use App\Http\Resources\RingResource;
 use App\Models\Ring;
 use Inertia\Inertia;
 
 class RingsController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $rings = Ring::with('bell')->latest()->paginate(15);
 

@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Response;
+use App\Actions\CreateBell;
+use App\Actions\UpdateBell;
+use Illuminate\Http\Request;
 use App\Http\Resources\BellResource;
 use App\Models\Bell;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class BellsController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         $bells = Bell::query()->withCount('rings')->get();
 
@@ -21,64 +23,39 @@ class BellsController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(): Response
     {
         return Inertia::render('Bells/Create');
     }
 
-    public function store()
+    public function store(Request $request, CreateBell $createBell): RedirectResponse
     {
-        Request::validate([
-            'name' => ['required', 'max:50', 'unique:bells'],
-            'threshold' => [
-                'required',
-                'numeric',
-                'between:1,100',
-                'unique:bells',
-            ],
-        ]);
+        $bell = $createBell($request->user(), $request->all());
 
-        Auth::user()->bells()->create(Request::only('name', 'threshold'));
-
-        return Redirect::route('bells.index')->with('success', 'Bell created.');
+        return Redirect::route('bells.index')
+            ->with('success', "Bell {$bell->name} created.");
     }
 
-    public function edit(Bell $bell)
+    public function edit(Bell $bell): Response
     {
         return Inertia::render('Bells/Edit', [
             'bell' => new BellResource($bell),
         ]);
     }
 
-    public function update(Bell $bell)
+    public function update(Request $request, Bell $bell, UpdateBell $updateBell): RedirectResponse
     {
-        Request::validate([
-            'name' => [
-                'required',
-                'max:50',
-                Rule::unique('bells')->ignoreModel($bell),
-            ],
-            'threshold' => [
-                'required',
-                'numeric',
-                'between:1,100',
-                Rule::unique('bells')->ignoreModel($bell),
-            ],
-            'active' => [
-                'required',
-                'boolean',
-            ],
-        ]);
+        $bell = $updateBell($bell, $request->all());
 
-        $bell->update(Request::only('name', 'threshold', 'active'));
-
-        return Redirect::back()->with('success', 'Bell updated.');
+        return Redirect::back()
+            ->with('success', "Bell {$bell->name} updated.");
     }
 
-    public function destroy(Bell $bell)
+    public function destroy(Bell $bell): RedirectResponse
     {
         $bell->delete();
 
-        return Redirect::route('bells.index')->with('success', 'Bell deleted.');
+        return Redirect::route('bells.index')
+            ->with('success', "Bell {$bell->name} deleted.");
     }
 }

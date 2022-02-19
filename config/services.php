@@ -31,7 +31,7 @@ return [
     ],
 
     'hue' => [
-        'endpoint' => env('HUE_ENDPOINT'),
+        'endpoint' => env('HUE_ENDPOINT', 'api.meethue.com'),
         'client_id' => env('HUE_CLIENT_ID'),
         'client_secret' => env('HUE_CLIENT_SECRET'),
         'device_id' => env('HUE_DEVICE_ID'),

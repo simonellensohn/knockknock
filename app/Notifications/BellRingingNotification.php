@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Ring;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\WebPush\WebPushChannel;
@@ -16,12 +17,12 @@ class BellRingingNotification extends Notification
         public Ring $ring
     ) {}
 
-    public function via($notifiable): array
+    public function via(User $notifiable): array
     {
         return ['database', WebPushChannel::class];
     }
 
-    public function toArray($notifiable): array
+    public function toArray(User $notifiable): array
     {
         return [
             'title' => '🔔 Digga, es klingelt!',
@@ -30,7 +31,7 @@ class BellRingingNotification extends Notification
         ];
     }
 
-    public function toWebPush($notifiable, $notification): WebPushMessage
+    public function toWebPush(User $notifiable, self $notification): WebPushMessage
     {
         return (new WebPushMessage)
             ->title('🔔 Digga, es klingelt!')

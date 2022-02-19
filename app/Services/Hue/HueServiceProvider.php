@@ -6,13 +6,17 @@ use Illuminate\Support\ServiceProvider;
 
 class HueServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        $this->app->singleton(HueApi::class, function () {
-            return new HueApi([
-                'baseUrl' => config('services.hue.endpoint'),
-                'applicationKey' => config('services.hue.key'),
-            ]);
-        });
+        $this->app->singleton(
+            HueApi::class,
+            fn () => new HueApi(
+                baseUrl: config('services.hue.endpoint'),
+                appId: config('services.hue.app_id'),
+                clientId: config('services.hue.client_id'),
+                clientSecret: config('services.hue.client_secret'),
+                username: config('services.hue.username'),
+            )
+        );
     }
 }

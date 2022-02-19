@@ -2,28 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Response;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         return Inertia::render('Users/Index', [
             'users' => UserResource::collection(User::all()),
         ]);
     }
 
-    public function create()
+    public function create(): Response
     {
         return Inertia::render('Users/Create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'first_name' => ['required', 'max:50'],
@@ -42,7 +44,7 @@ class UsersController extends Controller
         return Redirect::route('users.index')->with('success', 'User created.');
     }
 
-    public function edit(Request $request, User $user)
+    public function edit(Request $request, User $user): Response
     {
         return Inertia::render('Users/Edit', [
             'user' => new UserResource($user),
@@ -50,7 +52,7 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user): RedirectResponse
     {
         $request->validate([
             'first_name' => ['required', 'max:50'],
@@ -68,7 +70,7 @@ class UsersController extends Controller
         return Redirect::back()->with('success', 'User updated.');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
         $user->delete();
 

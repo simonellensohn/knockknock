@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BellsController;
 use App\Http\Controllers\DashboardController;
@@ -25,7 +26,8 @@ Route::post('login', [AuthenticatedSessionController::class, 'store'])
 Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
 
-Route::get('hue/callback', HueCallbackController::class);
+Route::get('hue/callback', HueCallbackController::class)
+    ->withoutMiddleware(HandleInertiaRequests::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
