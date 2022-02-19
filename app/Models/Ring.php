@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property int $bell_id
  * @property float $volume
- * @property array $events
+ * @property array|null $events
+ * @property int $triggered
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Bell|null $bell
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Ring whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ring whereEvents($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ring whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Ring whereTriggered($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ring whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ring whereVolume($value)
  * @mixin \Eloquent

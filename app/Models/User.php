@@ -17,6 +17,7 @@ use NotificationChannels\WebPush\HasPushSubscriptions;
  * @property int $id
  * @property string $first_name
  * @property string $last_name
+ * @property string $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
