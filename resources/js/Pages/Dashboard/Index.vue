@@ -217,7 +217,7 @@ export default {
 
       this.loading = true
 
-      this.$inertia.put('/push/subscriptions', data, {
+      this.$inertia.put('/user/push/subscriptions', data, {
         onFinish: () => (this.loading = false),
       })
     },
@@ -226,7 +226,7 @@ export default {
       this.loading = true
 
       this.$inertia.delete(
-        '/push/subscriptions/delete',
+        '/user/push/subscriptions/delete',
         { endpoint: subscription.endpoint },
         {
           onFinish: () => (this.loading = false),
