@@ -13,8 +13,6 @@ use App\Http\Middleware\HandleInertiaRequests;
 use App\Services\Hue\HueApi;
 use Illuminate\Support\Facades\Route;
 
-// Auth
-
 Route::get('login', [AuthenticatedSessionController::class, 'create'])
     ->name('login')
     ->middleware('guest');

@@ -8,18 +8,23 @@ use Illuminate\Support\Facades\Event;
 
 uses(RefreshDatabase::class);
 
-test('guests cannot ring a bell', function () {
-    $response = $this->postJson('/api/bells/1/ring');
+function getRoute(int $bellId): string
+{
+    return route('api.bells.ring', $bellId);
+}
 
-    $response->assertStatus(401);
+test('guests cannot ring a bell', function () {
+    $response = $this->postJson(getRoute(1));
+
+    $response->assertUnauthorized();
 });
 
 test('bell has to exist', function () {
     $user = User::factory()->create();
 
-    $response = $this->actingAs($user)->postJson('/api/bells/999/ring');
+    $response = $this->actingAs($user)->postJson(getRoute(999));
 
-    $response->assertStatus(404);
+    $response->assertNotFound();
 });
 
 test('user can only ring their own bells', function () {
@@ -28,9 +33,9 @@ test('user can only ring their own bells', function () {
     $bell = Bell::factory()->create();
     expect($bell->user_id)->not->toBe($user->id);
 
-    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", ['volume' => 10]);
+    $response = $this->actingAs($user)->postJson(getRoute($bell->id), ['volume' => 10]);
 
-    $response->assertStatus(403);
+    $response->assertForbidden();
     Event::assertNotDispatched(BellRinging::class);
 });
 
@@ -40,12 +45,12 @@ test('users can ring their bell', function () {
     $bell = Bell::factory()->for($user)->create();
     expect($bell->rings)->toBeEmpty();
 
-    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", [
+    $response = $this->actingAs($user)->postJson(getRoute($bell->id), [
         'volume' => 10,
         'events' => [11, 9, 10],
     ]);
 
-    $response->assertStatus(204);
+    $response->assertNoContent();
     expect($bell->fresh()->rings)->not->toBeEmpty();
     Event::assertDispatched(BellRinging::class);
 });
@@ -56,12 +61,12 @@ test('ringing a bell does not dispatch an event if the bell is inactive', functi
     $bell = Bell::factory()->for($user)->create(['active' => false]);
     expect($bell->rings)->toBeEmpty();
 
-    $response = $this->actingAs($user)->postJson("/api/bells/{$bell->id}/ring", [
+    $response = $this->actingAs($user)->postJson(getRoute($bell->id), [
         'volume' => 10,
         'events' => [11, 9, 10],
     ]);
 
-    $response->assertStatus(204);
+    $response->assertNoContent();
     expect($bell->fresh()->rings)->not->toBeEmpty();
     Event::assertNotDispatched(BellRinging::class);
 });

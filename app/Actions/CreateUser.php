@@ -15,7 +15,7 @@ class CreateUser implements CreatesUser
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')],
-            'password' => ['nullable'],
+            'password' => ['required'],
         ]);
 
         return User::create($data);

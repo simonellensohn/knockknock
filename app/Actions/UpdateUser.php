@@ -21,7 +21,7 @@ class UpdateUser implements UpdatesUser
 
         $user->fill(Arr::except($data, 'password'));
 
-        if (! blank($data['password'])) {
+        if (isset($data['password']) && ! blank($data['password'])) {
             $user->password = $data['password'];
         }
 

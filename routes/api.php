@@ -2,23 +2,9 @@
 
 use App\Http\Controllers\Api\BellController;
 use App\Http\Controllers\Api\RingBellController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', fn (Request $request) => $request->user());
-
-    Route::get('/bells', BellController::class);
-    Route::post('/bells/{bell}/ring', RingBellController::class);
+    Route::get('/bells', BellController::class)->name('api.bells.index');
+    Route::post('/bells/{bell}/ring', RingBellController::class)->name('api.bells.ring');
 });
