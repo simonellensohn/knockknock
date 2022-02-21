@@ -51,8 +51,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('bells/{bell}', [BellsController::class, 'destroy'])->name('bells.delete');
 
     Route::get('rings', [RingsController::class, 'index'])->name('rings.index');
-
-    Route::get('hue', function (HueService $service) {
-        return $service->light()->all();
-    });
+    Route::get('hue', fn (HueService $service) => $service->light()->all());
 });

@@ -26,7 +26,7 @@
 
           <div class="flex flex-col">
             <span class="text-xs font-semibold text-gray-500">Average Volume</span>
-            {{ averageVolume }}
+            {{ averageVolume || '-' }}
           </div>
         </Link>
       </div>
@@ -39,7 +39,8 @@
 
           <div class="flex flex-col">
             <span class="text-xs font-semibold text-gray-500">Last Ring</span>
-            <time :datetime="lastRing.date" :title="lastRing.date">{{ lastRing.readable }}</time>
+            <time v-if="lastRing.date" :datetime="lastRing.date" :title="lastRing.date">{{ lastRing.readable }}</time>
+            <span v-else>-</span>
           </div>
         </Link>
       </div>
@@ -216,7 +217,7 @@ export default {
 
       this.loading = true
 
-      this.$inertia.post('/push/subscriptions', data, {
+      this.$inertia.put('/push/subscriptions', data, {
         onFinish: () => (this.loading = false),
       })
     },
@@ -224,7 +225,7 @@ export default {
     deleteSubscription(subscription) {
       this.loading = true
 
-      this.$inertia.post(
+      this.$inertia.delete(
         '/push/subscriptions/delete',
         { endpoint: subscription.endpoint },
         {
