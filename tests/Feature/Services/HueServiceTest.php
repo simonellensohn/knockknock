@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 use App\Services\Hue\DataObjects\Light;
 use App\Services\Hue\DataObjects\OAuthToken;
 use App\Services\Hue\Exceptions\HueRequestException;
@@ -83,7 +81,7 @@ it('can fetch and store an OAuth token to the disk', function () {
     Storage::fake('local');
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/v2/oauth2/token" => Http::response(
+        '/v2/oauth2/token' => Http::response(
             body:   fixture('Hue/OAuthToken'),
             status: Response::HTTP_OK,
         ),
@@ -99,7 +97,7 @@ it('can fetch and store an OAuth token to the disk', function () {
 it('throws custom exception when fetching a token', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/v2/oauth2/token" => Http::response(status: Response::HTTP_NOT_FOUND),
+        '/v2/oauth2/token' => Http::response(status: Response::HTTP_NOT_FOUND),
     ]);
 
     $hue->token()->fetch('::code::');
@@ -121,7 +119,7 @@ it('fetches OAuth token when current one is empty', function () {
     Storage::disk('local')->put('hue.json', fixture('Hue/EmptyOAuthToken', decode: false));
     $hue = resolve(HueService::class);
     $fake = HueService::fake([
-        "{$hue->baseUrl}/v2/oauth2/token" => Http::response(
+        '/v2/oauth2/token' => Http::response(
             body:   fixture('Hue/OAuthToken'),
             status: Response::HTTP_OK,
         ),
@@ -140,7 +138,7 @@ it('refreshes expired OAuth token', function (string $json) {
     Storage::disk('local')->put('hue.json', $json);
     $hue = resolve(HueService::class);
     $fake = HueService::fake([
-        "{$hue->baseUrl}/v2/oauth2/token" => Http::response(
+        '/v2/oauth2/token' => Http::response(
             body:   fixture('Hue/OAuthToken'),
             status: Response::HTTP_OK,
         ),
@@ -160,7 +158,7 @@ it('refreshes expired OAuth token', function (string $json) {
 it('throws custom exception when refreshing a token', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/v2/oauth2/token" => Http::response(status: Response::HTTP_NOT_FOUND),
+        '/v2/oauth2/token' => Http::response(status: Response::HTTP_NOT_FOUND),
     ]);
 
     $hue->token()->refresh(new OAuthToken());
@@ -169,7 +167,7 @@ it('throws custom exception when refreshing a token', function () {
 it('can fetch all lights', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/route/api/*/lights" => Http::response(
+        '/route/api/*/lights' => Http::response(
             body:   fixture('Hue/Lights'),
             status: Response::HTTP_OK,
         ),
@@ -187,7 +185,7 @@ it('can fetch all lights', function () {
 it('throws custom exception when fetching all lights', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/route/api/*/lights" => Http::response(status: Response::HTTP_NOT_FOUND),
+        '/route/api/*/lights' => Http::response(status: Response::HTTP_NOT_FOUND),
     ]);
 
     $hue->light()->all();
@@ -196,7 +194,7 @@ it('throws custom exception when fetching all lights', function () {
 it('can blink all lights within a group', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/route/api/*/groups/*/action" => Http::response(status: Response::HTTP_OK),
+        '/route/api/*/groups/*/action' => Http::response(status: Response::HTTP_OK),
     ]);
 
     $blinked = $hue->light()->blinkAll();
@@ -207,7 +205,7 @@ it('can blink all lights within a group', function () {
 it('throws custom exception when blinking all lights of a group', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/route/api/*/groups/*/action" => Http::response(status: Response::HTTP_NOT_FOUND),
+        '/route/api/*/groups/*/action' => Http::response(status: Response::HTTP_NOT_FOUND),
     ]);
 
     $hue->light()->blinkAll();
@@ -216,7 +214,7 @@ it('throws custom exception when blinking all lights of a group', function () {
 it('can link the bridge', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/route/api/0/config" => Http::response(status: Response::HTTP_OK),
+        '/route/api/0/config' => Http::response(status: Response::HTTP_OK),
     ]);
 
     $blinked = $hue->configuration()->link();
@@ -227,7 +225,7 @@ it('can link the bridge', function () {
 it('throws custom exception when linking the bridge', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/route/api/0/config" => Http::response(status: Response::HTTP_NOT_FOUND),
+        '/route/api/0/config' => Http::response(status: Response::HTTP_NOT_FOUND),
     ]);
 
     $hue->configuration()->link();
@@ -236,7 +234,7 @@ it('throws custom exception when linking the bridge', function () {
 it('can create a user', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/route/api" => Http::response(
+        '/route/api' => Http::response(
             body: fixture('Hue/CreateUser'),
             status: Response::HTTP_OK
         ),
@@ -250,7 +248,7 @@ it('can create a user', function () {
 it('throws custom exception when creating a user', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
-        "{$hue->baseUrl}/route/api" => Http::response(status: Response::HTTP_NOT_FOUND),
+        '/route/api' => Http::response(status: Response::HTTP_NOT_FOUND),
     ]);
 
     $hue->configuration()->create(new CreateUser('1234'));

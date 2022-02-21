@@ -27,5 +27,12 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+
+        <env name="HUE_CLIENT_ID" value="fake-client-id"/>
+        <env name="HUE_CLIENT_SECRET" value="fake-client-secret"/>
+        <env name="HUE_DEVICE_ID" value="fake-device-id"/>
+        <env name="HUE_APP_ID" value="fake-app.id"/>
+        <env name="HUE_APPLICATION_KEY" value="fake-application-key"/>
+        <env name="HUE_USERNAME" value="fake-username"/>
     </php>
 </phpunit>

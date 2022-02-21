@@ -36,8 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
     Route::put('users/{user}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('users/{user}', [UsersController::class, 'destroy'])->name('users.delete');
-    Route::post('users/{user}/access-tokens', [UserAccessTokensController::class, 'store'])->name('users.access-tokens.store');
-    Route::delete('users/{user}/access-tokens/{token}', [UserAccessTokensController::class, 'destroy'])->name('users.access-tokens.delete');
+
+    Route::post('user/access-tokens', [UserAccessTokensController::class, 'store'])->name('user.access-tokens.store');
+    Route::delete('user/access-tokens/{token}', [UserAccessTokensController::class, 'destroy'])->name('user.access-tokens.delete');
+    Route::put('user/push/subscriptions', [PushSubscriptionController::class, 'update'])->name('user.push.subscriptions.store');
+    Route::delete('user/push/subscriptions/delete', [PushSubscriptionController::class, 'destroy'])->name('user.push.subscriptions.destroy');
 
     Route::get('bells', [BellsController::class, 'index'])->name('bells.index');
     Route::post('bells', [BellsController::class, 'store'])->name('bells.store');
@@ -48,9 +51,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('bells/{bell}', [BellsController::class, 'destroy'])->name('bells.delete');
 
     Route::get('rings', [RingsController::class, 'index'])->name('rings.index');
-
-    Route::post('push/subscriptions', [PushSubscriptionController::class, 'update']);
-    Route::post('push/subscriptions/delete', [PushSubscriptionController::class, 'destroy']);
 
     Route::get('hue', function (HueService $service) {
         return $service->light()->all();
