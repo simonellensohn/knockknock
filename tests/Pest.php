@@ -40,3 +40,25 @@ expect()->extend('toBeInvalid', function ($errors) {
         }
     }
 });
+
+function fixture(string $name, bool $decode = true): string|array
+{
+    $file = file_get_contents(
+        filename: base_path("tests/Fixtures/$name.json"),
+    );
+
+    if(! $file) {
+        throw new InvalidArgumentException(
+            message: "Cannot find fixture: [$name] at tests/Fixtures/$name.json",
+        );
+    }
+
+    if (! $decode) {
+        return $file;
+    }
+
+    return json_decode(
+        json: $file,
+        associative: true,
+    );
+}

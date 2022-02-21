@@ -3,16 +3,16 @@
 namespace App\Listeners;
 
 use App\Events\BellRinging;
-use App\Services\Hue\HueApi;
+use App\Services\Hue\HueService;
 
 class BlinkHueLights
 {
     public function __construct(
-        public HueApi $hue
+        public HueService $service
     ) {}
 
     public function handle(BellRinging $event): void
     {
-        $this->hue->blinkAllLights();
+        $this->service->light()->blinkAll();
     }
 }

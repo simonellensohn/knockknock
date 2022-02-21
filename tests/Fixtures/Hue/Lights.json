@@ -1,0 +1,1448 @@
+{
+    "3": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 52,
+                "hue": 8407,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4575,
+                    0.4099
+                ],
+                "ct": 366,
+                "alert": "select",
+                "colormode": "xy",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-08-19T13:00:32"
+            },
+            "type": "Extended color light",
+            "name": "Hue color lamp 1",
+            "modelid": "LCT015",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color lamp",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 1000,
+                    "maxlumen": 806,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "sultanbulb",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:04:56:8f:f8-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "76B74E79",
+            "productid": "Philips-LCT015-1-A19ECLv5"
+        }
+    },
+    "4": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 50,
+                "hue": 7700,
+                "sat": 200,
+                "effect": "none",
+                "xy": [
+                    0.5018,
+                    0.4156
+                ],
+                "ct": 443,
+                "alert": "lselect",
+                "colormode": "xy",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-08-19T13:00:42"
+            },
+            "type": "Extended color light",
+            "name": "Hue color lamp 2",
+            "modelid": "LCT015",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color lamp",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 1000,
+                    "maxlumen": 806,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "sultanbulb",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:04:56:90:b0-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "76B74E79",
+            "productid": "Philips-LCT015-1-A19ECLv5"
+        }
+    },
+    "6": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4573,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "ct",
+                "mode": "homeautomation",
+                "reachable": false
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-20T13:51:16"
+            },
+            "type": "Extended color light",
+            "name": "Hue color spot 1",
+            "modelid": "LCG002",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color spot",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 200,
+                    "maxlumen": 300,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "spotbulb",
+                "function": "mixed",
+                "direction": "downwards",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:09:6e:72:ba-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "D779D146",
+            "productid": "Philips-LCG002-3-GU10ECLv2"
+        }
+    },
+    "7": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4573,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "ct",
+                "mode": "homeautomation",
+                "reachable": false
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-20T13:51:11"
+            },
+            "type": "Extended color light",
+            "name": "Hue color spot 2",
+            "modelid": "LCG002",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color spot",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 200,
+                    "maxlumen": 300,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "spotbulb",
+                "function": "mixed",
+                "direction": "downwards",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:09:6e:91:05-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "D779D146",
+            "productid": "Philips-LCG002-3-GU10ECLv2"
+        }
+    },
+    "8": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4573,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "ct",
+                "mode": "homeautomation",
+                "reachable": false
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-20T13:51:05"
+            },
+            "type": "Extended color light",
+            "name": "Hue color spot 3",
+            "modelid": "LCG002",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color spot",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 200,
+                    "maxlumen": 300,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "spotbulb",
+                "function": "mixed",
+                "direction": "downwards",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:08:d0:f3:9f-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "D779D146",
+            "productid": "Philips-LCG002-3-GU10ECLv2"
+        }
+    },
+    "9": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4573,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "ct",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-03-16T18:18:41"
+            },
+            "type": "Extended color light",
+            "name": "Hue color candle 1",
+            "modelid": "LCT012",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color candle",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 450,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "candlebulb",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:03:9f:1d:8b-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "AE68C57D",
+            "productid": "Philips-LCT012-1-E14ECLv1"
+        }
+    },
+    "10": {
+        "attributes": {
+            "state": {
+                "on": false,
+                "bri": 254,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4573,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "ct",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-03-16T18:18:54"
+            },
+            "type": "Extended color light",
+            "name": "Hue color candle 2",
+            "modelid": "LCT012",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color candle",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 450,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "candlebulb",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:03:9f:22:1c-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "AE68C57D",
+            "productid": "Philips-LCT012-1-E14ECLv1"
+        }
+    },
+    "11": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4573,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "ct",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-03-16T18:18:55"
+            },
+            "type": "Extended color light",
+            "name": "Hue color candle 3",
+            "modelid": "LCT012",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color candle",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 450,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "candlebulb",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:04:44:b9:7a-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "AE68C57D",
+            "productid": "Philips-LCT012-1-E14ECLv1"
+        }
+    },
+    "12": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 50,
+                "hue": 8407,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4575,
+                    0.4099
+                ],
+                "ct": 366,
+                "alert": "select",
+                "colormode": "xy",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-08-19T13:01:31"
+            },
+            "type": "Extended color light",
+            "name": "Hue color candle 4",
+            "modelid": "LCT012",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color candle",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 450,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "candlebulb",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:03:9f:1f:db-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "AE68C57D",
+            "productid": "Philips-LCT012-1-E14ECLv1"
+        }
+    },
+    "13": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 52,
+                "hue": 8407,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4575,
+                    0.4099
+                ],
+                "ct": 366,
+                "alert": "select",
+                "colormode": "xy",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-08-19T13:00:37"
+            },
+            "type": "Extended color light",
+            "name": "Hue color candle 5",
+            "modelid": "LCT012",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color candle",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 450,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "candlebulb",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:03:9f:21:c4-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "AE68C57D",
+            "productid": "Philips-LCT012-1-E14ECLv1"
+        }
+    },
+    "14": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 52,
+                "hue": 8407,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4575,
+                    0.4099
+                ],
+                "ct": 366,
+                "alert": "select",
+                "colormode": "xy",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-08-19T13:00:29"
+            },
+            "type": "Extended color light",
+            "name": "Hue color candle 6",
+            "modelid": "LCT012",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue color candle",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 450,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "candlebulb",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:04:44:b9:b5-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "AE68C57D",
+            "productid": "Philips-LCT012-1-E14ECLv1"
+        }
+    },
+    "15": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 50,
+                "hue": 7700,
+                "sat": 200,
+                "effect": "none",
+                "xy": [
+                    0.5018,
+                    0.4156
+                ],
+                "ct": 443,
+                "alert": "lselect",
+                "colormode": "xy",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-08-13T12:19:12"
+            },
+            "type": "Extended color light",
+            "name": "Hue lightstrip plus 2",
+            "modelid": "LST002",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue lightstrip plus",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 40,
+                    "maxlumen": 1600,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "huelightstrip",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:03:e3:e0:fe-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "8EF6FE80",
+            "productid": "Philips-LST002-1-LedStripsv3"
+        }
+    },
+    "16": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 50,
+                "hue": 7700,
+                "sat": 200,
+                "effect": "none",
+                "xy": [
+                    0.5018,
+                    0.4156
+                ],
+                "ct": 443,
+                "alert": "lselect",
+                "colormode": "xy",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-08-13T12:19:09"
+            },
+            "type": "Extended color light",
+            "name": "Hue lightstrip plus 3",
+            "modelid": "LST002",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue lightstrip plus",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 40,
+                    "maxlumen": 1600,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "huelightstrip",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:03:f5:2e:cc-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "8EF6FE80",
+            "productid": "Philips-LST002-1-LedStripsv3"
+        }
+    },
+    "17": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 50,
+                "alert": "lselect",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-20T13:50:34"
+            },
+            "type": "Dimmable light",
+            "name": "Hue filament bulb 1",
+            "modelid": "LWO001",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue filament bulb",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 550
+                },
+                "streaming": {
+                    "renderer": false,
+                    "proxy": false
+                }
+            },
+            "config": {
+                "archetype": "vintagebulb",
+                "function": "decorative",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:09:96:1a:a9-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "9732F7F5",
+            "productid": "Philips-LWO001-1-G93CFDLv1"
+        }
+    },
+    "18": {
+        "attributes": {
+            "state": {
+                "on": false,
+                "alert": "lselect",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-04T13:30:14"
+            },
+            "type": "On\/Off plug-in unit",
+            "name": "Hue Smart plug 1",
+            "modelid": "LOM001",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue Smart plug",
+            "capabilities": {
+                "certified": true,
+                "control": [],
+                "streaming": {
+                    "renderer": false,
+                    "proxy": false
+                }
+            },
+            "config": {
+                "archetype": "plug",
+                "function": "functional",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:08:fc:34:1a-0b",
+            "swversion": "1.93.6",
+            "swconfigid": "CD56E7E4",
+            "productid": "SmartPlug_OnOff_v01-00_01"
+        }
+    },
+    "19": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4573,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "ct",
+                "mode": "homeautomation",
+                "reachable": false
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-10-06T12:23:57"
+            },
+            "type": "Extended color light",
+            "name": "Hue lightstrip plus 4",
+            "modelid": "LST002",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue lightstrip plus",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 40,
+                    "maxlumen": 1600,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "huelightstrip",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:03:f7:ae:b2-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "8EF6FE80",
+            "productid": "Philips-LST002-1-LedStripsv3"
+        }
+    },
+    "20": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 254,
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "ct",
+                "mode": "homeautomation",
+                "reachable": false
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2021-10-06T12:23:53"
+            },
+            "type": "Color temperature light",
+            "name": "Hue ambiance ceiling 1",
+            "modelid": "LTC021",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue ambiance ceiling",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 100,
+                    "maxlumen": 2400,
+                    "ct": {
+                        "min": 153,
+                        "max": 454
+                    }
+                },
+                "streaming": {
+                    "renderer": false,
+                    "proxy": false
+                }
+            },
+            "config": {
+                "archetype": "ceilinground",
+                "function": "functional",
+                "direction": "downwards",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:04:50:54:63-0b",
+            "swversion": "1.88.1",
+            "swconfigid": "064CDDDC",
+            "productid": "Philips-PTM001-2-EngineCTv1_1P"
+        }
+    },
+    "21": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 50,
+                "alert": "lselect",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-20T13:51:21"
+            },
+            "type": "Dimmable light",
+            "name": "Hue filament bulb 2",
+            "modelid": "LWA004",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue filament bulb",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 550
+                },
+                "streaming": {
+                    "renderer": false,
+                    "proxy": false
+                }
+            },
+            "config": {
+                "archetype": "vintagebulb",
+                "function": "decorative",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:09:95:55:2e-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "8C791294",
+            "productid": "Philips-LWA004-1-A60CFDLv1"
+        }
+    },
+    "22": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 50,
+                "alert": "lselect",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-20T13:50:19"
+            },
+            "type": "Dimmable light",
+            "name": "Hue filament bulb 3",
+            "modelid": "LWA004",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue filament bulb",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 2000,
+                    "maxlumen": 550
+                },
+                "streaming": {
+                    "renderer": false,
+                    "proxy": false
+                }
+            },
+            "config": {
+                "archetype": "vintagebulb",
+                "function": "decorative",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:09:95:52:83-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "8C791294",
+            "productid": "Philips-LWA004-1-A60CFDLv1"
+        }
+    },
+    "23": {
+        "attributes": {
+            "state": {
+                "on": false,
+                "bri": 254,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4574,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "hs",
+                "mode": "homeautomation",
+                "reachable": false
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-02-05T13:58:59"
+            },
+            "type": "Extended color light",
+            "name": "Hue Go 1",
+            "modelid": "7602031P7",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue Go",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 70,
+                    "maxlumen": 400,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "huego",
+                "function": "decorative",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:0b:4d:5f:d4-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "46717DAD",
+            "productid": "Philips-LCT030-1-HueGoECLv2"
+        }
+    },
+    "24": {
+        "attributes": {
+            "state": {
+                "on": false,
+                "bri": 28,
+                "hue": 8417,
+                "sat": 140,
+                "effect": "none",
+                "xy": [
+                    0.4574,
+                    0.41
+                ],
+                "ct": 366,
+                "alert": "lselect",
+                "colormode": "hs",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-20T13:50:11"
+            },
+            "type": "Extended color light",
+            "name": "Hue Go 2",
+            "modelid": "7602031P7",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue Go",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 70,
+                    "maxlumen": 400,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "huego",
+                "function": "decorative",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:0b:4d:5f:c4-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "46717DAD",
+            "productid": "Philips-LCT030-1-HueGoECLv2"
+        }
+    },
+    "25": {
+        "attributes": {
+            "state": {
+                "on": true,
+                "bri": 50,
+                "hue": 7700,
+                "sat": 200,
+                "effect": "none",
+                "xy": [
+                    0.5018,
+                    0.4156
+                ],
+                "ct": 443,
+                "alert": "lselect",
+                "colormode": "xy",
+                "mode": "homeautomation",
+                "reachable": true
+            },
+            "swupdate": {
+                "state": "noupdates",
+                "lastinstall": "2022-01-20T13:50:05"
+            },
+            "type": "Extended color light",
+            "name": "Hue lightstrip plus 5",
+            "modelid": "LCL001",
+            "manufacturername": "Signify Netherlands B.V.",
+            "productname": "Hue lightstrip plus",
+            "capabilities": {
+                "certified": true,
+                "control": {
+                    "mindimlevel": 40,
+                    "maxlumen": 1600,
+                    "colorgamuttype": "C",
+                    "colorgamut": [
+                        [
+                            0.6915,
+                            0.3083
+                        ],
+                        [
+                            0.17,
+                            0.7
+                        ],
+                        [
+                            0.1532,
+                            0.0475
+                        ]
+                    ],
+                    "ct": {
+                        "min": 153,
+                        "max": 500
+                    }
+                },
+                "streaming": {
+                    "renderer": true,
+                    "proxy": true
+                }
+            },
+            "config": {
+                "archetype": "huelightstrip",
+                "function": "mixed",
+                "direction": "omnidirectional",
+                "startup": {
+                    "mode": "safety",
+                    "configured": true
+                }
+            },
+            "uniqueid": "00:17:88:01:09:be:f8:61-0b",
+            "swversion": "1.93.7",
+            "swconfigid": "2435DF32",
+            "productid": "Philips-LCL001-1-LedStripsv4"
+        }
+    }
+}

@@ -9,8 +9,8 @@ class HueServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(
-            HueApi::class,
-            fn () => new HueApi(
+            HueService::class,
+            fn () => new HueService(
                 baseUrl: config('services.hue.endpoint'),
                 appId: config('services.hue.app_id'),
                 clientId: config('services.hue.client_id'),

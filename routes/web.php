@@ -10,7 +10,7 @@ use App\Http\Controllers\ToggleBellsController;
 use App\Http\Controllers\UserAccessTokensController;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\HandleInertiaRequests;
-use App\Services\Hue\HueApi;
+use App\Services\Hue\HueService;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::post('push/subscriptions', [PushSubscriptionController::class, 'update']);
     Route::post('push/subscriptions/delete', [PushSubscriptionController::class, 'destroy']);
 
-    Route::get('hue', function (HueApi $api) {
-        return response()->json($api->fetchLights());
+    Route::get('hue', function (HueService $service) {
+        return $service->light()->all();
     });
 });

@@ -26,7 +26,12 @@ class OAuthToken extends DataTransferObject
         return $this;
     }
 
-    public function isInvalid(): bool
+    public function isEmpty(): bool
+    {
+        return blank($this->access_token);
+    }
+
+    public function isExpired(): bool
     {
         if (blank($this->access_token_expires_at)) {
             return true;
