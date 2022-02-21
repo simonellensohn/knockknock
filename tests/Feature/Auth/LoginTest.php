@@ -22,6 +22,7 @@ test('guests can view the login page', function () {
     $this->assertGuest();
 
     $response = $this->get(route('login'));
+    $response->dump();
 
     $response->assertInertia(fn (AssertableInertia $assert) => $assert->component('Auth/Login'));
 });
