@@ -19,6 +19,8 @@ test('logged in users cannot login again', function () {
 });
 
 test('guests can view the login page', function () {
+    $this->assertGuest();
+
     $response = $this->get(route('login'));
 
     $response->assertInertia(fn (AssertableInertia $assert) => $assert->component('Auth/Login'));

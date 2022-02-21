@@ -4,7 +4,7 @@ use App\Actions\UpdateBell;
 use App\Contracts\Actions\UpdatesBell;
 use App\Models\Bell;
 
-it('can update a bel', function () {
+it('can update a bell', function () {
     $bell = Bell::factory()->create(['threshold' => 10, 'active' => false]);
     $action = app(UpdateBell::class);
 
