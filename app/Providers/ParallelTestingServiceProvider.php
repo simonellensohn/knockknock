@@ -2,18 +2,18 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\QueryException;
-use Illuminate\Testing\Concerns\TestDatabases;
-use Illuminate\Support\Facades\ParallelTesting;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\ParallelTesting;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Testing\Concerns\TestDatabases;
 
 class ParallelTestingServiceProvider extends ServiceProvider
 {
@@ -52,7 +52,7 @@ class ParallelTestingServiceProvider extends ServiceProvider
             ];
 
             if (Arr::hasAny($uses, $databaseTraits) && ! ParallelTesting::option('without_databases')) {
-                $this->extraDatabases()->each(function ($connection) use ($token) {
+                $this->extraDatabases()->each(function ($connection) {
                     $database = config("database.connections.{$connection}.database");
 
                     [$testDatabase, $created] = $this->ensureTestDatabaseExists($database);
