@@ -14,6 +14,7 @@
 use Illuminate\Validation\ValidationException;
 
 uses(Tests\TestCase::class)->in('Feature');
+uses(Tests\TestCase::class)->in('Parallel');
 
 /*
 |--------------------------------------------------------------------------

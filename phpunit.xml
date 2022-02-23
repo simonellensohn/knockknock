@@ -5,11 +5,14 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
-        </testsuite>
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+<!--        <testsuite name="Unit">-->
+<!--            <directory suffix="Test.php">./tests/Unit</directory>-->
+<!--        </testsuite>-->
+<!--        <testsuite name="Feature">-->
+<!--            <directory suffix="Test.php">./tests/Feature</directory>-->
+<!--        </testsuite>-->
+        <testsuite name="Parallel">
+            <directory suffix="Test.php">./tests/Parallel</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
@@ -21,12 +24,15 @@
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>
-        <env name="DB_CONNECTION" value="sqlite"/>
-        <env name="DB_DATABASE" value=":memory:"/>
+<!--        <env name="DB_CONNECTION" value="sqlite"/>-->
+<!--        <env name="DB_DATABASE" value=":memory:"/>-->
+<!--        <env name="DB_CONNECTION" value="mysql"/>-->
+<!--        <env name="DB_DATABASE" value=":memory:"/>-->
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="TELESCOPE_CONNECTION" value="testing"/>
 
         <env name="HUE_CLIENT_ID" value="fake-client-id"/>
         <env name="HUE_CLIENT_SECRET" value="fake-client-secret"/>
@@ -34,5 +40,8 @@
         <env name="HUE_APP_ID" value="fake-app.id"/>
         <env name="HUE_APPLICATION_KEY" value="fake-application-key"/>
         <env name="HUE_USERNAME" value="fake-username"/>
+
+        <env name="RAY_ENABLED" value="true"/>
+        <env name="SEND_QUERIES_TO_RAY" value="false"/>
     </php>
 </phpunit>
