@@ -170,6 +170,7 @@ return [
          * Package Service Providers...
          */
         App\Services\Hue\HueServiceProvider::class,
+        App\Services\Google\GoogleServiceProvider::class,
 
         /*
          * Application Service Providers...
