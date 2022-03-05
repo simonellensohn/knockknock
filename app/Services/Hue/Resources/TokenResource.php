@@ -21,11 +21,11 @@ class TokenResource
         return $this->service;
     }
 
-    public function get(string $code = null, bool $refresh = true): OAuthToken
+    public function get(string $code = null): OAuthToken
     {
         $this->token ??= TokenFactory::make(readFromFile: true);
 
-        if ($this->token->isEmpty()) {
+        if ($code && $this->token->isEmpty()) {
             $this->token = $this->fetch($code);
         }
 
@@ -36,7 +36,7 @@ class TokenResource
         return $this->token;
     }
 
-    public function fetch(string $code = null): OAuthToken
+    public function fetch(string $code): OAuthToken
     {
         $request = $this->service->makeRequest(withToken: false);
 
