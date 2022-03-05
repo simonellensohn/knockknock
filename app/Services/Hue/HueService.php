@@ -32,7 +32,7 @@ class HueService
 
         if ($withToken) {
             $request->withToken(
-                $this->token()->get(refresh: false)->access_token
+                $this->token()->get()->access_token
             );
         }
 

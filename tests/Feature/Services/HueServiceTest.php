@@ -28,6 +28,9 @@ it('can build a new Hue Service', function (string $string) {
 })->with('strings');
 
 it('can create a Pending Request', function (string $string) {
+    Storage::fake('local');
+    Storage::put('hue.json', fixture('Hue/OAuthToken', decode: false));
+
     $service = new HueService(
         baseUrl: $string,
         appId: $string,
@@ -48,6 +51,9 @@ it('can resolve a Hue Service from the container', function () {
 });
 
 it('can create a Pending Request from the Resolved Service', function () {
+    Storage::fake('local');
+    Storage::put('hue.json', fixture('Hue/OAuthToken', decode: false));
+
     expect(
         resolve(HueService::class)->makeRequest()
     )->toBeInstanceOf(PendingRequest::class);
@@ -165,6 +171,8 @@ it('throws custom exception when refreshing a token', function () {
 })->expectException(HueRequestException::class);
 
 it('can fetch all lights', function () {
+    Storage::fake('local');
+    Storage::put('hue.json', fixture('Hue/OAuthToken', decode: false));
     $hue = resolve(HueService::class);
     HueService::fake([
         '/route/api/*/lights' => Http::response(
@@ -192,6 +200,8 @@ it('throws custom exception when fetching all lights', function () {
 })->expectException(HueRequestException::class);
 
 it('can blink all lights within a group', function () {
+    Storage::fake('local');
+    Storage::put('hue.json', fixture('Hue/OAuthToken', decode: false));
     $hue = resolve(HueService::class);
     HueService::fake([
         '/route/api/*/groups/*/action' => Http::response(status: Response::HTTP_OK),
@@ -212,6 +222,8 @@ it('throws custom exception when blinking all lights of a group', function () {
 })->expectException(HueRequestException::class);
 
 it('can link the bridge', function () {
+    Storage::fake('local');
+    Storage::put('hue.json', fixture('Hue/OAuthToken', decode: false));
     $hue = resolve(HueService::class);
     HueService::fake([
         '/route/api/0/config' => Http::response(status: Response::HTTP_OK),
@@ -232,6 +244,8 @@ it('throws custom exception when linking the bridge', function () {
 })->expectException(HueRequestException::class);
 
 it('can create a user', function () {
+    Storage::fake('local');
+    Storage::put('hue.json', fixture('Hue/OAuthToken', decode: false));
     $hue = resolve(HueService::class);
     HueService::fake([
         '/route/api' => Http::response(

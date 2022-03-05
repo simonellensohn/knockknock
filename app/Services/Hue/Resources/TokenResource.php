@@ -25,14 +25,12 @@ class TokenResource
     {
         $this->token ??= TokenFactory::make(readFromFile: true);
 
-        if ($refresh) {
-            if ($this->token->isEmpty()) {
-                $this->token = $this->fetch($code);
-            }
+        if ($this->token->isEmpty()) {
+            $this->token = $this->fetch($code);
+        }
 
-            if ($this->token->isExpired()) {
-                $this->token = $this->refresh($this->token);
-            }
+        if ($this->token->isExpired()) {
+            $this->token = $this->refresh($this->token);
         }
 
         return $this->token;
