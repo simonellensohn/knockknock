@@ -61,7 +61,7 @@ class TokenResource
         $response = $request->asForm()
             ->withBasicAuth($this->service->clientId, $this->service->clientSecret)
             ->post($this->service->baseUrl.'/v2/oauth2/token', [
-                'grant_type' => 'authorization_code',
+                'grant_type' => 'refresh_token',
                 'refresh_token' => $token->refresh_token,
             ]);
 
