@@ -7,7 +7,6 @@
     "require": {
         "php": "^8.1",
         "doctrine/dbal": "^3.2",
-        "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.5.2",
         "laravel-notification-channels/webpush": "^6.0",
@@ -21,17 +20,19 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",
-        "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.4",
         "laravel/sail": "^1.0.1",
+        "laravel/telescope": "^4.7",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "nunomaduro/larastan": "^2.0",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.1",
+        "pestphp/pest-plugin-mock": "^1.0",
         "pestphp/pest-plugin-parallel": "^1.0",
         "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0",
         "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
@@ -60,7 +61,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "config": {
