@@ -95,7 +95,7 @@ class User extends Authenticatable
     public function password(): Attribute
     {
         return new Attribute(
-            set: fn ($password) => Hash::needsRehash($password)
+            set: fn (string $password): string => Hash::needsRehash($password)
                 ? Hash::make($password)
                 : $password,
         );
@@ -104,7 +104,7 @@ class User extends Authenticatable
     public function name(): Attribute
     {
         return new Attribute(
-            get: fn () => $this->first_name.' '.$this->last_name,
+            get: fn (): string => $this->first_name.' '.$this->last_name,
         );
     }
 }

@@ -40,7 +40,7 @@ class LightResource
         $request = $this->service()->makeRequest();
 
         $response = $request->put(
-            url:'/groups/8/action',
+            url: '/groups/8/action',
             data: ['alert' => 'lselect'],
         );
 

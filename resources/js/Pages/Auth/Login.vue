@@ -1,3 +1,22 @@
+<script setup>
+import { Head, useForm } from '@inertiajs/inertia-vue3'
+import TextInput from '@/Shared/TextInput'
+import LoadingButton from '@/Shared/LoadingButton'
+import { inject } from 'vue'
+
+const route = inject('route')
+
+const form = useForm({
+  email: '',
+  password: '',
+  remember: false,
+})
+
+function login() {
+  form.post(route('login'))
+}
+</script>
+
 <template>
   <Head title="Login" />
   <div class="flex min-h-screen items-center justify-center bg-indigo-800 p-6">
@@ -21,31 +40,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Head } from '@inertiajs/inertia-vue3'
-import TextInput from '@/Shared/TextInput'
-import LoadingButton from '@/Shared/LoadingButton'
-
-export default {
-  components: {
-    Head,
-    LoadingButton,
-    TextInput,
-  },
-  data() {
-    return {
-      form: this.$inertia.form({
-        email: '',
-        password: '',
-        remember: false,
-      }),
-    }
-  },
-  methods: {
-    login() {
-      this.form.post(this.$route('login'))
-    },
-  },
-}
-</script>
