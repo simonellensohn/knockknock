@@ -8,7 +8,7 @@
             <Link class="mt-1" :href="route('dashboard')">
               <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-center text-4xl font-extrabold italic text-transparent">Fat Flat</span>
             </Link>
-            <dropdown class="md:hidden" placement="bottom-end">
+            <dropdown class="md:hidden" placement="bottom-end" aria-label="Toggle Navigation">
               <template #default>
                 <svg class="h-6 w-6 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
               </template>
@@ -20,7 +20,7 @@
             </dropdown>
           </div>
           <div class="md:text-md flex w-full items-center justify-end border-b bg-white p-4 text-sm md:px-12 md:py-0">
-            <dropdown class="mt-1" placement="bottom-end">
+            <dropdown class="mt-1" placement="bottom-end" aria-label="User Dropdown">
               <template #default>
                 <div class="group flex cursor-pointer select-none items-center">
                   <div class="mr-1 whitespace-nowrap text-gray-700 focus:text-indigo-600 group-hover:text-indigo-600">
