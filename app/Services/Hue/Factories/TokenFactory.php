@@ -17,14 +17,14 @@ class TokenFactory
             );
         }
 
-        $token = new OAuthToken(
-            name: data_get($attributes, 'username'),
-            access_token: data_get($attributes, 'access_token'),
-            access_token_expires_at: data_get($attributes, 'access_token_expires_at'),
-            expires_in: data_get($attributes, 'expires_in'),
-            refresh_token: data_get($attributes, 'refresh_token'),
-            token_type: data_get($attributes, 'token_type'),
-        );
+        $token = new OAuthToken(array_filter([
+            'name' => data_get($attributes, 'username'),
+            'access_token' => data_get($attributes, 'access_token'),
+            'access_token_expires_at' => data_get($attributes, 'access_token_expires_at'),
+            'expires_in' => data_get($attributes, 'expires_in'),
+            'refresh_token' => data_get($attributes, 'refresh_token'),
+            'token_type' => data_get($attributes, 'token_type'),
+        ]));
 
         if ($token->expires_in > 0 && blank($token->access_token_expires_at)) {
             $token->setExpirationDate();

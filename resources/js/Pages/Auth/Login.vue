@@ -2,6 +2,9 @@
 import { Head, useForm } from '@inertiajs/inertia-vue3'
 import TextInput from '@/Shared/TextInput'
 import LoadingButton from '@/Shared/LoadingButton'
+import { inject } from 'vue'
+
+const route = inject('route')
 
 const form = useForm({
   email: '',

@@ -6,7 +6,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': path.resolve('./resources/js'),
-      ziggy: path.resolve('vendor/tightenco/ziggy/src/js'),
+      ziggy: path.resolve('vendor/tightenco/ziggy/dist/vue'),
     },
     extensions: ['.js', '.vue', '.json'],
   },

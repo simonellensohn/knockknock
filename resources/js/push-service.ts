@@ -1,6 +1,6 @@
 export function registerServiceWorker(callback) {
   if (!('serviceWorker' in navigator)) {
-    debug('Service workers aren\'t supported in this browser.')
+    debug("Service workers aren't supported in this browser.")
 
     return
   }
@@ -10,7 +10,7 @@ export function registerServiceWorker(callback) {
 
 function initialiseServiceWorker() {
   if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
-    debug('Notifications aren\'t supported.')
+    debug("Notifications aren't supported.")
 
     return
   }
@@ -22,28 +22,26 @@ function initialiseServiceWorker() {
   }
 
   if (!('PushManager' in window)) {
-    debug('Push messaging isn\'t supported.')
+    debug("Push messaging isn't supported.")
 
     return
   }
 
   return navigator.serviceWorker.ready.then((registration) => {
-    return registration.pushManager
-      .getSubscription()
-      .catch((e) => {
-        debug('Error during getSubscription()', e)
-      })
+    return registration.pushManager.getSubscription().catch((e) => {
+      debug('Error during getSubscription()', e)
+    })
   })
 }
 
 interface SubscribeCallbacks {
-  onSuccess?: () => void,
-  onError?: () => void,
+  onSuccess?: () => void
+  onError?: () => void
 }
 
 interface PushSubscriptionOptions {
-  userVisibleOnly: boolean,
-  applicationServerKey?: Uint8Array,
+  userVisibleOnly: boolean
+  applicationServerKey?: Uint8Array
 }
 
 function subscribe(vapidPublicKey: string = null, callbacks: SubscribeCallbacks) {
