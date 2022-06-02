@@ -5,7 +5,7 @@
       <div class="md:flex md:h-screen md:flex-col">
         <div class="md:flex md:flex-shrink-0">
           <div class="flex items-center justify-between bg-indigo-900 px-6 py-4 md:w-56 md:flex-shrink-0 md:justify-center">
-            <Link class="mt-1" :href="$route('dashboard')">
+            <Link class="mt-1" :href="route('dashboard')">
               <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-center text-4xl font-extrabold italic text-transparent">Fat Flat</span>
             </Link>
             <dropdown class="md:hidden" placement="bottom-end">
@@ -33,7 +33,7 @@
               <template #dropdown>
                 <div class="mt-2 rounded bg-white py-2 text-sm shadow-xl">
                   <Link class="block px-6 py-2 hover:bg-indigo-500 hover:text-white" :href="`/users/${auth.user.id}/edit`">My Profile</Link>
-                  <Link class="block w-full px-6 py-2 text-left hover:bg-indigo-500 hover:text-white" :href="$route('logout')" method="delete" as="button">Logout</Link>
+                  <Link class="block w-full px-6 py-2 text-left hover:bg-indigo-500 hover:text-white" :href="route('logout')" method="delete" as="button">Logout</Link>
                 </div>
               </template>
             </dropdown>
