@@ -40,7 +40,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'versions' => [
                 'php' => PHP_VERSION,
-                'laravel' => \Illuminate\Foundation\Application::VERSION
+                'laravel' => \Illuminate\Foundation\Application::VERSION,
             ],
             'auth' => function () use ($request) {
                 return [
