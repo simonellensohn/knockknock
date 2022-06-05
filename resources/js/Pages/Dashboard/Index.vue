@@ -5,9 +5,15 @@
 
   <div class="mb-16 grid grid-cols-1 gap-3 sm:grid-cols-3">
     <div class="rounded border p-4 shadow-sm">
-      <Link href="/rings" class="flex items-center">
+      <Link
+        href="/rings"
+        class="flex items-center"
+      >
         <div class="mr-3 flex h-8 w-8 items-center justify-center rounded bg-indigo-500 shadow-inner">
-          <Icon name="bell" class="h-5 w-5 text-white" />
+          <Icon
+            name="bell"
+            class="h-5 w-5 text-white"
+          />
         </div>
 
         <div class="flex flex-col">
@@ -18,9 +24,15 @@
     </div>
 
     <div class="rounded border p-4 shadow-sm">
-      <Link href="/rings" class="flex items-center">
+      <Link
+        href="/rings"
+        class="flex items-center"
+      >
         <div class="mr-3 flex h-8 w-8 items-center justify-center rounded bg-indigo-500 shadow-inner">
-          <Icon name="volume-up" class="h-5 w-5 text-white" />
+          <Icon
+            name="volume-up"
+            class="h-5 w-5 text-white"
+          />
         </div>
 
         <div class="flex flex-col">
@@ -31,14 +43,24 @@
     </div>
 
     <div class="rounded border p-4 shadow-sm">
-      <Link href="/rings" class="flex items-center">
+      <Link
+        href="/rings"
+        class="flex items-center"
+      >
         <div class="mr-3 flex h-8 w-8 items-center justify-center rounded bg-indigo-500 shadow-inner">
-          <Icon name="clock" class="h-5 w-5 text-white" />
+          <Icon
+            name="clock"
+            class="h-5 w-5 text-white"
+          />
         </div>
 
         <div class="flex flex-col">
           <span class="text-xs font-semibold text-gray-500">Last Ring</span>
-          <time v-if="lastRing.date" :datetime="lastRing.date" :title="lastRing.date">{{ lastRing.readable }}</time>
+          <time
+            v-if="lastRing.date"
+            :datetime="lastRing.date"
+            :title="lastRing.date"
+          >{{ lastRing.readable }}</time>
           <span v-else>-</span>
         </div>
       </Link>
@@ -47,7 +69,11 @@
 
   <h2 class="mb-8 text-2xl font-bold">Push Notifications</h2>
 
-  <loading-button :loading="loading" class="mb-8 border p-4" @click="togglePush">
+  <loading-button
+    :loading="loading"
+    class="mb-8 border p-4"
+    @click="togglePush"
+  >
     {{ isPushEnabled ? 'Disable' : 'Enable' }}
   </loading-button>
 </template>

@@ -1,10 +1,28 @@
 <template>
   <div :class="$attrs.class">
-    <label v-if="props.label" class="form-label" :for="props.id">{{ props.label }}:</label>
+    <label
+      v-if="props.label"
+      class="form-label"
+      :for="props.id"
+    >{{ props.label }}:</label>
 
-    <input :id="props.id" ref="input" v-bind="{ ...$attrs, class: null }" class="form-input" :class="{ error: props.error }" :type="props.type" :value="props.modelValue" @input="emit('update:modelValue', $event.target.value)" />
+    <input
+      :id="props.id"
+      ref="input"
+      v-bind="{ ...$attrs, class: null }"
+      class="form-input"
+      :class="{ error: props.error }"
+      :type="props.type"
+      :value="props.modelValue"
+      @input="emit('update:modelValue', $event.target.value)"
+    >
 
-    <div v-if="props.error" class="form-error">{{ props.error }}</div>
+    <div
+      v-if="props.error"
+      class="form-error"
+    >
+      {{ props.error }}
+    </div>
   </div>
 </template>
 

@@ -15,17 +15,6 @@ module.exports = {
     semi: ['warn', 'never'],
     'comma-dangle': ['warn', 'always-multiline'],
     'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
-    'vue/html-self-closing': [
-      'warn',
-      {
-        html: {
-          void: 'always',
-          normal: 'always',
-          component: 'always',
-        },
-      },
-    ],
-    'vue/max-attributes-per-line': 'off',
     'vue/multi-word-component-names': 'off',
     'vue/no-reserved-component-names': 'off',
     'vue/no-v-html': 'off',

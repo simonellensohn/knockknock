@@ -20,29 +20,51 @@ const props = defineProps({
         <th class="px-6 pt-6 pb-4">Bell</th>
       </tr>
 
-      <tr v-for="ring in props.rings.data" :key="ring.id" class="focus-within:bg-gray-100 hover:bg-gray-100">
+      <tr
+        v-for="ring in props.rings.data"
+        :key="ring.id"
+        class="focus-within:bg-gray-100 hover:bg-gray-100"
+      >
         <td class="border-t">
-          <span class="flex items-center px-6 py-4 focus:text-indigo-500" :title="ring.created_at.date">
+          <span
+            class="flex items-center px-6 py-4 focus:text-indigo-500"
+            :title="ring.created_at.date"
+          >
             {{ ring.created_at.diff }}
           </span>
         </td>
         <td class="border-t">
-          <span class="flex items-center px-6 py-4" tabindex="-1">
+          <span
+            class="flex items-center px-6 py-4"
+            tabindex="-1"
+          >
             {{ ring.volume }}
           </span>
         </td>
         <td class="border-t">
-          <pre class="px-6 py-4" tabindex="-1" v-text="ring.events" />
+          <pre
+            class="px-6 py-4"
+            tabindex="-1"
+            v-text="ring.events"
+          />
         </td>
         <td class="border-t">
-          <span class="flex items-center px-6 py-4" tabindex="-1">
+          <span
+            class="flex items-center px-6 py-4"
+            tabindex="-1"
+          >
             {{ ring.bell.name }}
           </span>
         </td>
       </tr>
 
       <tr v-if="props.rings.data.length === 0">
-        <td class="border-t px-6 py-4" colspan="4">No recent rings found.</td>
+        <td
+          class="border-t px-6 py-4"
+          colspan="4"
+        >
+          No recent rings found.
+        </td>
       </tr>
     </table>
   </div>
