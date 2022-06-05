@@ -18,14 +18,15 @@ function store() {
 <template>
   <Head title="Create User" />
 
-  <h1 class="mb-8 text-3xl font-bold">
+  <h1 class="mb-8 flex text-3xl font-bold">
     <Link
       class="text-indigo-400 hover:text-indigo-600"
       href="/users"
     >
       Users
     </Link>
-    <span class="font-medium text-indigo-400">/</span>Create
+    <span class="font-medium text-indigo-400">/</span>
+    Create
   </h1>
 
   <div class="max-w-3xl overflow-hidden rounded-md bg-white shadow">

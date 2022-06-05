@@ -39,14 +39,15 @@ function deleteToken(token) {
   <Head :title="`${form.first_name} ${form.last_name}`" />
 
   <div class="mb-8 flex max-w-3xl justify-start">
-    <h1 class="text-3xl font-bold">
+    <h1 class="flex text-3xl font-bold">
       <Link
         class="text-indigo-400 hover:text-indigo-600"
         href="/users"
       >
         Users
       </Link>
-      <span class="font-medium text-indigo-400">/</span>{{ form.first_name }} {{ form.last_name }}
+      <span class="font-medium text-indigo-400">/</span>
+      {{ form.first_name }} {{ form.last_name }}
     </h1>
   </div>
 

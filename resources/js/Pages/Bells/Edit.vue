@@ -31,14 +31,15 @@ function destroy() {
   <Head :title="form.name" />
 
   <div class="mb-8 flex max-w-3xl justify-start">
-    <h1 class="text-3xl font-bold">
+    <h1 class="flex text-3xl font-bold">
       <Link
         class="text-indigo-400 hover:text-indigo-600"
         href="/bells"
       >
         Bells
       </Link>
-      <span class="mx-1 font-medium text-indigo-400">/</span>{{ form.name }}
+      <span class="mx-1 font-medium text-indigo-400">/</span>
+      {{ form.name }}
     </h1>
   </div>
 
