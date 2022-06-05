@@ -1,4 +1,4 @@
-<template layout="default">
+<template layout>
   <Head title="Dashboard" />
 
   <h1 class="mb-8 text-3xl font-bold">Stats</h1>
@@ -78,7 +78,7 @@
   </loading-button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link } from '@inertiajs/inertia-vue3'

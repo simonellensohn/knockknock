@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
 import TextInput from '@/views/components/TextInput.vue'
@@ -27,7 +27,7 @@ function destroy() {
 }
 </script>
 
-<template layout="default">
+<template layout>
   <Head :title="form.name" />
 
   <div class="mb-8 flex max-w-3xl justify-start">

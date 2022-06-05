@@ -42,8 +42,6 @@ const props = defineProps({
   },
 })
 
-props.placement.toString()
-
 const el = ref(null)
 const show = ref(false)
 const popper = ref(null)

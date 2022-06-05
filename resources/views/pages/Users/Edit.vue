@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Inertia } from '@inertiajs/inertia'
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
 import TextInput from '@/views/components/TextInput.vue'
@@ -35,7 +35,7 @@ function deleteToken(token) {
 }
 </script>
 
-<template layout="default">
+<template layout>
   <Head :title="`${form.first_name} ${form.last_name}`" />
 
   <div class="mb-8 flex max-w-3xl justify-start">

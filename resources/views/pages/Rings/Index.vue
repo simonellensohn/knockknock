@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Head } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
@@ -6,7 +6,7 @@ const props = defineProps({
 })
 </script>
 
-<template layout="default">
+<template layout>
   <Head title="Rings" />
 
   <h1 class="mb-8 text-3xl font-bold">Rings</h1>
