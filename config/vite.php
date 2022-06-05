@@ -15,7 +15,7 @@ return [
             'entrypoints' => [
                 'ssr' => 'resources/scripts/ssr.ts',
                 'paths' => [
-                    'resources/css/tailwind.css',
+                    'resources/css/app.css',
                     'resources/scripts/main.ts',
                     'resources/js/app.js',
                 ],

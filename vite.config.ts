@@ -24,7 +24,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./resources"),
     },
   },
-	optimizeDeps: {
-    include: ["ziggy"],
-  },
 })
