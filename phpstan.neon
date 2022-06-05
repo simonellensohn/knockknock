@@ -16,3 +16,6 @@ parameters:
     checkModelProperties: true
 
     checkOctaneCompatibility: true
+
+    ignoreErrors:
+        - '#App\\Models\\User\|null#'

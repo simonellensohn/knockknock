@@ -92,6 +92,9 @@ class User extends Authenticatable
         return $this->hasMany(Bell::class);
     }
 
+    /**
+     * @return Attribute<string, string>
+     */
     public function password(): Attribute
     {
         return new Attribute(
@@ -101,6 +104,9 @@ class User extends Authenticatable
         );
     }
 
+    /**
+     * @return Attribute<string, null>
+     */
     public function name(): Attribute
     {
         return new Attribute(
