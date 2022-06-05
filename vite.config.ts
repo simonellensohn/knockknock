@@ -1,0 +1,30 @@
+import { defineConfig } from 'vite'
+import tailwindcss from 'tailwindcss'
+import tailwindcssNesting from 'tailwindcss/nesting'
+import autoprefixer from 'autoprefixer'
+import laravel from 'vite-plugin-laravel'
+import vue from '@vitejs/plugin-vue'
+import inertia from './resources/scripts/vite/inertia-layout'
+import path from 'path'
+
+export default defineConfig({
+  plugins: [
+    inertia(),
+    vue(),
+    laravel({
+      postcss: [
+        tailwindcssNesting(),
+        tailwindcss(),
+        autoprefixer(),
+      ],
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './resources'),
+      '@components': path.resolve(__dirname, './resources/views/components'),
+      '@layouts': path.resolve(__dirname, './resources/views/layouts'),
+      '@pages': path.resolve(__dirname, './resources/views/pages'),
+    },
+  },
+})

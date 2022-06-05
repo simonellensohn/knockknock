@@ -25,7 +25,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function version(Request $request)
     {
-        return parent::version($request);
+        return vite()->getHash();
     }
 
     /**
@@ -38,6 +38,10 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
+            'versions' => [
+                'php' => PHP_VERSION,
+                'laravel' => \Illuminate\Foundation\Application::VERSION,
+            ],
             'auth' => function () use ($request) {
                 return [
                     'user' => $request->user() ? [

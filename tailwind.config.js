@@ -1,5 +1,9 @@
 module.exports = {
-  content: ['resources/**/*.{js,vue,blade.php}'],
+  content: [
+    './resources/**/*.blade.php',
+    './resources/**/*.ts',
+    './resources/**/*.vue',
+  ],
   theme: {
     extend: {},
   },
