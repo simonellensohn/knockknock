@@ -2,7 +2,7 @@ import { createApp, h } from 'vue'
 import { InertiaProgress } from '@inertiajs/progress'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { importPageComponent } from '@/scripts/vite/import-page-component'
-import { ZiggyVue } from 'ziggy';
+import { ZiggyVue } from 'ziggy-js/dist/vue';
 
 InertiaProgress.init()
 
