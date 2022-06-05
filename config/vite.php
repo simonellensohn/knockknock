@@ -17,7 +17,6 @@ return [
                 'paths' => [
                     'resources/css/app.css',
                     'resources/scripts/main.ts',
-                    'resources/js/app.js',
                 ],
                 'ignore' => '/\\.(d\\.ts|json)$/',
             ],
@@ -30,7 +29,7 @@ return [
                 'key' => env('DEV_SERVER_KEY'),
                 'cert' => env('DEV_SERVER_CERT'),
             ],
-            'build_path' => 'build',
+            'build_path' => 'build/client',
         ],
     ],
 

@@ -3,8 +3,8 @@
     "scripts": {
         "dev": "vite",
         "dev:ssr": "node public/build/ssr.js",
-        "build": "vite build",
-        "build:ssr": "vite build --ssr",
+        "build": "vite build --outDir public/build/client",
+        "build:ssr": "vite build --ssr --outDir public/build/server",
         "fix:eslint": "eslint --ext .js,.vue resources --fix",
         "fix:prettier": "prettier --write --loglevel warn 'resources/js/**/*.{vue,ts,js}'",
         "fix-code-style": "npm run fix:prettier && npm run fix:eslint"

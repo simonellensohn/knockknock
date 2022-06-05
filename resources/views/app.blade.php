@@ -6,6 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="Knock knock - Who's there? Is someone knocking?">
     @vite
+    @inertiaHead
   </head>
   <body>
     @inertia
