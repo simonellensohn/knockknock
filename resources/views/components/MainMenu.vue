@@ -44,7 +44,7 @@
 
 <script setup>
 import { Link, usePage } from '@inertiajs/inertia-vue3'
-import Icon from '@/Shared/Icon'
+import Icon from '@/views/components/Icon.vue'
 
 const page = usePage()
 

@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { Head, useForm } from '@inertiajs/inertia-vue3'
-import TextInput from '@/Shared/TextInput'
-import LoadingButton from '@/Shared/LoadingButton'
+import TextInput from '@/views/components/TextInput.vue'
+import LoadingButton from '@/views/components/LoadingButton.vue'
 import { inject } from 'vue'
 
 const route = inject('route')
@@ -17,7 +17,7 @@ function login() {
 }
 </script>
 
-<template>
+<template layout="guest">
   <Head title="Login" />
 
   <div class="flex min-h-screen items-center justify-center bg-indigo-800 p-6">

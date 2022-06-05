@@ -1,13 +1,13 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3'
-import Icon from '@/Shared/Icon'
+import Icon from '@/views/components/Icon.vue'
 
 const props = defineProps({
   users: Object,
 })
 </script>
 
-<template>
+<template layout="default">
   <Head title="Users" />
 
   <h1 class="mb-8 text-3xl font-bold">Users</h1>

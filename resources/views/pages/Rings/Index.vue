@@ -6,7 +6,7 @@ const props = defineProps({
 })
 </script>
 
-<template>
+<template layout="default">
   <Head title="Rings" />
 
   <h1 class="mb-8 text-3xl font-bold">Rings</h1>

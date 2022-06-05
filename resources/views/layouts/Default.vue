@@ -1,9 +1,12 @@
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3'
-import Icon from '@/Shared/Icon'
-import Dropdown from '@/Shared/Dropdown'
-import MainMenu from '@/Shared/MainMenu'
-import FlashMessages from '@/Shared/FlashMessages'
+import Icon from '@/views/components/Icon.vue'
+import Dropdown from '@/views/components/Dropdown.vue'
+import MainMenu from '@/views/components/MainMenu.vue'
+import FlashMessages from '@/views/components/FlashMessages.vue'
+import { inject } from 'vue'
+
+const route = inject('route')
 
 const props = defineProps({
   auth: Object,

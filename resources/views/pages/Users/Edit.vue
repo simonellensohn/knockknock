@@ -1,8 +1,8 @@
 <script setup>
-import TextInput from '@/Shared/TextInput'
-import LoadingButton from '@/Shared/LoadingButton'
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
 import { Inertia } from '@inertiajs/inertia'
+import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
+import TextInput from '@/views/components/TextInput.vue'
+import LoadingButton from '@/views/components/LoadingButton.vue'
 
 const props = defineProps({
   auth: Object,
@@ -35,7 +35,7 @@ function deleteToken(token) {
 }
 </script>
 
-<template>
+<template layout="default">
   <Head :title="`${form.first_name} ${form.last_name}`" />
 
   <div class="mb-8 flex max-w-3xl justify-start">

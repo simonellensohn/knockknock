@@ -1,8 +1,8 @@
 <script setup>
-import { Head, Link } from '@inertiajs/inertia-vue3'
-import Icon from '@/Shared/Icon'
-import LoadingButton from '../../Shared/LoadingButton.vue'
 import { Inertia } from '@inertiajs/inertia'
+import { Head, Link } from '@inertiajs/inertia-vue3'
+import Icon from '@/views/components/Icon.vue'
+import LoadingButton from '@/views/components/LoadingButton.vue'
 
 const props = defineProps({
   bells: Object,
@@ -15,7 +15,7 @@ function toggleBells() {
 }
 </script>
 
-<template>
+<template layout="default">
   <Head title="Bells" />
 
   <h1 class="mb-8 text-3xl font-bold">Bells</h1>

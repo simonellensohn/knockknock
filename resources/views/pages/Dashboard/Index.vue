@@ -1,4 +1,4 @@
-<template>
+<template layout="default">
   <Head title="Dashboard" />
 
   <h1 class="mb-8 text-3xl font-bold">Stats</h1>
@@ -79,11 +79,11 @@
 </template>
 
 <script setup>
-import { Head, Link } from '@inertiajs/inertia-vue3'
-import LoadingButton from '@/Shared/LoadingButton'
-import Icon from '@/Shared/Icon'
 import { onMounted, ref } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
+import { Head, Link } from '@inertiajs/inertia-vue3'
+import Icon from '@/views/components/Icon.vue'
+import LoadingButton from '@/views/components/LoadingButton.vue'
 
 const props = defineProps({
   auth: Object,

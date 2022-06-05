@@ -1,7 +1,7 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
-import TextInput from '@/Shared/TextInput'
-import LoadingButton from '@/Shared/LoadingButton'
+import TextInput from '@/views/components/TextInput.vue'
+import LoadingButton from '@/views/components/LoadingButton.vue'
 
 const form = useForm({
   first_name: '',
@@ -15,7 +15,7 @@ function store() {
 }
 </script>
 
-<template>
+<template layout="default">
   <Head title="Create User" />
 
   <h1 class="mb-8 flex text-3xl font-bold">
