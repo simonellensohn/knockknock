@@ -1,14 +1,11 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended'],
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 2020,
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2021,
     sourceType: 'module',
   },
-  env: {
-    amd: true,
-    browser: true,
-    es6: true,
-  },
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended'],
   rules: {
     indent: ['error', 2],
     quotes: ['warn', 'single'],

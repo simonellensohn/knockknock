@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Link } from '@inertiajs/inertia-vue3'
 import Icon from '@/views/components/Icon.vue'
 import Dropdown from '@/views/components/Dropdown.vue'

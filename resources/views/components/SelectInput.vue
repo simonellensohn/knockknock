@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { v4 as uuid } from 'uuid'
 import { ref, watch } from 'vue'
 
@@ -22,7 +22,7 @@ watch(selected, (selected) => {
 })
 </script>
 
-<script>
+<script lang="ts">
 export default {
   inheritAttrs: false,
 }

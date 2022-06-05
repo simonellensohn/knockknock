@@ -27,7 +27,7 @@
   </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { createPopper } from '@popperjs/core'
 import { nextTick, onMounted, ref, watch } from 'vue'
 
@@ -41,6 +41,8 @@ const props = defineProps({
     default: true,
   },
 })
+
+props.placement.toString()
 
 const el = ref(null)
 const show = ref(false)

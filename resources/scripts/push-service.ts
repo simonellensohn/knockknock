@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 export function registerServiceWorker(callback) {
   if (!('serviceWorker' in navigator)) {
-    debug("Service workers aren't supported in this browser.")
+    debug('Service workers aren\'t supported in this browser.')
 
     return
   }
@@ -10,7 +12,7 @@ export function registerServiceWorker(callback) {
 
 function initialiseServiceWorker() {
   if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
-    debug("Notifications aren't supported.")
+    debug('Notifications aren\'t supported.')
 
     return
   }
@@ -22,7 +24,7 @@ function initialiseServiceWorker() {
   }
 
   if (!('PushManager' in window)) {
-    debug("Push messaging isn't supported.")
+    debug('Push messaging isn\'t supported.')
 
     return
   }
@@ -143,9 +145,5 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 function debug(message: string): void {
-  if (process.env.NODE_ENV === 'production') {
-    return
-  }
-
   console.log(message)
 }

@@ -26,13 +26,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   inheritAttrs: false,
 }
 </script>
 
-<script setup>
+<script setup lang="ts">
 import { v4 as uuid } from 'uuid'
 import { ref } from 'vue'
 

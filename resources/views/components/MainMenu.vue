@@ -42,7 +42,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Link, usePage } from '@inertiajs/inertia-vue3'
 import Icon from '@/views/components/Icon.vue'
 
