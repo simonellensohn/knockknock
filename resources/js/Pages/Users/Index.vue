@@ -1,3 +1,12 @@
+<script setup>
+import { Head, Link } from '@inertiajs/inertia-vue3'
+import Icon from '@/Shared/Icon'
+
+const props = defineProps({
+  users: Object,
+})
+</script>
+
 <template>
   <div>
     <Head title="Users" />
@@ -15,7 +24,7 @@
           <th class="px-6 pt-6 pb-4">Email</th>
           <th class="px-6 pt-6 pb-4" colspan="2">Role</th>
         </tr>
-        <tr v-for="user in users.data" :key="user.id" class="focus-within:bg-gray-100 hover:bg-gray-100">
+        <tr v-for="user in props.users.data" :key="user.id" class="focus-within:bg-gray-100 hover:bg-gray-100">
           <td class="border-t">
             <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/users/${user.id}/edit`">
               <img v-if="user.photo" class="-my-2 mr-2 block h-5 w-5 rounded-full" :src="user.photo" />
@@ -39,28 +48,10 @@
             </Link>
           </td>
         </tr>
-        <tr v-if="users.length === 0">
+        <tr v-if="props.users.data.length === 0">
           <td class="border-t px-6 py-4" colspan="4">No users found.</td>
         </tr>
       </table>
     </div>
   </div>
 </template>
-
-<script>
-import { Head, Link } from '@inertiajs/inertia-vue3'
-import Icon from '@/Shared/Icon'
-import Layout from '@/Shared/Layout'
-
-export default {
-  components: {
-    Head,
-    Icon,
-    Link,
-  },
-  layout: Layout,
-  props: {
-    users: Object,
-  },
-}
-</script>
