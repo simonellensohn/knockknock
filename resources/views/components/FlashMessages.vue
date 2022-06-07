@@ -12,7 +12,7 @@ if (page.props.flash) {
 
 <template>
   <div
-    v-if="page.props.flash.success && show"
+    v-if="show && page.props.flash && page.props.flash.success"
     class="mb-8 flex max-w-3xl items-center justify-between rounded bg-green-500"
   >
     <div class="flex items-center">

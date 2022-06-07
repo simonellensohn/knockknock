@@ -44,6 +44,9 @@ return [
     */
     'aliases' => [
         '@' => 'resources',
+        '@components' => 'resources/views/components',
+        '@layouts' => 'resources/views/layouts',
+        '@pages' => 'resources/views/pages',
     ],
 
     /*
