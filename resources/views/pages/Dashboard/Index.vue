@@ -60,7 +60,9 @@
             v-if="lastRing.date"
             :datetime="lastRing.date"
             :title="lastRing.date"
-          >{{ lastRing.readable }}</time>
+          >
+            {{ lastRing.readable }}
+          </time>
           <span v-else>-</span>
         </div>
       </Link>
@@ -149,11 +151,9 @@ function initialiseServiceWorker() {
 
 function subscribe() {
   navigator.serviceWorker.ready.then((registration) => {
-    const options = { userVisibleOnly: true }
-    const vapidPublicKey = props.auth.vapidPublicKey
-
-    if (vapidPublicKey) {
-      options.applicationServerKey = urlBase64ToUint8Array(vapidPublicKey)
+    const options = {
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(props.auth?.vapidPublicKey),
     }
 
     registration.pushManager
@@ -241,21 +241,12 @@ function deleteSubscription(subscription) {
 
   Inertia.delete(
     '/user/push/subscriptions/delete',
-    { endpoint: subscription.endpoint },
     {
+      endpoint: subscription.endpoint,
       onFinish: () => (loading.value = false),
     },
   )
 }
-
-// function sendNotification() {
-//   loading.value = true
-//
-//   Inertia.post('/api/notifications', {
-//     onFinish: () => (loading.value = false),
-//     onError: (error) => console.log(error),
-//   })
-// }
 
 /**
  * https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/app/Resources/public/js/app.js#L177

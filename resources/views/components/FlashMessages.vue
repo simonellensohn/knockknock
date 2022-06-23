@@ -48,7 +48,7 @@ if (page.props.flash) {
   </div>
 
   <div
-    v-if="(page.props.flash.error || Object.keys(page.props.errors).length > 0) && show"
+    v-if="show && page.props.flash && (page.props.flash.error || Object.keys(page.props.errors).length > 0)"
     class="mb-8 flex max-w-3xl items-center justify-between rounded bg-red-500"
   >
     <div class="flex items-center">
