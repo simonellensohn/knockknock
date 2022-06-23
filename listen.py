@@ -6,12 +6,15 @@ import sounddevice as sd
 
 
 bells = []
-duration = 1
-setsToCheckFor = 3
+ringDuration = 3000
+volumeSetDuration = 250
+minVolumeThreshold = 3
+sleepDurationAfterRing = 10000
+volumeSetsToCheck = np.round(ringDuration / volumeSetDuration)
 events = []
 averages = []
 baseUrl = 'https://knockknock.test/api'
-accessToken = '1|F1UAuiR5XDfsqKq0nV96n7EDh2I3vsUUVusMkWAW'
+accessToken = ''
 requestHeaders = {
     'Accept': 'application/json',
     'Authorization': 'Bearer ' + accessToken,
@@ -47,7 +50,7 @@ def audio_callback(indata, frames, time, status):
 
 def listen_for_doorbell():
     with sd.InputStream(callback=audio_callback):
-        sd.sleep(int(duration * 1000))
+        sd.sleep(int(volumeSetDuration))
 
 
 def average_of_last_events():
@@ -84,13 +87,22 @@ set_volume_range()
 while True:
     listen_for_doorbell()
 
-    if (len(averages) >= setsToCheckFor):
+    if (len(averages) >= volumeSetsToCheck):
         averages.pop(0)
 
     volume = average_of_last_events()
+
+    # Reset the averages if the volume is below a threshold where
+    # a.) nothing is happening or
+    # b.) the volume is lower than any tone of the bell
+    if (volume < minVolumeThreshold):
+        averages = []
+        events = []
+        continue
+
     averages.append(volume)
 
-    if (len(averages) < setsToCheckFor):
+    if (len(averages) < volumeSetsToCheck):
         continue
 
     average = np.average(averages)
@@ -103,4 +115,4 @@ while True:
 
         averages = []
 
-        time.sleep(5)
+        time.sleep(sleepDurationAfterRing / 1000)
