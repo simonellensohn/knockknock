@@ -1,37 +1,37 @@
 {
-    "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "strict": true,
-        "jsx": "preserve",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "lib": [
-            "esnext",
-            "dom"
-        ],
-        "types": [
-            "vite/client"
-        ],
-        "baseUrl": ".",
-        "paths": {
-            "@/*": [
-                "resources/*"
-            ],
-            "@components/*": [
-                "resources/views/components/*"
-            ],
-            "@layouts/*": [
-                "resources/views/layouts*"
-            ],
-            "@pages/*": [
-                "resources/views/pages/*"
-            ]
-        }
-    },
-    "include": [
-        "resources/**/*"
-    ]
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "vite/client"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "resources/*"
+      ],
+      "@components/*": [
+        "resources/views/components/*"
+      ],
+      "@layouts/*": [
+        "resources/views/layouts*"
+      ],
+      "@pages/*": [
+        "resources/views/pages/*"
+      ]
+    }
+  },
+  "include": [
+    "resources/**/*"
+  ]
 }

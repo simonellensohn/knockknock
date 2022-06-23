@@ -22,7 +22,11 @@ function login() {
 
   <div class="flex min-h-screen items-center justify-center bg-indigo-800 p-6">
     <div class="w-full max-w-md">
-      <h1 class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-center text-7xl font-extrabold italic text-transparent">Fat Flat</h1>
+      <h1
+        class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-center text-7xl font-extrabold italic text-transparent"
+      >
+        Fat Flat
+      </h1>
 
       <form
         class="mt-8 overflow-hidden rounded-lg bg-white shadow-xl"

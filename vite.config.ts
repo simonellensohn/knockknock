@@ -12,11 +12,7 @@ export default defineConfig({
     inertia(),
     vue(),
     laravel({
-      postcss: [
-        tailwindcssNesting(),
-        tailwindcss(),
-        autoprefixer(),
-      ],
+      postcss: [tailwindcssNesting(), tailwindcss(), autoprefixer()],
     }),
   ],
   resolve: {

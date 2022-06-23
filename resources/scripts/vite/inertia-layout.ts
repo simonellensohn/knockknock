@@ -15,12 +15,14 @@ export default (layouts = '@/views/layouts/'): Plugin => ({
     return code.replace(
       TEMPLATE_LAYOUT_REGEX,
       (_, layoutName: string | null) => `
-			<script${isTypeScript ? ' lang="ts"' : ''}>
-			import layout from '${layouts}${layoutName ? layoutName[0].toUpperCase() + layoutName.slice(1) : 'Default'}.vue'
-			export default { layout }
-			</script>
-			<template>
-		`,
+          <script${isTypeScript ? ' lang="ts"' : ''}>
+            import layout from '${layouts}${
+    layoutName ? layoutName[0].toUpperCase() + layoutName.slice(1) : 'Default'
+  }.vue'
+            export default { layout }
+          </script>
+        <template>
+      `,
     )
   },
 })

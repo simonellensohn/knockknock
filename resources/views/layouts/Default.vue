@@ -19,12 +19,16 @@ const props = defineProps({
   <div class="md:flex md:flex-col">
     <div class="md:flex md:h-screen md:flex-col">
       <div class="md:flex md:flex-shrink-0">
-        <div class="flex items-center justify-between bg-indigo-900 px-6 py-4 md:w-56 md:flex-shrink-0 md:justify-center">
+        <div
+          class="flex items-center justify-between bg-indigo-900 px-6 py-4 md:w-56 md:flex-shrink-0 md:justify-center"
+        >
           <Link
             class="mt-1"
             :href="route('dashboard')"
           >
-            <span class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-center text-4xl font-extrabold italic text-transparent">Fat Flat</span>
+            <span
+              class="bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-center text-4xl font-extrabold italic text-transparent"
+            >Fat Flat</span>
           </Link>
 
           <Dropdown
@@ -37,7 +41,9 @@ const props = defineProps({
                 class="h-6 w-6 fill-white"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
-              ><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
+              >
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              </svg>
             </template>
 
             <template #dropdown>
