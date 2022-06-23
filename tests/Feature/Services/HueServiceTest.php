@@ -282,7 +282,6 @@ it('can create a new light resource manually', function () {
     )
         ->toBeInstanceOf(LightResource::class)
         ->service()->toEqual($service);
-
 });
 
 it('can create a new token resource manually', function () {

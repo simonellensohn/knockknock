@@ -12,7 +12,8 @@ class LightResource
 {
     public function __construct(
         private readonly HueService $service,
-    ) {}
+    ) {
+    }
 
     public function service(): HueService
     {

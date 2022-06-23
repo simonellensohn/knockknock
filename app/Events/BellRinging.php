@@ -14,5 +14,6 @@ class BellRinging
     public function __construct(
         public Bell $bell,
         public Ring $ring
-    ) {}
+    ) {
+    }
 }

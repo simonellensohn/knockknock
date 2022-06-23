@@ -5,11 +5,11 @@ on:
     paths:
       - '**.php'
       - 'composer.lock'
-      - '.php-cs-fixer.dist.php'
-      - '.github/workflows/php-cs-fixer.yml'
+      - 'pint.json'
+      - '.github/workflows/pint.yml'
 
 jobs:
-  php-cs-fixer:
+  pint:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,10 +18,10 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Run PHP CS Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
+      - name: Run pint
+        uses: whobutsb/laravel-pint-action@main
         with:
-          args: --config=.php-cs-fixer.dist.php --allow-risky=yes
+          preset: laravel
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4

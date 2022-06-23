@@ -20,7 +20,8 @@ class HueService
         public readonly string $clientSecret,
         public readonly string $username,
         public readonly int $timeout = 10,
-    ) {}
+    ) {
+    }
 
     public function makeRequest(bool $withToken = true): PendingRequest
     {

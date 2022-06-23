@@ -9,7 +9,8 @@ class BlinkHueLights
 {
     public function __construct(
         public HueService $service
-    ) {}
+    ) {
+    }
 
     public function handle(BellRinging $event): void
     {

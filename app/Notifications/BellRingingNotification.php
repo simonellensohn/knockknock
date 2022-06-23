@@ -15,7 +15,8 @@ class BellRingingNotification extends Notification
 
     public function __construct(
         public Ring $ring
-    ) {}
+    ) {
+    }
 
     public function via(User $notifiable): array
     {
