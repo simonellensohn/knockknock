@@ -24,7 +24,7 @@ def fetch_bell(id):
     response = requests.get(baseUrl + '/bells' +
                             str(id), headers=requestHeaders)
 
-    bell = response.json().get('data')
+    return response.json().get('data')
 
 
 def audio_callback(indata, frames, time, status):
@@ -41,9 +41,9 @@ def average_of_last_events():
     return sum(events) / len(events)
 
 
-def post_ring(bellId, volume, events):
+def post_ring(volume, events):
     requests.post(
-        baseUrl + '/bells/' + str(bellId) + '/ring',
+        baseUrl + '/bells/' + str(bell.get('id')) + '/ring',
         json={'volume': volume, 'events': events},
         headers=requestHeaders,
     )
@@ -70,10 +70,11 @@ def set_is_fluctuating(volumes):
     return False
 
 
-fetch_bell(bell.get('id'))
+bell = fetch_bell(bell.get('id'))
 
 minRange = bell.get('min_volume')
 maxRange = bell.get('maxn_volume')
+
 
 while True:
     listen_for_doorbell()
@@ -100,7 +101,7 @@ while True:
     events = []
 
     if (average >= minRange and not set_is_fluctuating(averages)):
-        post_ring(bell.get('id'), average, averages)
+        post_ring(average, averages)
 
         averages = []
 
