@@ -19,9 +19,11 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Run pint
-        uses: whobutsb/laravel-pint-action@main
+        uses: aglipanci/laravel-pint-action@0.1.0
         with:
           preset: laravel
+          verboseMode: true
+          testMode: true
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4

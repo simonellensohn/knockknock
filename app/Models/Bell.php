@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Ring[] $rings
  * @property-read int|null $rings_count
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Database\Factories\BellFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Bell newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Bell newQuery()

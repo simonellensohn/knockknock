@@ -1,6 +1,3 @@
 {
-    "preset": "laravel",
-    "exclude": [
-        "node_modules"
-    ]
+    "preset": "laravel"
 }
