@@ -21,7 +21,7 @@ requestHeaders = {
 
 
 def fetch_bell(id):
-    response = requests.get(baseUrl + '/bells' +
+    response = requests.get(baseUrl + '/bells/' +
                             str(id), headers=requestHeaders)
 
     return response.json().get('data')
