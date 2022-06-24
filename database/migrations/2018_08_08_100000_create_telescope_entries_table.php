@@ -8,39 +8,19 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTelescopeEntriesTable extends Migration
 {
-    /**
-     * The database schema.
-     *
-     * @var Builder
-     */
-    protected $schema;
+    protected Builder $schema;
 
-    /**
-     * Create a new migration instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->schema = Schema::connection($this->getConnection());
     }
 
-    /**
-     * Get the migration connection name.
-     *
-     * @return string|null
-     */
-    public function getConnection()
+    public function getConnection(): string
     {
         return config('telescope.storage.database.connection');
     }
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         if (App::runningUnitTests()) {
             return;
@@ -79,21 +59,5 @@ class CreateTelescopeEntriesTable extends Migration
         $this->schema->create('telescope_monitoring', function (Blueprint $table) {
             $table->string('tag');
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        if (App::runningUnitTests()) {
-            return;
-        }
-
-        $this->schema->dropIfExists('telescope_entries_tags');
-        $this->schema->dropIfExists('telescope_entries');
-        $this->schema->dropIfExists('telescope_monitoring');
     }
 }
