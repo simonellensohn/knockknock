@@ -18,11 +18,17 @@ class UpdateBell implements UpdatesBell
                 'max:50',
                 Rule::unique('bells')->ignoreModel($bell),
             ],
-            'threshold' => [
+            'min_volume' => [
                 'required',
                 'numeric',
                 'between:1,100',
-                Rule::unique('bells')->ignoreModel($bell),
+                'lt:max_volume',
+            ],
+            'max_volume' => [
+                'required',
+                'numeric',
+                'between:1,100',
+                'gt:min_volume',
             ],
             'active' => [
                 'required',

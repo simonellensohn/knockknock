@@ -13,7 +13,8 @@ class BellFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'threshold' => $this->faker->randomFloat(2, 1, 10),
+            'min_volume' => $this->faker->randomFloat(2, 1, 10),
+            'max_volume' => $this->faker->randomFloat(2, 1, 10),
             'user_id' => User::factory(),
         ];
     }

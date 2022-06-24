@@ -44,14 +44,16 @@ test('users can create a new bell', function () {
 
     $response = $this->actingAs($user)->post(route('bells.store'), [
         'name' => '::name::',
-        'threshold' => 10,
+        'min_volume' => 5,
+        'max_volume' => 10,
     ]);
 
     $response->assertRedirect(route('bells.index'));
     expect(Bell::query()->latest()->first())
         ->user_id->toBe($user->id)
         ->name->toBe('::name::')
-        ->threshold->toBe(10.0);
+        ->min_volume->toBe(5.0)
+        ->max_volume->toBe(10.0);
 })->shouldHaveCalledAction(CreatesBell::class);
 
 test('guests cannot view the edit form', function () {
@@ -82,7 +84,8 @@ test('users can update an existing bell', function () {
         ->from(route('bells.edit', $bell))
         ->put(route('bells.update', $bell), [
             'name' => '::name::',
-            'threshold' => 10,
+            'min_volume' => 5,
+            'max_volume' => 10,
             'active' => true,
         ]);
 
@@ -90,7 +93,8 @@ test('users can update an existing bell', function () {
     expect($bell->fresh())
         ->user_id->not->toBe($user->id)
         ->name->toBe('::name::')
-        ->threshold->toBe(10.0)
+        ->min_volume->toBe(5.0)
+        ->max_volume->toBe(10.0)
         ->active->toBeTrue();
 })->shouldHaveCalledAction(UpdatesBell::class);
 

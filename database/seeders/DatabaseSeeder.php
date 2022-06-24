@@ -26,12 +26,14 @@ class DatabaseSeeder extends Seeder
 
         Bell::factory()->for($user)->create([
             'name' => 'Main door',
-            'threshold' => 10,
+            'min_volume' => 9,
+            'max_volume' => 11,
         ]);
 
         Bell::factory()->for($user)->create([
             'name' => 'Apartment door',
-            'threshold' => 7,
+            'min_volume' => 5,
+            'max_volume' => 7,
         ]);
     }
 }

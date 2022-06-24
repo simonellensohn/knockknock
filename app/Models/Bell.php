@@ -14,7 +14,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $id
  * @property int $user_id
  * @property string $name
- * @property float $threshold
+ * @property float $min_volume
+ * @property float $max_volume
  * @property bool $active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -29,8 +30,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereMaxVolume($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bell whereMinVolume($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Bell whereThreshold($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereUserId($value)
  * @mixin \Eloquent
@@ -41,7 +43,8 @@ class Bell extends Model
 
     public $casts = [
         'active' => 'boolean',
-        'threshold' => 'float',
+        'min_volume' => 'float',
+        'max_volume' => 'float',
     ];
 
     /**

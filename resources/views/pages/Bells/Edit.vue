@@ -12,7 +12,8 @@ const props = defineProps({
 const form = useForm({
   _method: 'put',
   name: props.bell.data.name,
-  threshold: props.bell.data.threshold,
+  min_volume: props.bell.data.min_volume,
+  max_volume: props.bell.data.max_volume,
   active: props.bell.data.active,
 })
 
@@ -53,10 +54,16 @@ function destroy() {
           label="Name"
         />
         <text-input
-          v-model="form.threshold"
-          :error="form.errors.threshold"
+          v-model="form.min_volume"
+          :error="form.errors.min_volume"
           class="w-full pb-8 pr-6 lg:w-1/2"
-          label="Threshold"
+          label="Min Volume"
+        />
+        <text-input
+          v-model="form.max_volume"
+          :error="form.errors.max_volume"
+          class="w-full pb-8 pr-6 lg:w-1/2"
+          label="Max Volume"
         />
         <select-input
           v-model="form.active"

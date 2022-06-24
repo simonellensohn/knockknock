@@ -13,7 +13,8 @@ class BellResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'threshold' => $this->threshold,
+            'min_volume' => $this->min_volume,
+            'max_volume' => $this->max_volume,
             'active' => $this->active,
             'rings_count' => $this->when($this->rings_count !== null, $this->rings_count),
         ];

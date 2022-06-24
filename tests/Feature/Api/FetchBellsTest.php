@@ -24,7 +24,8 @@ it('authenticated users can fetch all bells', function () {
             $json->whereAllType([
                 'id' => 'integer',
                 'name' => 'string',
-                'threshold' => 'integer|double',
+                'min_volume' => 'integer|double',
+                'max_volume' => 'integer|double',
                 'active' => 'boolean',
             ]);
         });

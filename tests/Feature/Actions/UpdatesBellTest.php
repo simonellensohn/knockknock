@@ -5,24 +5,35 @@ use App\Contracts\Actions\UpdatesBell;
 use App\Models\Bell;
 
 it('can update a bell', function () {
-    $bell = Bell::factory()->create(['threshold' => 10, 'active' => false]);
+    $bell = Bell::factory()->create([
+        'min_volume' => 5,
+        'max_volume' => 10,
+        'active' => false,
+    ]);
     $action = app(UpdateBell::class);
 
     $bell = $action($bell, [
         'name' => '::name::',
-        'threshold' => 5,
+        'min_volume' => 1,
+        'max_volume' => 3,
         'active' => true,
     ]);
 
     expect($bell)
         ->name->toBe('::name::')
-        ->threshold->toBe(5.0)
+        ->min_volume->toBe(1.0)
+        ->max_volume->toBe(3.0)
         ->active->toBe(true);
 });
 
 it('is invalid', function (array $data, array $errors) {
-    Bell::factory()->create(['name' => 'Existing Bell', 'threshold' => 5, 'active' => false]);
-    $bell = Bell::factory()->create(['name' => 'Current Bell', 'threshold' => 10, 'active' => false]);
+    Bell::factory()->create(['name' => 'Existing Bell', 'active' => false]);
+    $bell = Bell::factory()->create([
+        'name' => 'Current Bell',
+        'min_volume' => 5,
+        'max_volume' => 10,
+        'active' => false,
+    ]);
 
     $action = app(UpdatesBell::class);
 
@@ -32,8 +43,14 @@ it('is invalid', function (array $data, array $errors) {
     'name ! string' => [['name' => 123], ['name' => 'string']],
     'name > 50 characters' => [['name' => str_repeat('a', 51)], ['name' => 'must not be greater than 50 characters']],
 
-    'threshold taken' => [['threshold' => 5], ['threshold' => 'taken']],
-    'threshold ! numeric' => [['threshold' => 'a1'], ['threshold' => 'number']],
-    'threshold < 1' => [['threshold' => 0], ['threshold' => 'between 1 and 100']],
-    'threshold > 100' => [['threshold' => 101], ['threshold' => 'between 1 and 100']],
+    'min_volume ! numeric' => [['min_volume' => 'a1'], ['min_volume' => 'number']],
+    'min_volume < 1' => [['min_volume' => 0], ['min_volume' => 'between 1 and 100']],
+    'min_volume > 100' => [['min_volume' => 101], ['min_volume' => 'between 1 and 100']],
+
+    'max_volume ! numeric' => [['max_volume' => 'a1'], ['max_volume' => 'number']],
+    'max_volume < 1' => [['max_volume' => 0], ['max_volume' => 'between 1 and 100']],
+    'max_volume > 100' => [['max_volume' => 101], ['max_volume' => 'between 1 and 100']],
+
+    'min_volume = max_volume' => [['min_volume' => 5, 'max_volume' => 5], ['min_volume' => 'must be less than 5']],
+    'min_volume > max_volume' => [['min_volume' => 5, 'max_volume' => 4], ['min_volume' => 'must be less than 4']],
 ]);

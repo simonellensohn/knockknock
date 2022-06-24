@@ -13,11 +13,17 @@ class CreateBell implements CreatesBell
     {
         $data = Validator::validate($data, [
             'name' => ['required', 'string', 'max:50', 'unique:bells'],
-            'threshold' => [
+            'min_volume' => [
                 'required',
                 'numeric',
                 'between:1,100',
-                'unique:bells',
+                'lt:max_volume',
+            ],
+            'max_volume' => [
+                'required',
+                'numeric',
+                'between:1,100',
+                'gt:min_volume',
             ],
         ]);
 

@@ -41,7 +41,7 @@ function toggleBells() {
     <table class="w-full whitespace-nowrap">
       <tr class="text-left font-bold">
         <th class="px-6 pt-6 pb-4">Name</th>
-        <th class="px-6 pt-6 pb-4">Threshold</th>
+        <th class="px-6 pt-6 pb-4">Volume Range</th>
         <th class="px-6 pt-6 pb-4">Rings count</th>
         <th class="px-6 pt-6 pb-4">Active</th>
       </tr>
@@ -65,7 +65,7 @@ function toggleBells() {
             :href="`/bells/${bell.id}/edit`"
             tabindex="-1"
           >
-            {{ bell.threshold }}
+            {{ bell.min_volume }} - {{ bell.max_volume }}
           </Link>
         </td>
         <td class="border-t">

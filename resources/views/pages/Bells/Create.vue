@@ -5,7 +5,8 @@ import LoadingButton from '@/views/components/LoadingButton.vue'
 
 const form = useForm({
   name: '',
-  threshold: '',
+  min_volume: '',
+  max_volume: '',
 })
 
 function create() {
@@ -39,10 +40,16 @@ function create() {
           label="Name"
         />
         <text-input
-          v-model="form.threshold"
-          :error="form.errors.threshold"
+          v-model="form.min_volume"
+          :error="form.errors.min_volume"
           class="w-full pb-8 pr-6 lg:w-1/2"
-          label="Threshold"
+          label="Min Volume"
+        />
+        <text-input
+          v-model="form.max_volume"
+          :error="form.errors.max_volume"
+          class="w-full pb-8 pr-6 lg:w-1/2"
+          label="Max Volume"
         />
       </div>
       <div class="flex items-center border-t border-gray-100 bg-gray-50 px-8 py-4">

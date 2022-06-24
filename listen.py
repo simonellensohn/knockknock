@@ -5,10 +5,9 @@ import numpy as np
 import sounddevice as sd
 
 
-bells = []
+bell = {id: 1}
 ringDuration = 3000
 volumeSetDuration = 250
-minVolumeThreshold = 3
 sleepDurationAfterRing = 10000
 volumeSetsToCheck = np.round(ringDuration / volumeSetDuration)
 events = []
@@ -19,28 +18,13 @@ requestHeaders = {
     'Accept': 'application/json',
     'Authorization': 'Bearer ' + accessToken,
 }
-minRange = None
-maxRange = None
 
 
-def fetch_bells():
-    response = requests.get(baseUrl + '/bells', headers=requestHeaders)
+def fetch_bell():
+    response = requests.get(baseUrl + '/bells' +
+                            bell.get('id'), headers=requestHeaders)
 
-    return response.json().get('data')
-
-
-def set_volume_range():
-    global minRange
-    global maxRange
-
-    for bell in bells:
-        value = float(bell.get('threshold'))
-
-        if (minRange == None or value < minRange):
-            minRange = value
-
-        if (maxRange == None or value > maxRange):
-            maxRange = value
+    bell = response.json().get('data')
 
 
 def audio_callback(indata, frames, time, status):
@@ -60,16 +44,23 @@ def average_of_last_events():
 def post_ring(bellId, volume, events):
     requests.post(
         baseUrl + '/bells/' + str(bellId) + '/ring',
-        json={ 'volume': volume, 'events': events },
+        json={'volume': volume, 'events': events},
         headers=requestHeaders,
     )
 
 
 def set_is_fluctuating(volumes):
+    lowestVolume = min(volumes)
+    highestVolume = max(volumes)
+
+    if abs(highestVolume - lowestVolume) >= 3:
+        return True
+
     previousValue = None
 
     for volume in volumes:
-        isFluctuating = previousValue is not None and abs(previousValue - volume) > 3
+        isFluctuating = previousValue is not None and abs(
+            previousValue - volume) > 1.5
 
         if isFluctuating:
             return True
@@ -79,10 +70,10 @@ def set_is_fluctuating(volumes):
     return False
 
 
-bells = fetch_bells()
-bells.sort(key=lambda bell: float(bell.get('threshold')), reverse=True)
-set_volume_range()
+fetch_bell()
 
+minRange = bell.get('min_volume')
+maxRange = bell.get('maxn_volume')
 
 while True:
     listen_for_doorbell()
@@ -92,10 +83,10 @@ while True:
 
     volume = average_of_last_events()
 
-    # Reset the averages if the volume is below a threshold where
+    # Reset the averages if the volume is outside a threshold where
     # a.) nothing is happening or
-    # b.) the volume is lower than any tone of the bell
-    if (volume < minVolumeThreshold):
+    # b.) the volume is lower or higher than any tone of the bell
+    if (volume < minRange or volume > maxRange):
         averages = []
         events = []
         continue
@@ -109,8 +100,6 @@ while True:
     events = []
 
     if (average >= minRange and not set_is_fluctuating(averages)):
-        bell = [bell for bell in bells if float(bell.get('threshold')) <= average][0]
-
         post_ring(bell.get('id'), average, averages)
 
         averages = []
