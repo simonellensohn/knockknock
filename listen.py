@@ -20,9 +20,9 @@ requestHeaders = {
 }
 
 
-def fetch_bell():
+def fetch_bell(id):
     response = requests.get(baseUrl + '/bells' +
-                            bell.get('id'), headers=requestHeaders)
+                            str(id), headers=requestHeaders)
 
     bell = response.json().get('data')
 
@@ -70,7 +70,7 @@ def set_is_fluctuating(volumes):
     return False
 
 
-fetch_bell()
+fetch_bell(bell.get('id'))
 
 minRange = bell.get('min_volume')
 maxRange = bell.get('maxn_volume')
