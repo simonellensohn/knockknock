@@ -5,7 +5,7 @@ import numpy as np
 import sounddevice as sd
 
 
-bell = {id: 1}
+bell = {'id': 1}
 ringDuration = 3000
 volumeSetDuration = 250
 sleepDurationAfterRing = 10000
