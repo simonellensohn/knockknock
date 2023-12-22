@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="Knock knock - Who's there? Is someone knocking?">
-    @vite(['resources/css/app.css', 'resources/scripts/main.ts'])
-    @inertiaHead
+    @unless(app()->runningUnitTests())
+      @vite(['resources/css/app.css', 'resources/scripts/main.ts'])
+      @inertiaHead
+    @endunless
   </head>
   <body>
     @inertia
