@@ -2,9 +2,12 @@
 
 namespace App\Services\Hue\DataObjects;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
 
-class User extends DataTransferObject
+class User extends Data
 {
-    public string $name;
+    public function __construct(
+        public string $name
+    ) {
+    }
 }

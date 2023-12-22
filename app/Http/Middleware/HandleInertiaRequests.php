@@ -2,9 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use Tightenco\Ziggy\Ziggy;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
-use Tightenco\Ziggy\Ziggy;
+use Illuminate\Foundation\Application;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -12,7 +13,6 @@ class HandleInertiaRequests extends Middleware
      * The root template that's loaded on the first page visit.
      *
      * @see https://inertiajs.com/server-side-setup#root-template
-     *
      * @var string
      */
     protected $rootView = 'app';
@@ -22,11 +22,13 @@ class HandleInertiaRequests extends Middleware
      *
      * @see https://inertiajs.com/asset-versioning
      *
+     * @param  Request  $request
+     *
      * @return string|null
      */
-    public function version(Request $request)
+    public function version(Request $request): ?string
     {
-        return vite()->getHash();
+        return parent::version($request);
     }
 
     /**
@@ -34,14 +36,16 @@ class HandleInertiaRequests extends Middleware
      *
      * @see https://inertiajs.com/shared-data
      *
+     * @param  Request  $request
+     *
      * @return array
      */
-    public function share(Request $request)
+    public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
             'versions' => [
                 'php' => PHP_VERSION,
-                'laravel' => \Illuminate\Foundation\Application::VERSION,
+                'laravel' => Application::VERSION,
             ],
             'auth' => function () use ($request) {
                 return [

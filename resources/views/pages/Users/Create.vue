@@ -32,25 +32,25 @@ function store() {
   <div class="max-w-3xl overflow-hidden rounded-md bg-white shadow">
     <form @submit.prevent="store">
       <div class="-mb-8 -mr-6 flex flex-wrap p-8">
-        <text-input
+        <TextInput
           v-model="form.first_name"
           :error="form.errors.first_name"
           class="w-full pb-8 pr-6 lg:w-1/2"
           label="First name"
         />
-        <text-input
+        <TextInput
           v-model="form.last_name"
           :error="form.errors.last_name"
           class="w-full pb-8 pr-6 lg:w-1/2"
           label="Last name"
         />
-        <text-input
+        <TextInput
           v-model="form.email"
           :error="form.errors.email"
           class="w-full pb-8 pr-6 lg:w-1/2"
           label="Email"
         />
-        <text-input
+        <TextInput
           v-model="form.password"
           :error="form.errors.password"
           class="w-full pb-8 pr-6 lg:w-1/2"
@@ -60,13 +60,13 @@ function store() {
         />
       </div>
       <div class="flex items-center justify-end border-t border-gray-100 bg-gray-50 px-8 py-4">
-        <loading-button
+        <LoadingButton
           :loading="form.processing"
           class="btn-indigo"
           type="submit"
         >
           Create User
-        </loading-button>
+        </LoadingButton>
       </div>
     </form>
   </div>

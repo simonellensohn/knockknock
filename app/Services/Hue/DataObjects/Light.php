@@ -2,9 +2,12 @@
 
 namespace App\Services\Hue\DataObjects;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\LaravelData\Data;
 
-class Light extends DataTransferObject
+class Light extends Data
 {
-    public array $attributes;
+    public function __construct(
+        public array $attributes
+    ) {
+    }
 }

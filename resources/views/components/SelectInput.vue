@@ -2,6 +2,10 @@
 import { v4 as uuid } from 'uuid'
 import { ref, watch } from 'vue'
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const props = defineProps({
   id: {
     type: String,
@@ -22,12 +26,6 @@ watch(selected, (selected) => {
 })
 </script>
 
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-}
-</script>
-
 <template>
   <div :class="$attrs.class">
     <label
@@ -42,7 +40,7 @@ export default {
       v-model="selected"
       v-bind="{ ...$attrs, class: null }"
       class="form-select"
-      :class="{ error: error }"
+      :class="{ error }"
     >
       <slot />
     </select>

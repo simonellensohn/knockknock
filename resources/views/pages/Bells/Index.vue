@@ -10,7 +10,7 @@ const props = defineProps({
 
 function toggleBells() {
   Inertia.post('/bells/toggle', {
-    active: props.bells.data.some((bell) => !bell.active),
+    active: props.bells.data.some(bell => !bell.active),
   })
 }
 </script>
@@ -18,7 +18,9 @@ function toggleBells() {
 <template layout>
   <Head title="Bells" />
 
-  <h1 class="mb-8 text-3xl font-bold">Bells</h1>
+  <h1 class="mb-8 text-3xl font-bold">
+    Bells
+  </h1>
 
   <div class="mb-6 flex items-center justify-end space-x-4">
     <LoadingButton
@@ -40,10 +42,18 @@ function toggleBells() {
   <div class="overflow-x-auto rounded-md bg-white shadow">
     <table class="w-full whitespace-nowrap">
       <tr class="text-left font-bold">
-        <th class="px-6 pt-6 pb-4">Name</th>
-        <th class="px-6 pt-6 pb-4">Volume Range</th>
-        <th class="px-6 pt-6 pb-4">Rings count</th>
-        <th class="px-6 pt-6 pb-4">Active</th>
+        <th class="px-6 pt-6 pb-4">
+          Name
+        </th>
+        <th class="px-6 pt-6 pb-4">
+          Volume Range
+        </th>
+        <th class="px-6 pt-6 pb-4">
+          Rings count
+        </th>
+        <th class="px-6 pt-6 pb-4">
+          Active
+        </th>
       </tr>
 
       <tr
@@ -92,7 +102,7 @@ function toggleBells() {
             :href="`/bells/${bell.id}/edit`"
             tabindex="-1"
           >
-            <icon
+            <Icon
               name="cheveron-right"
               class="block h-6 w-6 fill-gray-400"
             />

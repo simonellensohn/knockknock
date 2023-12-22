@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const props = defineProps({
+  name: String,
+})
+</script>
+
 <template>
   <svg
     v-if="props.name === 'cheveron-down'"
@@ -114,9 +120,3 @@
     />
   </svg>
 </template>
-
-<script setup lang="ts">
-const props = defineProps({
-  name: String,
-})
-</script>

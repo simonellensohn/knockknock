@@ -1,8 +1,5 @@
 import { defineConfig } from 'vite'
-import tailwindcss from 'tailwindcss'
-import tailwindcssNesting from 'tailwindcss/nesting'
-import autoprefixer from 'autoprefixer'
-import laravel from 'vite-plugin-laravel'
+import laravel from 'laravel-vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import inertia from './resources/scripts/vite/inertia-layout'
 import path from 'path'
@@ -12,7 +9,8 @@ export default defineConfig({
     inertia(),
     vue(),
     laravel({
-      postcss: [tailwindcssNesting(), tailwindcss(), autoprefixer()],
+      input: ['resources/css/app.css', 'resources/scripts/main.ts'],
+      refresh: true,
     }),
   ],
   resolve: {

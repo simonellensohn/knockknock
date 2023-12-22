@@ -9,15 +9,25 @@ const props = defineProps({
 <template layout>
   <Head title="Rings" />
 
-  <h1 class="mb-8 text-3xl font-bold">Rings</h1>
+  <h1 class="mb-8 text-3xl font-bold">
+    Rings
+  </h1>
 
   <div class="overflow-x-auto rounded-md bg-white shadow">
     <table class="w-full whitespace-nowrap">
       <tr class="text-left font-bold">
-        <th class="px-6 pt-6 pb-4">Time</th>
-        <th class="px-6 pt-6 pb-4">Volume</th>
-        <th class="px-6 pt-6 pb-4">Events</th>
-        <th class="px-6 pt-6 pb-4">Bell</th>
+        <th class="px-6 pt-6 pb-4">
+          Time
+        </th>
+        <th class="px-6 pt-6 pb-4">
+          Volume
+        </th>
+        <th class="px-6 pt-6 pb-4">
+          Events
+        </th>
+        <th class="px-6 pt-6 pb-4">
+          Bell
+        </th>
       </tr>
 
       <tr

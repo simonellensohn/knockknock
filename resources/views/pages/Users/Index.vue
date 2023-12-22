@@ -10,7 +10,9 @@ const props = defineProps({
 <template layout>
   <Head title="Users" />
 
-  <h1 class="mb-8 text-3xl font-bold">Users</h1>
+  <h1 class="mb-8 text-3xl font-bold">
+    Users
+  </h1>
 
   <div class="mb-6 flex items-center justify-end">
     <Link
@@ -25,8 +27,12 @@ const props = defineProps({
   <div class="overflow-x-auto rounded-md bg-white shadow">
     <table class="w-full whitespace-nowrap">
       <tr class="text-left font-bold">
-        <th class="px-6 pt-6 pb-4">Name</th>
-        <th class="px-6 pt-6 pb-4">Email</th>
+        <th class="px-6 pt-6 pb-4">
+          Name
+        </th>
+        <th class="px-6 pt-6 pb-4">
+          Email
+        </th>
         <th
           class="px-6 pt-6 pb-4"
           colspan="2"
@@ -50,8 +56,8 @@ const props = defineProps({
               class="-my-2 mr-2 block h-5 w-5 rounded-full"
               :src="user.photo"
             >
-            {{ user.first_name + ' ' + user.last_name }}
-            <icon
+            {{ `${user.first_name} ${user.last_name}` }}
+            <Icon
               v-if="user.deleted_at"
               name="trash"
               class="ml-2 h-3 w-3 flex-shrink-0 fill-gray-400"
@@ -82,7 +88,7 @@ const props = defineProps({
             :href="`/users/${user.id}/edit`"
             tabindex="-1"
           >
-            <icon
+            <Icon
               name="cheveron-right"
               class="block h-6 w-6 fill-gray-400"
             />

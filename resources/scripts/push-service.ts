@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 export function registerServiceWorker(callback) {
   if (!('serviceWorker' in navigator)) {
     debug('Service workers aren\'t supported in this browser.')
@@ -50,9 +48,8 @@ function subscribe(vapidPublicKey: string = null, callbacks: SubscribeCallbacks)
   navigator.serviceWorker.ready.then((registration) => {
     const options: PushSubscriptionOptions = { userVisibleOnly: true }
 
-    if (vapidPublicKey) {
+    if (vapidPublicKey)
       options.applicationServerKey = urlBase64ToUint8Array(vapidPublicKey)
-    }
 
     registration.pushManager
       .subscribe(options)
@@ -67,7 +64,8 @@ function subscribe(vapidPublicKey: string = null, callbacks: SubscribeCallbacks)
         if (Notification.permission === 'denied') {
           debug('Permission for Notifications was denied')
           this.pushButtonDisabled = true
-        } else {
+        }
+        else {
           debug('Unable to subscribe to push.', e)
           this.pushButtonDisabled = false
         }
@@ -128,7 +126,7 @@ export function updateSubscription(subscription, callback) {
 /**
  * https://github.com/Minishlink/physbook/blob/02a0d5d7ca0d5d2cc6d308a3a9b81244c63b3f14/app/Resources/public/js/app.js#L177
  *
- * @param  {String} base64String
+ * @param  {string} base64String
  * @return {Uint8Array}
  */
 function urlBase64ToUint8Array(base64String) {
@@ -137,9 +135,8 @@ function urlBase64ToUint8Array(base64String) {
   const rawData = window.atob(base64)
   const outputArray = new Uint8Array(rawData.length)
 
-  for (let i = 0; i < rawData.length; ++i) {
+  for (let i = 0; i < rawData.length; ++i)
     outputArray[i] = rawData.charCodeAt(i)
-  }
 
   return outputArray
 }

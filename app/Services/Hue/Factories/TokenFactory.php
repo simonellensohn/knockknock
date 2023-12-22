@@ -17,7 +17,7 @@ class TokenFactory
             );
         }
 
-        $token = new OAuthToken(array_filter([
+        $token = OAuthToken::from(array_filter([
             'name' => data_get($attributes, 'username'),
             'access_token' => data_get($attributes, 'access_token'),
             'access_token_expires_at' => data_get($attributes, 'access_token_expires_at'),

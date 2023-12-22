@@ -1,48 +1,39 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "vite",
         "dev:ssr": "node public/build/ssr.js",
         "build": "vite build --outDir public/build/client",
         "build:ssr": "vite build --ssr --outDir public/build/server",
-        "fix:eslint": "eslint --ext .js,.vue,.ts resources --fix",
-        "fix:prettier": "prettier --write --loglevel warn 'resources/**/*.{vue,ts,js,css}'",
-        "fix-code-style": "npm run fix:prettier && npm run fix:eslint"
+        "lint": "eslint resources",
+        "lint:fix": "eslint resources --fix"
     },
     "dependencies": {
-        "@headlessui/vue": "^1.6.4",
+        "@headlessui/vue": "^1.6.7",
         "@heroicons/vue": "^1.0.6",
         "@inertiajs/inertia": "^0.11.0",
         "@inertiajs/inertia-vue3": "^0.6.0",
         "@inertiajs/progress": "^0.2.7",
         "@inertiajs/server": "^0.1.0",
         "@popperjs/core": "^2.11.5",
-        "@vue/server-renderer": "^3.2.36",
-        "laravel-mix": "^6.0.44",
+        "@vue/server-renderer": "^3.3.13",
         "lodash": "^4.17.21",
-        "postcss-import": "^14.1.0",
-        "postcss-nesting": "^10.1.7",
-        "uuid": "^8.3.2",
-        "vue": "^3.2.36",
+        "postcss-import": "^15.1.0",
+        "postcss-nesting": "^12.0.2",
+        "uuid": "^9.0.1",
+        "vue": "^3.3.13",
         "vue-loader": "^17.0.0",
-        "webpack-node-externals": "^3.0.0",
-        "ziggy-js": "^1.4.6"
+        "ziggy-js": "^1.8.1"
     },
     "devDependencies": {
-        "@types/ziggy-js": "^1.3.2",
-        "@typescript-eslint/eslint-plugin": "^5.27.0",
-        "@typescript-eslint/parser": "^5.27.0",
-        "@vitejs/plugin-vue": "^2.3.3",
-        "@vue/compiler-sfc": "^3.2.36",
-        "autoprefixer": "^10.4.7",
-        "eslint": "^8.17.0",
-        "eslint-plugin-vue": "^9.1.0",
-        "postcss": "^8.4.14",
-        "prettier": "^2.6.2",
-        "prettier-plugin-tailwindcss": "^0.1.11",
-        "tailwindcss": "^3.0.24",
-        "vite": "^2.9.13",
-        "vite-plugin-laravel": "^0.2.0-beta.17",
-        "vue-eslint-parser": "^9.0.2"
+        "@antfu/eslint-config": "^2.4.6",
+        "@vitejs/plugin-vue": "^4.5.2",
+        "autoprefixer": "^10.4.16",
+        "eslint": "^8.56.0",
+        "laravel-vite-plugin": "^1.0.0",
+        "postcss": "^8.4.32",
+        "tailwindcss": "^3.4.0",
+        "vite": "^5.0.10"
     }
 }

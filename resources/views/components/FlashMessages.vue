@@ -5,9 +5,8 @@ import { usePage } from '@inertiajs/inertia-vue3'
 const page = usePage()
 const show = ref(true)
 
-if (page.props.flash) {
+if (page.props.flash)
   watch(page.props.flash, () => (show.value = true), { deep: true })
-}
 </script>
 
 <template>

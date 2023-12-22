@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Head, useForm } from '@inertiajs/inertia-vue3'
+import { inject } from 'vue'
 import TextInput from '@/views/components/TextInput.vue'
 import LoadingButton from '@/views/components/LoadingButton.vue'
-import { inject } from 'vue'
 
 const route = inject('route')
 
@@ -33,9 +33,11 @@ function login() {
         @submit.prevent="login"
       >
         <div class="px-10 py-12">
-          <h1 class="text-center text-3xl font-bold">Welcome Back!</h1>
+          <h1 class="text-center text-3xl font-bold">
+            Welcome Back!
+          </h1>
           <div class="mx-auto mt-6 w-24 border-b-2" />
-          <text-input
+          <TextInput
             v-model="form.email"
             :error="form.errors.email"
             class="mt-10"
@@ -44,7 +46,7 @@ function login() {
             autofocus
             autocapitalize="off"
           />
-          <text-input
+          <TextInput
             v-model="form.password"
             :error="form.errors.password"
             class="mt-6"
@@ -66,13 +68,13 @@ function login() {
         </div>
 
         <div class="flex border-t border-gray-100 bg-gray-100 px-10 py-4">
-          <loading-button
+          <LoadingButton
             :loading="form.processing"
             class="btn-indigo ml-auto"
             type="submit"
           >
             Login
-          </loading-button>
+          </LoadingButton>
         </div>
       </form>
     </div>

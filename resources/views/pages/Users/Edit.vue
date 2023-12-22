@@ -25,9 +25,8 @@ function update() {
 }
 
 function destroy() {
-  if (confirm('Are you sure you want to delete this user?')) {
+  if (confirm('Are you sure you want to delete this user?'))
     Inertia.delete(`/users/${props.user.data.id}`)
-  }
 }
 
 function deleteToken(token) {
@@ -54,25 +53,25 @@ function deleteToken(token) {
   <div class="mb-8 max-w-3xl overflow-hidden rounded-md bg-white shadow">
     <form @submit.prevent="update">
       <div class="-mb-8 -mr-6 flex flex-wrap p-8">
-        <text-input
+        <TextInput
           v-model="form.first_name"
           :error="form.errors.first_name"
           class="w-full pb-8 pr-6 lg:w-1/2"
           label="First name"
         />
-        <text-input
+        <TextInput
           v-model="form.last_name"
           :error="form.errors.last_name"
           class="w-full pb-8 pr-6 lg:w-1/2"
           label="Last name"
         />
-        <text-input
+        <TextInput
           v-model="form.email"
           :error="form.errors.email"
           class="w-full pb-8 pr-6 lg:w-1/2"
           label="Email"
         />
-        <text-input
+        <TextInput
           v-model="form.password"
           :error="form.errors.password"
           class="w-full pb-8 pr-6 lg:w-1/2"
@@ -91,19 +90,21 @@ function deleteToken(token) {
         >
           Delete User
         </button>
-        <loading-button
+        <LoadingButton
           :loading="form.processing"
           class="btn-indigo ml-auto"
           type="submit"
         >
           Update User
-        </loading-button>
+        </LoadingButton>
       </div>
     </form>
   </div>
 
   <div v-if="props.user.data.id === props.auth.user.id">
-    <h2 class="mb-8 text-2xl font-bold">Access Tokens</h2>
+    <h2 class="mb-8 text-2xl font-bold">
+      Access Tokens
+    </h2>
 
     <ul class="max-w-3xl space-y-4">
       <li
