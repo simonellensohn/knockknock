@@ -88,7 +88,7 @@ it('can fetch and store an OAuth token to the disk', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
         '/v2/oauth2/token' => Http::response(
-            body:   fixture('Hue/OAuthToken'),
+            body: fixture('Hue/OAuthToken'),
             status: Response::HTTP_OK,
         ),
     ]);
@@ -126,7 +126,7 @@ it('fetches OAuth token when current one is empty', function () {
     $hue = resolve(HueService::class);
     $fake = HueService::fake([
         '/v2/oauth2/token' => Http::response(
-            body:   fixture('Hue/OAuthToken'),
+            body: fixture('Hue/OAuthToken'),
             status: Response::HTTP_OK,
         ),
     ]);
@@ -145,7 +145,7 @@ it('refreshes expired OAuth token', function (string $json) {
     $hue = resolve(HueService::class);
     $fake = HueService::fake([
         '/v2/oauth2/token' => Http::response(
-            body:   fixture('Hue/OAuthToken'),
+            body: fixture('Hue/OAuthToken'),
             status: Response::HTTP_OK,
         ),
     ]);
@@ -176,7 +176,7 @@ it('can fetch all lights', function () {
     $hue = resolve(HueService::class);
     HueService::fake([
         '/route/api/*/lights' => Http::response(
-            body:   fixture('Hue/Lights'),
+            body: fixture('Hue/Lights'),
             status: Response::HTTP_OK,
         ),
     ]);

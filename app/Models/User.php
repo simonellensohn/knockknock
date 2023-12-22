@@ -48,11 +48,12 @@ use NotificationChannels\WebPush\HasPushSubscriptions;
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasPushSubscriptions;
+    use HasApiTokens, HasFactory, HasPushSubscriptions, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -83,6 +84,7 @@ class User extends Authenticatable
     protected $casts = [
         'admin' => 'boolean',
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
 
     /**

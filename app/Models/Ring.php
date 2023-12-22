@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Ring whereTriggered($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ring whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ring whereVolume($value)
+ *
  * @mixin \Eloquent
  */
 class Ring extends Model

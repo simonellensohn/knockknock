@@ -47,14 +47,14 @@ it('authenticated users can fetch a single bell', function () {
 
     $response->assertOk();
     $response->assertJson(fn (AssertableJson $json) => $json
-            ->where('data.id', $bell->id)
-            ->whereAllType([
-                'data.id' => 'integer',
-                'data.name' => 'string',
-                'data.min_volume' => 'integer|double',
-                'data.max_volume' => 'integer|double',
-                'data.active' => 'boolean',
-            ])
+        ->where('data.id', $bell->id)
+        ->whereAllType([
+            'data.id' => 'integer',
+            'data.name' => 'string',
+            'data.min_volume' => 'integer|double',
+            'data.max_volume' => 'integer|double',
+            'data.active' => 'boolean',
+        ])
     );
 });
 

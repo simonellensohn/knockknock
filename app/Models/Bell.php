@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Bell whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class Bell extends Model

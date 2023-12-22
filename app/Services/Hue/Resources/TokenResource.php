@@ -21,7 +21,7 @@ class TokenResource
         return $this->service;
     }
 
-    public function get(string $code = null): OAuthToken
+    public function get(?string $code = null): OAuthToken
     {
         $this->token ??= TokenFactory::make(readFromFile: true);
 
