@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/inertia-vue3'
+import { Head } from '@inertiajs/vue3'
 
 const props = defineProps({
   rings: Object,
 })
 </script>
 
-<template layout>
+<template>
   <Head title="Rings" />
 
   <h1 class="mb-8 text-3xl font-bold">

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
-import { Head, Link } from '@inertiajs/inertia-vue3'
+import { Head, Link, router } from '@inertiajs/vue3'
 import Icon from '@/views/components/Icon.vue'
 import LoadingButton from '@/views/components/LoadingButton.vue'
 
@@ -148,7 +147,7 @@ function updateSubscription(subscription) {
 
   loading.value = true
 
-  Inertia.put('/user/push/subscriptions', data, {
+  router.put('/user/push/subscriptions', data, {
     onFinish: () => (loading.value = false),
   })
 }
@@ -156,7 +155,7 @@ function updateSubscription(subscription) {
 function deleteSubscription(subscription) {
   loading.value = true
 
-  Inertia.delete(
+  router.delete(
     '/user/push/subscriptions/delete',
     {
       endpoint: subscription.endpoint,
@@ -183,7 +182,7 @@ function urlBase64ToUint8Array(base64String) {
 }
 </script>
 
-<template layout>
+<template>
   <Head title="Dashboard" />
 
   <h1 class="mb-8 text-3xl font-bold">

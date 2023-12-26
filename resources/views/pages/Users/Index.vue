@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/inertia-vue3'
+import { Head, Link } from '@inertiajs/vue3'
 import Icon from '@/views/components/Icon.vue'
 
 const props = defineProps({
@@ -7,7 +7,7 @@ const props = defineProps({
 })
 </script>
 
-<template layout>
+<template>
   <Head title="Users" />
 
   <h1 class="mb-8 text-3xl font-bold">

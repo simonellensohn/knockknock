@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Link, usePage } from '@inertiajs/inertia-vue3'
+import { Link, usePage } from '@inertiajs/vue3'
 import Icon from '@/views/components/Icon.vue'
 
 const page = usePage()
 
-function isUrl(...urls) {
-  const currentUrl = page.url.value.substr(1)
+function isUrl(...urls: string[]) {
+  const currentUrl = page.url.substr(1)
 
   if (urls[0] === '')
     return currentUrl === ''

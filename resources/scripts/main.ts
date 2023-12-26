@@ -1,15 +1,12 @@
-import { createApp, h } from 'vue'
-import { InertiaProgress } from '@inertiajs/progress'
-import { createInertiaApp } from '@inertiajs/inertia-vue3'
+import { createSSRApp, h } from 'vue'
+import { createInertiaApp } from '@inertiajs/vue3'
 import { ZiggyVue } from 'ziggy-js/dist/vue'
 import { importPageComponent } from '@/scripts/vite/import-page-component'
 
-InertiaProgress.init()
-
 createInertiaApp({
-  resolve: name => importPageComponent(name, import.meta.glob('../views/pages/**/*.vue')),
-  setup({ el, app, props, plugin }) {
-    createApp({ render: () => h(app, props) })
+  resolve: name => importPageComponent(name),
+  setup({ el, App, props, plugin }) {
+    createSSRApp({ render: () => h(App, props) })
       .use(plugin)
       .use(ZiggyVue, props.initialPage.props.ziggy)
       .mount(el)

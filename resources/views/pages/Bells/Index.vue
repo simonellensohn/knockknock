@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Inertia } from '@inertiajs/inertia'
-import { Head, Link } from '@inertiajs/inertia-vue3'
+import { Head, Link, router } from '@inertiajs/vue3'
 import Icon from '@components/Icon.vue'
 import LoadingButton from '@components/LoadingButton.vue'
 
@@ -9,13 +8,13 @@ const props = defineProps({
 })
 
 function toggleBells() {
-  Inertia.post('/bells/toggle', {
+  router.post('/bells/toggle', {
     active: props.bells.data.some(bell => !bell.active),
   })
 }
 </script>
 
-<template layout>
+<template>
   <Head title="Bells" />
 
   <h1 class="mb-8 text-3xl font-bold">

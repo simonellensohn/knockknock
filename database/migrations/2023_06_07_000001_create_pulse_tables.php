@@ -21,6 +21,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (app()->runningUnitTests()) {
+            return;
+        }
+
         $connection = DB::connection($this->getConnection());
 
         Schema::create('pulse_values', function (Blueprint $table) use ($connection) {
@@ -85,6 +89,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        if (app()->runningUnitTests()) {
+            return;
+        }
+
         Schema::dropIfExists('pulse_values');
         Schema::dropIfExists('pulse_entries');
         Schema::dropIfExists('pulse_aggregates');

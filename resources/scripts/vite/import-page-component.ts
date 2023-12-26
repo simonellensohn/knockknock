@@ -1,8 +1,10 @@
-export function importPageComponent(name: string, pages: Record<string, any>) {
-  for (const path in pages) {
-    if (path.endsWith(`${name.replaceAll('.', '/')}.vue`))
-      return typeof pages[path] === 'function' ? pages[path]() : pages[path]
-  }
+import Layout from '@layouts/Default.vue'
 
-  throw new Error(`Page not found: ${name}`)
+export function importPageComponent(name: string) {
+  const pages = import.meta.glob('../../views/pages/**/*.vue', { eager: true })
+  const page = pages[`../../views/pages/${name.replaceAll('.', '/')}.vue`]
+
+  page.default.layout = page.default.layout || Layout
+
+  return page
 }

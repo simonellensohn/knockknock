@@ -1,18 +1,21 @@
+import { createInertiaApp } from '@inertiajs/vue3'
+import createServer from '@inertiajs/vue3/server'
+import { renderToString } from '@vue/server-renderer'
 import { createSSRApp, h } from 'vue'
-import createServer from '@inertiajs/server'
-import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { ZiggyVue } from 'ziggy-js/dist/vue'
 import { importPageComponent } from '@/scripts/vite/import-page-component'
 
 createServer(page =>
   createInertiaApp({
     page,
-    resolve: name => importPageComponent(name, import.meta.glob('../views/pages/**/*.vue')),
-    setup({ el, app, props, plugin }) {
-      createSSRApp({ render: () => h(app, props) })
+    render: renderToString,
+    resolve: name => importPageComponent(name),
+    setup({ App, props, plugin }) {
+      return createSSRApp({
+        render: () => h(App, props),
+      })
         .use(plugin)
         .use(ZiggyVue, page.props.ziggy)
-        .mount(el)
     },
   }),
 )

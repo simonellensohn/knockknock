@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Inertia } from '@inertiajs/inertia'
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
+import { Head, Link, router, useForm } from '@inertiajs/vue3'
 import TextInput from '@/views/components/TextInput.vue'
 import LoadingButton from '@/views/components/LoadingButton.vue'
 import SelectInput from '@/views/components/SelectInput.vue'
@@ -23,11 +22,11 @@ function update() {
 
 function destroy() {
   if (confirm('Are you sure you want to delete this bell?'))
-    Inertia.delete(`/bells/${props.bell.data.id}`)
+    router.delete(`/bells/${props.bell.data.id}`)
 }
 </script>
 
-<template layout>
+<template>
   <Head :title="form.name" />
 
   <div class="mb-8 flex max-w-3xl justify-start">

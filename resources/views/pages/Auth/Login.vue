@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { Head, useForm } from '@inertiajs/inertia-vue3'
+import { Head, useForm } from '@inertiajs/vue3'
 import { inject } from 'vue'
+import GuestLayout from '@layouts/Guest.vue'
 import TextInput from '@/views/components/TextInput.vue'
 import LoadingButton from '@/views/components/LoadingButton.vue'
+
+defineOptions({ layout: GuestLayout })
 
 const route = inject('route')
 

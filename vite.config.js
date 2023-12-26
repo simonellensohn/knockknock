@@ -1,15 +1,14 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import vue from '@vitejs/plugin-vue'
-import inertia from './resources/scripts/vite/inertia-layout'
-import path from 'path'
 
 export default defineConfig({
   plugins: [
-    inertia(),
     vue(),
     laravel({
       input: ['resources/css/app.css', 'resources/scripts/main.ts'],
+      ssr: 'resources/scripts/ssr.ts',
       refresh: true,
     }),
   ],

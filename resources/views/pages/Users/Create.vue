@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
+import { Head, Link, useForm } from '@inertiajs/vue3'
 import TextInput from '@/views/components/TextInput.vue'
 import LoadingButton from '@/views/components/LoadingButton.vue'
 
@@ -15,7 +15,7 @@ function store() {
 }
 </script>
 
-<template layout>
+<template>
   <Head title="Create User" />
 
   <h1 class="mb-8 flex text-3xl font-bold">

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Inertia } from '@inertiajs/inertia'
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
+import { Head, Link, router, useForm } from '@inertiajs/vue3'
 import TextInput from '@/views/components/TextInput.vue'
 import LoadingButton from '@/views/components/LoadingButton.vue'
 
@@ -26,15 +25,15 @@ function update() {
 
 function destroy() {
   if (confirm('Are you sure you want to delete this user?'))
-    Inertia.delete(`/users/${props.user.data.id}`)
+    router.delete(`/users/${props.user.data.id}`)
 }
 
 function deleteToken(token) {
-  Inertia.delete(`/users/${props.user.data.id}/access-tokens/${token.id}`)
+  router.delete(`/users/${props.user.data.id}/access-tokens/${token.id}`)
 }
 </script>
 
-<template layout>
+<template>
   <Head :title="`${form.first_name} ${form.last_name}`" />
 
   <div class="mb-8 flex max-w-3xl justify-start">
